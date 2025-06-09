@@ -1,0 +1,27 @@
+name: Automated Update
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      - name: Set up git config
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+      - name: Run update script
+        run: bash scripts/auto_update.sh
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          branch: auto/update-${{ github.run_id }}
+          title: "Automated update"
+          body: "Automated content update."
+          commit-message: "Automated update"
