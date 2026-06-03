@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-03T00:00:00.000Z",
+  "nodes": [
+    {
+      "id": "cover",
+      "title": "Quantum Chemistry 2048",
+      "summary": "Start page for the interactive schoolbook and its live learning graph.",
+      "chapter": "frontmatter",
+      "links": ["orbital2048", "qr-field-guide", "analytics-lab"]
+    },
+    {
+      "id": "orbital2048",
+      "title": "Orbital 2048",
+      "summary": "An iPad-friendly tile game where merges reveal concepts from wavefunctions to molecular orbitals.",
+      "chapter": "chapter-01",
+      "links": ["cover", "hints-wavefunction", "self-exploration"]
+    },
+    {
+      "id": "hints-wavefunction",
+      "title": "Hint Trail: Wavefunction Intuition",
+      "summary": "Progressive hints that connect game moves to probability amplitude, nodes, and normalization.",
+      "chapter": "chapter-01",
+      "links": ["orbital2048", "qr-field-guide", "analytics-lab"]
+    },
+    {
+      "id": "qr-field-guide",
+      "title": "QR Field Guide",
+      "summary": "Explains how paper QR codes point to living pages that can evolve after the book ships.",
+      "chapter": "operations",
+      "links": ["cover", "self-exploration"]
+    },
+    {
+      "id": "analytics-lab",
+      "title": "Analytics Lab",
+      "summary": "Local-first instrumentation for measuring curiosity paths without collecting personal data by default.",
+      "chapter": "operations",
+      "links": ["cover", "hints-wavefunction", "self-exploration"]
+    },
+    {
+      "id": "self-exploration",
+      "title": "Infinite Cache Engine",
+      "summary": "A seeded content graph that records unknowns, queues refreshes, and keeps exploration paths available offline.",
+      "chapter": "operations",
+      "links": ["cover", "orbital2048", "qr-field-guide", "analytics-lab"]
+    }
+  ]
+}

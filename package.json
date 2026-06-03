@@ -1,0 +1,12 @@
+{
+  "name": "quantum-chemistry-2048",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MVP for an interactive, QR-linked Quantum Chemistry 2048 schoolbook.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/test.mjs",
+    "validate:cache": "node scripts/validate-cache.mjs"
+  },
+  "devDependencies": {}
+}
