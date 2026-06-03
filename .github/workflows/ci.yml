@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  live-page:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate exploration cache
+        run: npm run validate:cache
+      - name: Run MVP tests
+        run: npm test
+      - name: Build static live pages
+        run: npm run build
+      - name: Upload live-page artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: quantum-chemistry-2048-live-pages
+          path: dist/
