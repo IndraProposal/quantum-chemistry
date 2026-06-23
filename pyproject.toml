@@ -3,13 +3,22 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "limitless-drive"
+name = "voice-interface"
 version = "0.1.0"
-description = "Content-addressed preservation index prototype for IPFS/IPNS-backed personal archives."
-requires-python = ">=3.10"
+description = "Local-first streaming STT/TTS room voice interface for offline human-computer interaction."
+requires-python = ">=3.11"
 readme = "README.md"
 
+[project.optional-dependencies]
+audio = ["sounddevice>=0.4.6", "numpy>=1.26"]
+nemotron = ["nemo-toolkit[asr]>=2.0"]
+piper = ["piper-tts>=1.2"]
+diarization = ["pyannote.audio>=3.1"]
+llm = ["httpx>=0.27"]
+all = ["sounddevice>=0.4.6", "numpy>=1.26", "piper-tts>=1.2", "pyannote.audio>=3.1", "httpx>=0.27"]
+
 [project.scripts]
+voice-interface = "voice_interface.cli:main"
 limitless-index = "limitless_drive.indexer:main"
 
 [tool.pytest.ini_options]
