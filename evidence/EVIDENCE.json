@@ -1,0 +1,31 @@
+{
+  "ticket": "MIN-161",
+  "task_id": "run-f55f4c21756d",
+  "builder": "agy@wolfram",
+  "title": "Triage-дебаты: протокол backstage-диагностики (пилот MIN-150)",
+  "git_branch": "minutta/min-161-triage-debati-protokol-backstage-diahnostiki-pilot-min-150",
+  "status": "ready_for_review",
+  "summary": "MIN-161: Backstage triage debate protocol v0 formalized based on MIN-150 pilot. Defined 6-element 'Gibberish v0' syntax (ТЕЗИС, ФАКТЫ, ИНТЕРПРЕТАЦИЯ, УВЕРЕННОСТЬ, ПРОВЕРИТЬ, РЕШЕНИЕ). Built Python reference parser, merger, and guardrail enforcement engine. Tested across pilot reproduction, 2-agent consensus merging, dissent deadlock escalation, and mutation blocking. Section 9 added to AGENTS.md constitution.",
+  "acceptance": {
+    "venue_linear_comments_ssot": "PASS",
+    "triggers_postmaster_qa_gate_scheduled": "PASS",
+    "participants_min_2_strictly_read_only": "PASS",
+    "gibberish_v0_syntax_schema": "PASS",
+    "merger_consensus_and_dissent_synthesis": "PASS",
+    "pavel_attention_protection_3_events_only": "PASS",
+    "guardrails_no_outbound_done_on_tap": "PASS",
+    "pilot_min150_validated": "PASS",
+    "unit_tests_all_pass": "PASS"
+  },
+  "artifacts": {
+    "protocol_specification": "protocol/TRIAGE_DEBATE_PROTOCOL_V0.md",
+    "reference_engine_py": "src/triage_debate.py",
+    "test_suite_py": "tests/test_triage_debate.py",
+    "test_suite_log": "evidence/test_suite.log",
+    "pilot_validation_json": "evidence/min150_pilot_validation.json",
+    "codex_insight": "codex-insights/min-161-triage-debate-protocol.md",
+    "diagnostics_report": "diagnostics/min-161-triage-debate-protocol-v0.md",
+    "manifest_sha256": "evidence/MANIFEST.sha256",
+    "constitution": "AGENTS.md"
+  }
+}
