@@ -29,7 +29,7 @@ Pavel Cherkashin's profile provides immediate alignment:
 
 ## 2. Dossier Inventory & Artifacts
 
-All application assets are deterministic, verified, and mirrored across the local workspace and canonical Git branches:
+Application source assets and compiled PDF are byte-for-byte deterministic; PNG previews are validated by geometry (2550x3300) and DPI (300 DPI metadata), and mirrored across canonical Git paths and the workspace:
 
 | Artifact | Local Workspace Path | Canonical Git Path | Description |
 |---|---|---|---|
@@ -60,7 +60,7 @@ All application assets are deterministic, verified, and mirrored across the loca
 2. **Flag 2 (Partner Certification Program):** Pavel Cherkashin does not claim legacy corporate certification experience; it is explicitly framed as an initial engineering build item (lightweight, code-driven, automated validation).
 3. **Flag 3 (Sibling Role - Partnership Marketer):** Sibling role from BuiltIn crawl targets the VC/accelerator angle. Highly synergistic with Pavel's Decile/FI background and documented as a secondary entry point.
 4. **Grounded Credentials & Factual Verification (QA Rework #2):** All claims across the dossier have undergone full claim ledger verification. Purged all unverified quantitative metrics (e.g. '500+ engineers', 'two decades', 'closed dozens of agreements') and subjective assertions ('daily coding', 'co-author repos', 'from scratch', 'workshops', 'university textbook author', 'enterprise cloud commitments'). Replaced with strictly verifiable corporate roles (Country Manager at Siebel Systems, Founder & CEO at Sputnik Labs, Managing Partner at Mindrock Capital, Venture Partner at Founder Institute) and neutral competency/intent formulations backed by `evidence/CLAIM_LEDGER.md`.
-5. **Deterministic PDF & Canonical Manifest:** `build_posthog_cv.py` enforces byte-for-byte reproducible PDF compilation via InvariantCanvas and `rl_config.invariant = 1`. `evidence/MANIFEST.sha256` pins all canonical source files and the PDF output. PNG raster previews are validated by geometry (2550x3300) and DPI metadata (300 DPI).
+5. **Deterministic PDF & Canonical Manifest:** `build_posthog_cv.py` enforces byte-for-byte reproducible PDF compilation via InvariantCanvas and `rl_config.invariant = 1`. `evidence/MANIFEST.sha256` pins all canonical source files and the PDF output. PNG raster previews are validated by geometry (2550x3300) and DPI metadata (300 DPI); PNG byte-level reproducibility is not asserted across heterogeneous libpng/zlib environments. The build script automatically mirrors generated artifacts to maintain synchronization between `posthog/` and `workspace/goals/goal-4/files/posthog/`.
 
 ---
 

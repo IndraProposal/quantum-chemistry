@@ -80,6 +80,12 @@ def verify_layout_and_collisions(pdf_path):
     }
 
 def build_pdf(output_pdf="cv-pavel-cherkashin-posthog.pdf", output_png="cv-pavel-cherkashin-posthog-hd.png"):
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    if not os.path.isabs(output_pdf) and not os.path.dirname(output_pdf):
+        output_pdf = os.path.join(script_dir, output_pdf)
+    if not os.path.isabs(output_png) and not os.path.dirname(output_png):
+        output_png = os.path.join(script_dir, output_png)
+
     pdf_dir = os.path.dirname(os.path.abspath(output_pdf))
     if pdf_dir:
         os.makedirs(pdf_dir, exist_ok=True)
@@ -292,6 +298,23 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-posthog.pdf", output_png="cv-pavel
     if standard_png != output_png:
         pix_img.save(standard_png, dpi=(300, 300))
         
+    # Auto-synchronize generated artifacts to workspace mirror if present
+    mirror_candidates = [
+        "workspace/goals/goal-4/files/posthog",
+        "../workspace/goals/goal-4/files/posthog",
+        "../../workspace/goals/goal-4/files/posthog"
+    ]
+    for mc in mirror_candidates:
+        if os.path.exists(mc) and os.path.isdir(mc):
+            abs_mc = os.path.abspath(mc)
+            if abs_mc != os.path.abspath(pdf_dir or "."):
+                import shutil
+                shutil.copy2(output_pdf, os.path.join(abs_mc, os.path.basename(output_pdf)))
+                shutil.copy2(output_png, os.path.join(abs_mc, os.path.basename(output_png)))
+                if standard_png != output_png:
+                    shutil.copy2(standard_png, os.path.join(abs_mc, os.path.basename(standard_png)))
+            break
+
     return verification
 
 if __name__ == "__main__":
