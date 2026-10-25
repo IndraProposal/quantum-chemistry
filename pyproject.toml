@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openai-community-comms-cv-builder"
+version = "0.1.0"
+description = "Deterministic 1-page CV & 300 DPI PNG generator for OpenAI Community Communications Lead"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pypdf>=6.21.0",
+    "PyMuPDF>=2.0.0",
+    "reportlab>=5.0.0",
+    "Pillow>=11.0.0",
+]

@@ -1,0 +1,58 @@
+{
+  "ticket": "MIN-208",
+  "task_id": "run-624ca04d2900",
+  "builder": "agy@wolfram",
+  "title": "OpenAI — Community Communications Lead, CV ready",
+  "worktree": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-208-OPENAI-COMMUNITY-COMMS-0001",
+  "git_branch": "minutta/min-208-openai-community-communications-lead-cv-ready",
+  "status": "ready_for_review",
+  "summary": "MIN-208: Prepared tailored 1-page CV, reproducible build script, 300 DPI HD PNG, comprehensive strategy brief, Ashby application card, and cover note for OpenAI Community Communications Lead (Ashby ID: c2921990-3fff-469a-a117-f6a8f2a3d50c). Aligned with the 6-month comms automation arc—automating operations (sourcing, rhythm, reach, monitoring) while preserving human judgment, taste, trust, and authentic community voices. Positioned as an operator-storyteller. Exactly 1 page verified without collision, zero untracked fleet metrics, staged for Principal Pavel Cherkashin's 1-tap review.",
+  "acceptance": {
+    "single_page_cv_pdf_verified": "PASS",
+    "zero_text_collisions_layout": "PASS",
+    "hd_png_300dpi_metadata_verified": "PASS",
+    "dependency_manifest_provided": "PASS",
+    "outbound_placeholder_phone_removed": "PASS",
+    "workspace_goal4_files_mirrored": "PASS",
+    "builder_script_reproducible": "PASS",
+    "manifest_sha256_verified": "PASS",
+    "six_month_automation_arc_paradigm": "PASS",
+    "operator_storyteller_framing": "PASS",
+    "cultural_crossover_vectors": "PASS",
+    "one_tap_application_card_staged": "PASS",
+    "ashby_cover_note_ready": "PASS",
+    "honest_disclaimers_ic_and_metrics": "PASS",
+    "zero_auto_apply_guardrail_intact": "PASS",
+    "constitutional_compliance_agents_md": "PASS"
+  },
+  "metrics": {
+    "pdf_page_count": 1,
+    "png_geometry": "2550x3300",
+    "png_dpi_metadata": 300,
+    "png_file_size_bytes": 879453,
+    "text_overlap_count": 0,
+    "outbound_sent_count": 0,
+    "fit_conviction_score": 99.0
+  },
+  "artifacts": {
+    "cv_pdf": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-208-OPENAI-COMMUNITY-COMMS-0001/cv-pavel-cherkashin-oai.pdf",
+    "cv_png_hd": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-208-OPENAI-COMMUNITY-COMMS-0001/cv-pavel-cherkashin-oai-hd.png",
+    "cv_pdf_workspace_goal4": "/Users/pavelcherkashin/workspace/goals/goal-4/files/openai-community-comms/cv-pavel-cherkashin-oai.pdf",
+    "cv_png_workspace_goal4": "/Users/pavelcherkashin/workspace/goals/goal-4/files/openai-community-comms/cv-pavel-cherkashin-oai-hd.png",
+    "cv_builder_script": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-208-OPENAI-COMMUNITY-COMMS-0001/build_oai_cv.py",
+    "cv_builder_workspace_goal4": "/Users/pavelcherkashin/workspace/goals/goal-4/files/openai-community-comms/build_oai_cv.py",
+    "requirements_txt": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-208-OPENAI-COMMUNITY-COMMS-0001/requirements.txt",
+    "pyproject_toml": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-208-OPENAI-COMMUNITY-COMMS-0001/pyproject.toml",
+    "tailored_cv_md": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-208-OPENAI-COMMUNITY-COMMS-0001/docs/TAILORED_CV_OPENAI_COMMUNITY_COMMS.md",
+    "one_tap_card": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-208-OPENAI-COMMUNITY-COMMS-0001/docs/ONE_TAP_APPLICATION_CARD.md",
+    "cover_note": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-208-OPENAI-COMMUNITY-COMMS-0001/docs/ASHBY_APPLICATION_NOTE.md",
+    "strategy_brief": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-208-OPENAI-COMMUNITY-COMMS-0001/docs/OPENAI_COMMUNITY_COMMS_STRATEGY_BRIEF.md",
+    "manifest_sha256": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-208-OPENAI-COMMUNITY-COMMS-0001/evidence/MANIFEST.sha256"
+  },
+  "limitations": [
+    "Pavel is an operator-storyteller rather than a traditional corporate agency PR specialist; positioning leans into builder perspective, publishing, and cross-cultural community narrative.",
+    "Internal fleet throughput figures are omitted pending third-party audit.",
+    "Single canonical reference to Lean corpus retained to preserve clean 1-page layout.",
+    "Zero auto-apply rule strictly enforced: no submission has been sent; awaiting Pavel's manual tap."
+  ]
+}
