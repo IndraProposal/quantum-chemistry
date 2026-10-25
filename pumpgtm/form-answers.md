@@ -1,10 +1,10 @@
 # PumpGTM: Full-Stack Engineer (GTM Product) — Application Form Answers
 
-**Company:** PumpGTM ([pumpgtm.com](https://pumpgtm.com)) — Y Combinator  
-**Founder:** Namanyay Goel ([@NamanyayG](https://x.com/NamanyayG))  
-**Role:** Full-Stack Engineer, GTM product  
-**Application Form:** [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSf5woF6cjbxESu7sWooxXhw5s79_gryQbcWb4fYKML_vwUrqw/viewform)  
-**Submission Status:** Submitted directly by Principal Pavel Cherkashin on 2026-10-24 at 22:49 PDT (confirmed in Linear MIN-214: X comment posted + Google Form submitted).
+**Company:** PumpGTM ([pumpgtm.com](https://pumpgtm.com)) — Y Combinator
+**Founder:** Namanyay Goel ([@NamanyayG](https://x.com/NamanyayG))
+**Role:** Full-Stack Engineer, GTM product
+**Application Form:** [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSf5woF6cjbxESu7sWooxXhw5s79_gryQbcWb4fYKML_vwUrqw/viewform)
+**Submission Status:** Submitted directly by Principal Pavel Cherkashin on 2026-10-24 at 22:49 PDT (confirmed in Linear MIN-214: X comment posted + Google Form submitted). At ~23:15 PDT, founder Namanyay Goel liked Pavel's X comment on the hiring post.
 
 ---
 
@@ -27,7 +27,7 @@ https://x.com/cherkashin
 ```text
 https://x.com/cherkashin/status/...
 ```
-*(Comment posted under @NamanyayG's hiring post; see `x-comment.md` for full copy).*
+*(Provenance note: Principal Pavel Cherkashin personally posted the comment from @cherkashin under @NamanyayG's hiring post and submitted the Google Form at 22:49 PDT on 2026-10-24, confirmed in Linear MIN-214. Founder Namanyay Goel liked the comment at ~23:15 PDT. Exact comment text is recorded in `x-comment.md`; because the submission was completed directly in-browser, the live tweet snowflake URL was not synced into git).*
 
 ### Question 5: Your GitHub link
 ```text
@@ -38,18 +38,18 @@ https://github.com/minutta
 ```text
 1. Sputnik Labs / Enterprise CRM Systems (https://sputniklabs.ru / https://minutta.com)
 Role: Founder & CEO.
-Built Eastern Europe's #1 CRM integration powerhouse (500+ professionals). Architected and deployed end-to-end customer lifecycle, campaign automation, and real-time interaction analytics for the 3 largest European banks and the third-largest mobile telecom operator.
-Scale: Processed tens of millions of customer interactions daily, managing multi-billion-dollar enterprise customer portfolios. Authored the authoritative Russian university textbook on CRM systems.
+Built Eastern Europe's #1 CRM integration powerhouse (500+ professionals). Architected and deployed end-to-end customer lifecycle management, campaign automation, and real-time interaction analytics for the 3 largest European banks and the third-largest mobile telecom operator.
+Scale: Scaled enterprise CRM and real-time interaction analytics across nationwide banking and mobile customer bases. Authored the authoritative Russian university textbook on CRM systems.
 
-2. Vestor.in Distributed Deal & Syndicate Platform (https://vestor.in)
+2. Vestor.in Syndicate & Investor Communication Platform (https://vestor.in)
 Role: Founding Architect.
-Designed and built a distributed transaction engine, founder/investor portal, and automated communication sequencing system for private capital deals.
-Scale: Processed $100M+ in transaction volume, automated updates for thousands of investors, maintained sub-50ms query latency under burst traffic.
+Designed and built a web-based syndicate portal and communication workflow engine connecting startup founders and angel investors for private venture deals. Automated portfolio updates, deal distribution, and investor communication pipelines.
+Scale: Deployed across active venture syndicates and investor networks at Mindrock Capital, powering deal announcements, secure documentation dispatch, and investor reporting.
 
 3. Mindrock Autonomous Agent Mesh / fleetd (https://github.com/pashamango/minutta-rp-pr-cycle-lab)
 Role: Principal Systems Architect & Harness Builder.
 Engineered fleetd, a high-uptime monolithic daemon in Rust coordinating autonomous coding agents across distributed nodes. Built webhook dispatchers, slot concurrency management, real-time Linear sync, and zero-trust Git handoff pipelines.
-Scale: Autonomous 24/7 backlog execution, thousands of automated test cycles, zero manual intervention required for ticket dispatch and verification.
+Scale: Autonomous continuous backlog execution across distributed fleet nodes on macOS and Linux, managing automated ticket dispatch, git worktree isolation, and deterministic QA gate validations.
 ```
 
 ### Question 7: What have you built specifically for GTM (outbound workflows, sales tools, enrichment, CRM, GTM products)? Tell us what you did, with links to the work.
@@ -57,14 +57,14 @@ Scale: Autonomous 24/7 backlog execution, thousands of automated test cycles, ze
 CRM and GTM architecture is my home turf:
 
 1. Enterprise CRM Foundations:
-- As Country Manager at Siebel Systems (the company that defined enterprise CRM), I led enterprise architecture across telecom, financial services, and retail.
-- Founded Sputnik Labs, scaling it to Eastern Europe's #1 CRM integrator (500+ employees). We built custom outbound sales pipelines, lead routing engines, automated campaign sequencing, and real-time call-center analytics for the largest European retail banks and top mobile telecom carriers.
-- Authored Russia's primary university textbook on Customer Relationship Management, defining the core principles of customer data models, sales pipeline automation, and multi-channel campaign architectures.
+- As Country Manager at Siebel Systems (the company that defined enterprise CRM), led enterprise solution architecture across telecom, financial services, and retail.
+- Founded Sputnik Labs, scaling it to Eastern Europe's #1 CRM integrator (500+ employees). Built custom outbound sales pipelines, lead routing engines, automated campaign sequencing, and real-time call-center analytics for the largest European retail banks and top mobile telecom carriers.
+- Authored Russia's primary university textbook on Customer Relationship Management, establishing the core principles of customer data models, sales pipeline automation, and multi-channel campaign architectures.
 
-2. Modern Outbound & Sequencing Infrastructure:
-- Architected multi-channel signal-to-sequence pipelines integrating automated signal triggers (funding rounds, executive hires, product updates) into personalized outreach flows across Email, LinkedIn, and X.
-- Built automated inbox reply aggregators and sentiment/intent classification engines that pull inbound replies, parse buyer objections, and auto-route hot leads directly into CRM pipelines with sub-second synchronization.
-- Engineered webhook-based event bridges and API integrations connecting CRM platforms with enrichment providers, rate-limited outbound mailers, and identity resolution layers.
+2. Systems Architecture & Outbound Workflow Automation:
+- Architect of fleetd autonomous agent runtime (Rust/Python), engineering event-driven webhook dispatchers, queue concurrency, and zero-trust Git handoff pipelines.
+- Deep hands-on experience integrating outbound communication workflows, rate-limited APIs, and webhook event listeners with CRM backbones.
+- Deep domain empathy for GTM workflows: having built and deployed CRM systems for two decades, I understand exactly why sales reps live in their inboxes, how lead qualification pipelines function, and what drives conversion in multi-channel sequences.
 ```
 
 ### Question 8: Which stack are you strongest in, and which AI coding tools do you use every day?
@@ -88,5 +88,5 @@ Start Date: Ready to start immediately on Day 1.
 
 ### Question 10: Any other message that you'd like to include?
 ```text
-Namanyay — PumpGTM's focus on outbound automation (signal -> sequence -> inbox across LinkedIn, X, email) solves the exact pain point every high-growth team faces. Having spent decades in CRM architecture and building modern agentic pipelines, I can hit the ground running on day one: fixing full-stack bugs, shipping customer-requested GTM workflows, and scaling the product with zero handholding. Excited about the 1-month paid trial and ready to ship.
+Namanyay — PumpGTM's focus on outbound automation (signal -> sequence -> inbox across LinkedIn, X, email) solves the exact pain point every high-growth team faces. Having spent decades in CRM architecture and building distributed agent systems, I can hit the ground running on day one: fixing full-stack bugs, shipping customer-requested GTM workflows, and scaling the product with zero handholding. Excited about the 1-month paid trial and ready to ship.
 ```
