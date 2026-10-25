@@ -42,7 +42,7 @@ San Francisco, CA (In-Office / Bay Area) | pavel@mindrock.capital | linkedin.com
 
 #### Enterprise Systems & Technology Leadership — Siebel Systems, Sputnik Labs, Microsoft (Prior)
 - Country Manager at Siebel Systems; Co-Founder & CEO of Sputnik Labs (pioneer CRM systems integrator in Russia/CIS, scaling to 110+ engineers and specialists, acquired by Technoserv).
-- Platform Director at Microsoft; author of university textbook *Customer Relationship Management Strategy* (ИНТУИТ / БИНОМ, 2007, 380 с., ISBN 978-5-94774-643-3); systems design mentor.
+- Platform Director at Microsoft; author of university textbook *Customer Relationship Management Strategy* (ИНТУИТ / БИНОМ, 2007, 384 с., ISBN 978-5-94774-643-3); systems design mentor.
 
 ---
 

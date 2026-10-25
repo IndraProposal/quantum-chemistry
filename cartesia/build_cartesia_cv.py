@@ -252,7 +252,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-cartesia.pdf", output_png="cv-pave
     story.append(Paragraph(early_header, body_style))
     early_bullets = (
         "&bull; Country Manager at Siebel Systems; Co-Founder &amp; CEO of Sputnik Labs (pioneer CRM systems integrator in Russia/CIS, scaling to 110+ engineers and specialists, acquired by Technoserv).<br/>"
-        "&bull; Platform Director at Microsoft; author of university textbook <i>Customer Relationship Management Strategy</i> (ИНТУИТ / БИНОМ, 2007, 380 с., ISBN 978-5-94774-643-3); systems design mentor."
+        "&bull; Platform Director at Microsoft; author of university textbook <i>Customer Relationship Management Strategy</i> (ИНТУИТ / БИНОМ, 2007, 384 с., ISBN 978-5-94774-643-3); systems design mentor."
     )
     story.append(Paragraph(early_bullets, bullet_style))
     story.append(Spacer(1, 2.5))
