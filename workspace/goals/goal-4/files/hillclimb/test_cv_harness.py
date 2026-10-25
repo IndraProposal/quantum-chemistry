@@ -24,18 +24,46 @@ import tempfile
 import shutil
 import subprocess
 import importlib.metadata
+import unittest
+from unittest.mock import patch
 from PIL import Image
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
 MIRROR_DIR = os.path.join(REPO_ROOT, "workspace", "goals", "goal-4", "files", "hillclimb")
 
+# Architecture alias mapping to canonical representations
+ARCH_CANONICAL_ALIASES = {
+    "arm64": "aarch64",
+    "aarch64": "aarch64",
+    "x86_64": "x86_64",
+    "amd64": "x86_64",
+}
+
+def normalize_platform_key(plat=None, mach=None):
+    """
+    Normalizes OS and architecture into a canonical platform key (e.g. linux_x86_64, darwin_aarch64).
+    Maps known architecture aliases (arm64 -> aarch64, amd64 -> x86_64).
+    """
+    if plat is None:
+        plat = sys.platform
+    if mach is None:
+        mach = platform.machine()
+        
+    os_name = "linux" if plat.startswith("linux") else plat.lower()
+    mach_lower = mach.lower()
+    canonical_mach = ARCH_CANONICAL_ALIASES.get(mach_lower, mach_lower)
+    return f"{os_name}_{canonical_mach}"
+
 # Verified golden PDF SHA-256 digests across verified deterministic CPython environments
+# Strictly registered keys for verified target architectures (Darwin Apple Silicon and Linux x86_64 / aarch64)
 VERIFIED_GOLDEN_PDF_DIGESTS = {
-    "darwin_arm64": "f4f00dff003ea41fc9945ed4e0262f11eb4b344ec6df2e4b54772e8eb42756bc",
     "darwin_aarch64": "f4f00dff003ea41fc9945ed4e0262f11eb4b344ec6df2e4b54772e8eb42756bc",
+    "darwin_arm64": "f4f00dff003ea41fc9945ed4e0262f11eb4b344ec6df2e4b54772e8eb42756bc",
     "linux_x86_64": "f4f00dff003ea41fc9945ed4e0262f11eb4b344ec6df2e4b54772e8eb42756bc",
+    "linux_amd64": "f4f00dff003ea41fc9945ed4e0262f11eb4b344ec6df2e4b54772e8eb42756bc",
     "linux_aarch64": "f4f00dff003ea41fc9945ed4e0262f11eb4b344ec6df2e4b54772e8eb42756bc",
+    "linux_arm64": "f4f00dff003ea41fc9945ed4e0262f11eb4b344ec6df2e4b54772e8eb42756bc",
 }
 
 # Core CV builder libraries and expected pinned versions
@@ -148,22 +176,26 @@ def check_build_and_layout(temp_dir):
     print("  -> PASS: Single-page constraint, zero collisions, and zero out-of-bounds verified.")
     return temp_pdf, temp_png_hd
 
-def check_pdf_digest(pdf_path):
+def check_pdf_digest(pdf_path, platform_override=None, machine_override=None):
     print(f"\n[TEST 4/7] PDF Cryptographic Digest Scope:")
     with open(pdf_path, "rb") as f:
         digest = hashlib.sha256(f.read()).hexdigest()
     print(f"  Generated PDF SHA-256: {digest}")
     
-    plat_key = f"{sys.platform}_{platform.machine().lower()}"
-    expected_golden = VERIFIED_GOLDEN_PDF_DIGESTS.get(plat_key)
-    if not expected_golden:
-        if sys.platform.startswith("linux"):
-            expected_golden = VERIFIED_GOLDEN_PDF_DIGESTS.get("linux_x86_64")
-        elif sys.platform == "darwin" and platform.machine().lower() in ("arm64", "aarch64"):
-            expected_golden = VERIFIED_GOLDEN_PDF_DIGESTS.get("darwin_arm64")
-            
+    plat = platform_override if platform_override is not None else sys.platform
+    mach = machine_override if machine_override is not None else platform.machine()
+    
+    # 1. Direct raw lookup (e.g. darwin_arm64, linux_x86_64)
+    raw_key = f"{plat}_{mach.lower()}"
+    # 2. Canonical normalized architecture lookup (e.g. arm64 -> aarch64, amd64 -> x86_64)
+    norm_key = normalize_platform_key(plat, mach)
+    
+    expected_golden = VERIFIED_GOLDEN_PDF_DIGESTS.get(norm_key) or VERIFIED_GOLDEN_PDF_DIGESTS.get(raw_key)
+    
+    # Explicit constraint: NO blanket fallback to linux_x86_64 or any generic profile.
+    # Unregistered Linux or POSIX architectures (riscv64, ppc64le, s390x, etc.) strictly yield SKIP.
     if expected_golden:
-        print(f"  Verified target platform: {sys.platform} ({platform.machine()})")
+        print(f"  Verified target platform: {plat} ({mach}) -> canonical key: {norm_key}")
         print(f"  Expected Golden SHA-256: {expected_golden}")
         assert digest == expected_golden, (
             f"PDF digest mismatch! Expected {expected_golden}, got {digest}"
@@ -171,23 +203,23 @@ def check_pdf_digest(pdf_path):
         print("  -> PASS: Deterministic PDF SHA-256 matches verified golden digest.")
         return "PASS"
     else:
-        print(f"  Running on unverified/heterogeneous platform: {sys.platform} {platform.machine()}.")
+        print(f"  Running on unverified/heterogeneous platform: {plat} {mach} (canonical key: {norm_key}).")
         print("  -> SKIP: PDF byte-level golden digest assertion is platform-scoped and skipped on this host.")
         return "SKIP"
 
 def check_png_geometry(png_hd_path):
     print(f"\n[TEST 5/7] High-Resolution PNG Geometry & DPI Metadata:")
-    img = Image.open(png_hd_path)
-    print(f"  Dimensions: {img.size} (expected: 2550x3300)")
-    dpi = img.info.get("dpi", (0, 0))
-    print(f"  DPI Metadata: {dpi} (expected: ~300 DPI)")
-    assert img.size == (2550, 3300), f"Invalid dimensions: {img.size}"
-    assert abs(dpi[0] - 300) < 1 and abs(dpi[1] - 300) < 1, f"Invalid DPI: {dpi}"
+    with Image.open(png_hd_path) as img:
+        print(f"  Dimensions: {img.size} (expected: 2550x3300)")
+        dpi = img.info.get("dpi", (0, 0))
+        print(f"  DPI Metadata: {dpi} (expected: ~300 DPI)")
+        assert img.size == (2550, 3300), f"Invalid dimensions: {img.size}"
+        assert abs(dpi[0] - 300) < 1 and abs(dpi[1] - 300) < 1, f"Invalid DPI: {dpi}"
     
     std_png = png_hd_path.replace("-hd.png", ".png")
     assert os.path.exists(std_png), "Standard PNG alias must exist in test output"
-    img_std = Image.open(std_png)
-    assert img_std.size == (2550, 3300), f"Standard PNG invalid dimensions: {img_std.size}"
+    with Image.open(std_png) as img_std:
+        assert img_std.size == (2550, 3300), f"Standard PNG invalid dimensions: {img_std.size}"
     print("  -> PASS: 300 DPI rasterization and image geometry verified.")
     return "PASS"
 
@@ -283,9 +315,13 @@ def cleanup_bytecode():
                 except Exception:
                     pass
 
-def main():
+def run_harness(platform_override=None, machine_override=None, suite_label="Hillclimb AI — Employee #5 Evals & Build Harness Automated Test Suite"):
     print("================================================================================")
-    print("   Hillclimb AI — Employee #5 Evals & Build Harness Automated Test Suite")
+    print(f"   {suite_label}")
+    if platform_override or machine_override:
+        sim_plat = platform_override or sys.platform
+        sim_mach = machine_override or platform.machine()
+        print(f"   [Simulation Mode: sys.platform='{sim_plat}', platform.machine()='{sim_mach}']")
     print("================================================================================")
     
     # Capture initial git status for regression assertion
@@ -299,7 +335,11 @@ def main():
         test_results["2_dependencies"] = check_dependencies()
         temp_pdf, temp_png_hd = check_build_and_layout(temp_dir)
         test_results["3_build_layout"] = "PASS"
-        test_results["4_pdf_digest"] = check_pdf_digest(temp_pdf)
+        test_results["4_pdf_digest"] = check_pdf_digest(
+            temp_pdf,
+            platform_override=platform_override,
+            machine_override=machine_override
+        )
         test_results["5_png_geometry"] = check_png_geometry(temp_png_hd)
         test_results["6_manifest"] = check_manifest()
         test_results["7_mirror_parity"] = check_mirror_parity()
@@ -314,22 +354,99 @@ def main():
         else:
             print(f"   HARNESS COMPLETED: {passed_count} PASSED, {skipped_count} SKIPPED (ALL ACTIVE ASSERTIONS PASSED)")
         print("================================================================================")
+        return passed_count, skipped_count, test_results
         
     finally:
         # Guarantee removal of temporary sandbox files
         shutil.rmtree(temp_dir, ignore_errors=True)
         cleanup_bytecode()
         
-    # Regression assertion: verify working tree git status remains 100% unchanged
-    git_status_after = get_git_status()
-    if git_status_before is not None and git_status_after is not None:
-        assert git_status_before == git_status_after, (
-            f"Regression Error: Working tree git status modified during test execution!\n"
-            f"Before:\n{git_status_before}\n"
-            f"After:\n{git_status_after}"
-        )
-        print("   REGRESSION ASSERTION: git status --porcelain is identical before and after test run (PASS)")
-        print("================================================================================")
+        # Regression assertion: verify working tree git status remains 100% unchanged
+        git_status_after = get_git_status()
+        if git_status_before is not None and git_status_after is not None:
+            assert git_status_before == git_status_after, (
+                f"Regression Error: Working tree git status modified during test execution!\n"
+                f"Before:\n{git_status_before}\n"
+                f"After:\n{git_status_after}"
+            )
+            print("   REGRESSION ASSERTION: git status --porcelain is identical before and after test run (PASS)")
+            print("================================================================================")
+
+def test_mocked_unregistered_linux_platform():
+    """
+    Automated test with mocked unknown Linux platform.machine() (e.g. riscv64).
+    Confirms that check_pdf_digest() returns SKIP on unrecognized architectures
+    and that the overall test suite counter reports exactly 6 passed, 1 skipped.
+    """
+    print("\n================================================================================")
+    print("   AUTOMATED TEST: Unregistered Linux Architecture SKIP Verification")
+    print("   (Simulating platform.machine() == 'riscv64' under sys.platform == 'linux')")
+    print("================================================================================")
+    
+    passed_count, skipped_count, results = run_harness(
+        platform_override="linux",
+        machine_override="riscv64",
+        suite_label="Mocked Linux Architecture Test (riscv64)"
+    )
+    
+    assert results["4_pdf_digest"] == "SKIP", (
+        f"Assertion Failed: check_pdf_digest returned '{results['4_pdf_digest']}', expected 'SKIP'!"
+    )
+    assert passed_count == 6, (
+        f"Assertion Failed: expected 6 passed tests, got {passed_count} ({results})"
+    )
+    assert skipped_count == 1, (
+        f"Assertion Failed: expected 1 skipped test, got {skipped_count} ({results})"
+    )
+    print("\n   [MOCK TEST VERIFICATION SUCCESSFUL]")
+    print("   -> Confirmed: Unregistered Linux machine ('riscv64') returns SKIP for PDF digest.")
+    print(f"   -> Confirmed: Test counter strictly reports {passed_count} passed, {skipped_count} skipped.")
+    print("================================================================================\n")
+
+class TestCvHarnessReproducibility(unittest.TestCase):
+    """Unit test suite verifying cross-platform digest routing and SKIP behaviors."""
+    
+    def test_unregistered_linux_machines_return_skip(self):
+        """Verifies that unknown Linux architectures (riscv64, ppc64le, s390x, mips64) return SKIP and 6 passed, 1 skipped."""
+        for unknown_arch in ["riscv64", "ppc64le", "s390x", "mips64"]:
+            with self.subTest(arch=unknown_arch):
+                passed_cnt, skipped_cnt, results = run_harness(
+                    platform_override="linux",
+                    machine_override=unknown_arch,
+                    suite_label=f"Mocked Linux '{unknown_arch}' Architecture Verification"
+                )
+                self.assertEqual(results["4_pdf_digest"], "SKIP")
+                self.assertEqual(passed_cnt, 6)
+                self.assertEqual(skipped_cnt, 1)
+
+    def test_linux_arm64_alias_normalization(self):
+        """Verifies that Linux reporting 'arm64' normalizes to 'aarch64' and matches golden digest."""
+        key = normalize_platform_key("linux", "arm64")
+        self.assertEqual(key, "linux_aarch64")
+        self.assertIn(key, VERIFIED_GOLDEN_PDF_DIGESTS)
+        
+    def test_unknown_darwin_machine_returns_skip(self):
+        """Verifies that unknown Darwin architectures return SKIP."""
+        key = normalize_platform_key("darwin", "ppc")
+        self.assertNotIn(key, VERIFIED_GOLDEN_PDF_DIGESTS)
+
+def main():
+    if "--unittest" in sys.argv:
+        # Run unittest test runner
+        sys.argv.remove("--unittest")
+        unittest.main()
+        return
+        
+    if "--mock-only" in sys.argv or "--test-mock-skip" in sys.argv:
+        # Run isolated mock SKIP test
+        test_mocked_unregistered_linux_platform()
+        return
+        
+    # 1. Primary execution on native host platform
+    run_harness()
+    
+    # 2. Automated test verifying unregistered Linux platform behavior (6 passed, 1 skipped)
+    test_mocked_unregistered_linux_platform()
 
 if __name__ == "__main__":
     main()

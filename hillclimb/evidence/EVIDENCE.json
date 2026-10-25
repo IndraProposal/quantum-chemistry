@@ -1,6 +1,6 @@
 {
   "ticket": "MIN-222",
-  "run_id": "run-6fc683329b8a",
+  "run_id": "run-53334727840a",
   "builder": "agy@wolfram",
   "title": "Hillclimb AI — employee #5, evals & environments for RSI (X hiring thread)",
   "worktree_relative": "worktrees/MIN-222-HILLCLIMB-0001",
@@ -22,7 +22,7 @@
       "dm-draft.md"
     ]
   },
-  "summary": "Reworked test harness and application package resolving all QA rework points: isolated build artifacts during test execution into temporary sandbox to eliminate side-effect mutations to tracked PNGs/mirrors; added git status regression assertion ensuring zero working tree modifications; enforced strict version pin assertions against requirements.lock; expanded golden PDF digest assertions to include Linux x86_64 while accurately reporting skipped status without inflating overall pass counts on unsupported platforms; and implemented full bidirectional dual-tree mirror parity verification.",
+  "summary": "Reworked test harness and application package resolving QA rework requirements: eliminated blanket fallback to linux_x86_64, strictly restricting golden digests to registered platforms (darwin_arm64, darwin_aarch64, linux_x86_64, linux_amd64, linux_aarch64, linux_arm64) and canonicalizing architecture aliases (arm64 -> aarch64, amd64 -> x86_64); ensured unregistered Linux platforms (riscv64, ppc64le, s390x) strictly return SKIP; added automated test verifying that mocked unknown Linux machines yield SKIP and the overall suite counter reports exactly 6 passed, 1 skipped; maintained zero working tree regression and 100% bidirectional dual-tree mirror parity.",
   "target": {
     "company": "Hillclimb AI",
     "x_handle": "@hillclimbai",
@@ -92,6 +92,9 @@
     "manifest_sha256_verified": "PASS",
     "unverified_claims_purged": "PASS",
     "automated_harness_test_verified": "PASS",
+    "unregistered_linux_platform_skip_verified": "PASS",
+    "linux_architecture_alias_normalization_verified": "PASS",
+    "automated_mocked_skip_test_verified": "PASS",
     "harness_side_effect_free_isolated_tempdir": "PASS",
     "harness_git_status_regression_assertion": "PASS",
     "tap_gated_dispatch_compliance": "PASS",

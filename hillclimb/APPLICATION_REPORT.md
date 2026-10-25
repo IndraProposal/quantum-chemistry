@@ -1,7 +1,7 @@
 # Application Dossier & Evaluation Report: Hillclimb AI — Employee #5 (Evals & Environments for RSI)
 
 **Linear Ticket:** [MIN-222](https://linear.app/mindrock/issue/MIN-222/hillclimb-ai-employee-5-evals-environments-for-rsi-x-hiring-thread)  
-**Run ID:** `run-6fc683329b8a` (Reworked from `run-f520986f45a4` / `run-53d100ae2faa` / `run-c4cef5195da8`)  
+**Run ID:** `run-53334727840a` (Reworked from `run-6fc683329b8a` / `run-f520986f45a4` / `run-53d100ae2faa` / `run-c4cef5195da8`)  
 **Builder Slot:** `agy@wolfram`  
 **Target Entity:** Hillclimb AI ([@hillclimbai](https://x.com/hillclimbai))  
 **Founders:** Jun Park ([@jparkjmc](https://x.com/jparkjmc)) & Ibrakhim Ustelbay  
@@ -73,7 +73,7 @@ All artifacts have been compiled, programmatically verified, and synchronized ac
 1. **Single-Page Constraint:** Programmatic inspection via PyMuPDF and pypdf confirms `page_count == 1`.
 2. **Zero Layout Collisions:** Bounding-box intersection scan confirms `text_overlap_count == 0` across all 17 distinct text blocks.
 3. **Zero Out-of-Bounds Text:** Every element is strictly contained within printable dimensions (`out_of_bounds_count == 0`).
-4. **Deterministic PDF Scope & Platform Boundaries:** Recompiling with `build_hillclimb_cv.py` produces an identical SHA-256 digest (`f4f00dff003ea41fc9945ed4e0262f11eb4b344ec6df2e4b54772e8eb42756bc`) under CPython 3.12 and 3.13 on macOS Darwin arm64 and Linux x86_64 with ReportLab 5.1.0. For unrecognized/heterogeneous environments, layout geometry invariants (1 page Letter, 0 collisions, 0 out-of-bounds containment) remain strictly invariant, while binary digest assertions are reported as `SKIP` without inflating overall test pass counts.
+4. **Deterministic PDF Scope & Platform Architecture Boundaries:** Recompiling with `build_hillclimb_cv.py` produces an identical SHA-256 digest (`f4f00dff003ea41fc9945ed4e0262f11eb4b344ec6df2e4b54772e8eb42756bc`) under CPython 3.12 and 3.13 on verified target platforms: macOS Darwin Apple Silicon (`darwin_arm64`, `darwin_aarch64`) and Linux (`linux_x86_64`, `linux_amd64`, `linux_aarch64`, `linux_arm64`) with ReportLab 5.1.0. Architecture aliases are explicitly canonicalized (`arm64 → aarch64`, `amd64 → x86_64`). No blanket fallback to `linux_x86_64` is permitted: any unrecognized or unregistered architecture (e.g. `linux_riscv64`, `linux_ppc64le`, `linux_s390x`) strictly reports `SKIP` without generating false passes or fails and without inflating test pass counts. An automated test (`test_mocked_unregistered_linux_platform`) simulating `linux_riscv64` verifies that `check_pdf_digest()` yields `SKIP` and the completion counter reports exactly `6 passed, 1 skipped`.
 5. **Image Geometry & DPI Metadata vs. Rasterizer Non-Determinism:** Pillow inspection confirms geometry `(2550, 3300)` and 300 DPI metadata. Byte-level hash determinism for PNG is explicitly **NOT asserted** (`NOT_ASSERTED`) due to OS font rasterizer anti-aliasing and Deflate compression variations.
 6. **Bidirectional Dual-Tree Mirror Parity:** Full bidirectional comparison (`diff -rq` and python set difference) confirms 0 missing files, 0 extra files, and 100% byte-for-byte content parity between `hillclimb/` and `workspace/goals/goal-4/files/hillclimb`.
 7. **Factual Grounding & Claim Ledger Tiering:**
