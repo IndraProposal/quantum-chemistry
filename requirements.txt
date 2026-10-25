@@ -1,4 +1,4 @@
-# MIN-208 OpenAI Community Communications Lead CV Builder Dependencies
+# MIN-212 OpenAI Academy Partnerships (Global Affairs) CV Builder Dependencies
 # Pinned for strict byte-for-byte reproducible build across environments
 pypdf==6.21.2
 PyMuPDF==2.0

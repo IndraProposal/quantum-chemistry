@@ -1,62 +1,72 @@
-# ONE-TAP APPLICATION CARD: OpenAI (Community Communications Lead)
-**Linear Issue:** MIN-208  
+# ONE-TAP APPLICATION CARD: OpenAI (Academy Partnerships, Global Affairs)
+**Linear Issue:** MIN-212  
 **Candidate:** Pavel Cherkashin (`pavel@mindrock.capital`)  
-**Target Organization:** OpenAI — Product & Research Communications team (partnering with Culture & Community Engagement)  
-**Job Listing:** [jobs.ashbyhq.com/openai/c2921990-3fff-469a-a117-f6a8f2a3d50c](https://jobs.ashbyhq.com/openai/c2921990-3fff-469a-a117-f6a8f2a3d50c)  
-**Role Scope:** Community Communications Lead — Full-time, Hybrid (3 days on-site in SF or NYC), Relocation Assistance Available  
-**Status:** Staged for Review & 1-Tap Submission (Zero automated outbound sent; awaiting Principal tap)
+**Target Organization:** OpenAI — Global Affairs Team (Academy Partnerships)  
+**Job Listing:** [https://openai.com/careers/academy-partnerships-global-affairs-san-francisco/](https://openai.com/careers/academy-partnerships-global-affairs-san-francisco/)  
+**Role Scope:** Academy Partnerships Lead / Associate — Full-time, San Francisco, CA (Hybrid / On-site)  
+**Status:** Staged for Review & 1-Tap Submission (Zero automated outbound sent; awaiting Principal tap)  
 
 ---
 
 ## ⚡ Executive Quick Summary
-- **The Opportunity:** Fresh posting published on Ashby on 2026-10-24 for OpenAI Community Communications Lead within the Product & Research Communications team, working closely with Culture & Community Engagement.
-- **The Core Mission:** Bring OpenAI products closer to communities; expand community stories into durable narratives from campaign inception; secure earned media; weave campaigns and partnerships into an overarching multi-month narrative; propel AI out of tech subcultures into mass culture (sports, music, design, culinary arts, consumer fandoms); elevate builder, student, and small-business voices; turn community participation into the core story; feed grassroots feedback into OpenAI product planning.
-- **The Core Hook (6-Month Comms Automation Arc):**  
-  > *"Automating communications operations—story sourcing, editorial cadence, distribution reach, and sentiment telemetry—while fiercely preserving human judgment, cultural taste, trust, and authentic community voices. Bringing OpenAI products closer to everyday communities by propelling AI out of tech subcultures into mainstream culture on a disciplined 6-month arc."*
-- **Candidate Posture:** Positioned as an **operator-storyteller** (published university textbook author, Nostr-first campaign architect, 5,000+ founder interviews, regional tech ecosystem leader, AI-native swarm builder) rather than a career corporate PR functionary.
+- **The Opportunity:** Key role within OpenAI's Global Affairs organization leading external partner relationships for the **OpenAI Academy**, bridging cutting-edge AI technology to grassroots builders, universities, educational non-profits, and civil society worldwide.
+- **The Core Mission:** 
+  - Manage a diverse portfolio of OpenAI Academy partners end-to-end (universities, non-profits, developer collectives, and industry associations).
+  - Scale key initiative formats: **Academy Jams** (hands-on developer build sprints and hackathons) and the **Community Trainer Program** (train-the-trainer frameworks multiplying local educational reach).
+  - Automate partner operations: partner intake, credit issuance telemetry, milestone tracking, and bi-directional product feedback loops.
+- **The Strategic Angle & Operating Thesis:**  
+  > *"Empowering grassroots builders, educational institutions, and civil society worldwide through accessible frontier AI. Scaling OpenAI Academy partner programs—from high-energy Academy Jams to train-the-trainer Community Trainer cohorts—while building automated operational infrastructure (intake pipelines, API credit allocation, impact telemetry, and curriculum distribution) that multiplies partner impact without administrative bloat."*
+- **Candidate Posture:** Positioned as an **operator-educator** (published university textbook author, mentor to 5,000+ founders, former regional tech enterprise leader across Eastern Europe/CIS, and autonomous agent swarms architect) rather than a bureaucratic grants administrator.
 
 ---
 
 ## 🗂️ Staged Artifacts & Ready-to-Send Assets
 1. **Verified 1-Page PDF (Byte-for-Byte Reproducible):**  
-   `cv-pavel-cherkashin-oai.pdf`  
+   `cv-pavel-cherkashin-academy.pdf`  
    *(Verified: exactly 1 page, 0 text collisions, 0 out-of-bounds, balanced margins).*
 2. **High-Resolution 300 DPI PNG (Byte-for-Byte Reproducible):**  
-   `cv-pavel-cherkashin-oai-hd.png`  
-   *(Crisp 300 DPI rendering, ~0.92 MB, 2550x3300 px, optimized for high-fidelity viewing).*
+   `cv-pavel-cherkashin-academy-hd.png`  
+   *(Crisp 300 DPI rendering, ~0.88 MB, 2550x3300 px, optimized for high-fidelity viewing).*
 3. **Deterministic Builder Script:**  
-   `build_oai_cv.py`  
+   `build_academy_cv.py`  
    *(Includes programmatic verification of page count, containment, and text collisions).*
 4. **Tailored CV (Markdown):**  
-   [docs/TAILORED_CV_OPENAI_COMMUNITY_COMMS.md](TAILORED_CV_OPENAI_COMMUNITY_COMMS.md)
-5. **Cover Note for Ashby Application:**  
-   [docs/ASHBY_APPLICATION_NOTE.md](ASHBY_APPLICATION_NOTE.md)
+   [docs/TAILORED_CV_OPENAI_ACADEMY_PARTNERSHIPS.md](TAILORED_CV_OPENAI_ACADEMY_PARTNERSHIPS.md)
+5. **Cover Note for Application Form:**  
+   [docs/APPLICATION_COVER_NOTE.md](APPLICATION_COVER_NOTE.md)
 6. **Strategic Positioning Brief:**  
-   [docs/OPENAI_COMMUNITY_COMMS_STRATEGY_BRIEF.md](OPENAI_COMMUNITY_COMMS_STRATEGY_BRIEF.md)
+   [docs/OPENAI_ACADEMY_STRATEGY_BRIEF.md](OPENAI_ACADEMY_STRATEGY_BRIEF.md)
+7. **Goal-4 Mirrored Artifacts:**  
+   `workspace/goals/goal-4/files/openai-academy/cv-pavel-cherkashin-academy.pdf`  
+   `workspace/goals/goal-4/files/openai-academy/cv-pavel-cherkashin-academy-hd.png`  
 
 ---
 
 ## 📱 1-Tap Outbound Action (Ready for Pavel's Decision)
 
-### Application Submission Form (Ashby)
-- **URL:** [https://jobs.ashbyhq.com/openai/c2921990-3fff-469a-a117-f6a8f2a3d50c/application](https://jobs.ashbyhq.com/openai/c2921990-3fff-469a-a117-f6a8f2a3d50c/application)
-- **Resume Attachment:** Upload `cv-pavel-cherkashin-oai.pdf`
-- **Location Preference:** San Francisco, CA (or New York, NY) — Hybrid (3 days/week on-site)
-- **Cover Note / Additional Information:**
-> *"I am an operator-storyteller applying for the Community Communications Lead role at OpenAI.*
+### Application Submission Form
+- **URL:** [https://openai.com/careers/academy-partnerships-global-affairs-san-francisco/](https://openai.com/careers/academy-partnerships-global-affairs-san-francisco/)
+- **Resume Attachment:** Upload `cv-pavel-cherkashin-academy.pdf`
+- **Location Preference:** San Francisco, CA — Hybrid (On-site collaboration)
+- **Cover Note / Message to Hiring Team:**
+> *"To the OpenAI Global Affairs & Academy Team,*
 >
-> *Moving AI out of the tech bubble and into mass culture (sports, music, design, food, fandoms) requires a distinct operating philosophy: automate the operational machinery—discovery pipelines, editorial rhythms, distribution amplification, and sentiment telemetry—while fiercely defending human judgment, cultural taste, authentic voices, and earned trust.*
+> *I am an operator-educator applying for the Academy Partnerships role.*
 >
-> *Having authored an authoritative university textbook, conducted 5,000+ deep-dive founder conversations, spearheaded regional tech ecosystems across Russia & CIS, executed Nostr-first publishing campaigns, and built autonomous agent workflows, I know how to connect decentralized grassroots stories into enduring multi-month cultural narratives. I operate on a disciplined 6-month arc to establish self-driving community comms engines and bridge community insight directly back into product research.*
+> *Scaling OpenAI Academy's global footprint—empowering developers, educators, and civil society across emerging ecosystems—requires two complementary capabilities:*
+> *1. High-touch educational leadership: designing and running vibrant Academy Jams and institutionalizing train-the-trainer Community Trainer programs that multiply local technical capacity.*
+> *2. Relentless operational automation: establishing automated partner intake pipelines, API credit telemetry, compliance verification, and feedback loops back into OpenAI product teams without linear headcount scaling.*
 >
-> *Based in San Francisco, fully prepared for hybrid on-site presence. Tailored 1-page CV attached.*
+> *Having authored an authoritative university textbook on entrepreneurship and venture capital, conducted 5,000+ deep-dive founder and educator evaluations, led regional enterprise technology operations across Russia & CIS, and built autonomous agent workflows, I know how to turn high-level diplomatic and educational mandates into thriving grassroots builder communities.*
+>
+> *Based in San Francisco, fully prepared for on-site collaboration. Tailored 1-page CV attached.*
 >
 > *Pavel Cherkashin | pavel@mindrock.capital | linkedin.com/in/pavelcherkashin"*
 
 ---
 
 ## 🛡️ Constitution & Isolation Compliance
-- Repository: `https://github.com/pashamango/minutta-rp-pr-cycle-lab.git` (branch `minutta/min-208-openai-community-communications-lead-cv-ready`)
+- Repository: `https://github.com/pashamango/minutta-rp-pr-cycle-lab.git` (branch `minutta/min-212-openai-academy-partnerships-global-affairs-cv-ready-awaiting`)
 - SHA256 integrity verified via `evidence/MANIFEST.sha256`.
 - Independent QA pass requested from `@Codex` per AGENTS.md Section 7.
 - Final approval reserved for Principal Pavel Cherkashin.

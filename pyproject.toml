@@ -1,16 +1,15 @@
-[build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
-
 [project]
-name = "openai-community-comms-cv-builder"
+name = "min-212-openai-academy-partnerships"
 version = "0.1.0"
-description = "Deterministic 1-page CV & 300 DPI PNG generator for OpenAI Community Communications Lead"
+description = "Deterministic CV & application package builder for OpenAI Academy Partnerships (Global Affairs)"
+authors = [
+    {name = "Pavel Cherkashin", email = "pavel@mindrock.capital"}
+]
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "pypdf==6.21.2",
     "PyMuPDF==2.0",
     "reportlab==5.1.0",
-    "Pillow==12.3.0",
+    "pillow==12.3.0",
 ]
