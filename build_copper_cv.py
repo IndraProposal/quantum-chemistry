@@ -8,8 +8,10 @@ Linear Ticket: MIN-207
 
 import os
 import sys
+import io
 import pypdf
 import pymupdf  # fitz
+from PIL import Image
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
@@ -258,7 +260,9 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-copper.pdf", output_png="cv-pavel-
         zoom = 300 / 72  # 300 DPI
         mat = pymupdf.Matrix(zoom, zoom)
         pix = page.get_pixmap(matrix=mat)
-        pix.save(output_png)
+        # Preserve 300 DPI resolution in PNG metadata (pHYs chunk) via PIL
+        img = Image.open(io.BytesIO(pix.tobytes("png")))
+        img.save(output_png, dpi=(300, 300))
         png_size = os.path.getsize(output_png)
         print(f"Successfully generated 300 DPI HD PNG: {output_png} ({png_size} bytes, ~{png_size / (1024*1024):.2f} MB)")
         doc_fitz.close()

@@ -45,7 +45,7 @@
 >  
 > *Based here in SF, fully on-site. Tailored 1-page CV attached below. Would love to grab coffee in SF with you, Athan, or Brianna if this resonates.*  
 >  
-> *Pavel Cherkashin | pavel@mindrock.capital | 415-xxx-xxxx"*  
+> *Pavel Cherkashin | pavel@mindrock.capital | linkedin.com/in/pavelcherkashin"*  
 *(Attach: `cv-pavel-cherkashin-copper-hd.png`)*
 
 ### Option B: Founder Direct Reachout (Athan Zhang / Brianna Lin)

@@ -1,0 +1,5 @@
+# MIN-207 Copperlane CV Builder Dependencies
+pypdf==6.21.2
+PyMuPDF==2.0
+reportlab==5.1.0
+Pillow==12.3.0

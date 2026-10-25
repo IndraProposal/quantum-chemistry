@@ -13,6 +13,30 @@ This repository contains the complete tailored executive application package, st
 - **Cryptographic Manifest:** [evidence/MANIFEST.sha256](evidence/MANIFEST.sha256)
 - **Machine-Readable Evidence:** [evidence/EVIDENCE.json](evidence/EVIDENCE.json)
 
+## Build & Verification Instructions
+
+### 1. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Build CV (PDF & 300 DPI HD PNG)
+```bash
+python build_copper_cv.py
+```
+
+### 3. Verify Constraints
+```bash
+# Verify exactly 1 page
+python -c 'from pypdf import PdfReader; pages = len(PdfReader("cv-pavel-cherkashin-copper.pdf").pages); assert pages == 1, f"Expected 1 page, got {pages}"; print("PDF page count: PASS (1 page)")'
+
+# Verify 300 DPI metadata and geometry (2550 x 3300)
+python -c 'from PIL import Image; im = Image.open("cv-pavel-cherkashin-copper-hd.png"); assert im.size == (2550, 3300), f"Bad size {im.size}"; dpi = round(im.info.get("dpi", (0, 0))[0]); assert dpi == 300, f"Bad dpi {dpi}"; print(f"PNG resolution: PASS ({im.size}, {dpi} DPI)")'
+
+# Verify cryptographic manifest integrity
+sha256sum -c evidence/MANIFEST.sha256
+```
+
 ## Paradigm: 6-Month Automation Arc
 Built around Pavel Cherkashin's core philosophy:
 > *"I don’t come to warm a chair. I build autonomous operational infrastructure, eliminate friction, and automate myself out of repetitive execution within 6 months—leaving behind self-driving verification systems, codified playbooks, and high-uptime underwriting pipelines."*

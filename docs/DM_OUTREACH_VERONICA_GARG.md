@@ -27,8 +27,7 @@ My operating philosophy is a strict 6-Month Automation Arc: "I don’t come to w
 I'm based right here in SF, fully on-site. Tailored 1-page CV attached. Would love to grab coffee in SF with you, Athan, or Brianna if this resonates.
 
 Pavel Cherkashin
-pavel@mindrock.capital | 415-xxx-xxxx
-github.com/minutta | linkedin.com/in/pavelcherkashin
+pavel@mindrock.capital | linkedin.com/in/pavelcherkashin | github.com/minutta
 ```
 
 ---
