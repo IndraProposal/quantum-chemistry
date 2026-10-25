@@ -1,0 +1,57 @@
+{
+  "ticket": "MIN-207",
+  "task_id": "run-3fb23939db63",
+  "builder": "agy@wolfram",
+  "title": "Copperlane (Veronica Garg) — founding engineers, CV ready",
+  "worktree": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-207-COPPERLANE-0001",
+  "git_branch": "minutta/min-207-copperlane-veronica-garg-founding-engineers-cv-ready",
+  "status": "ready_for_review",
+  "summary": "MIN-207: Completed lead analysis, executive positioning, 1-page tailored CV generation, 300 DPI HD PNG render, direct outreach package for Veronica Garg (@v_garg_s) / Copperlane AI, and strategic intelligence brief for Copperlane (YC W26; Founders: Athan Zhang, Brianna Lin). Positioning built on the 6-Month Automation Arc ('I don't come to warm a chair') and the Penny autonomous loan officer breakthrough (compressing 4+ hours of manual mortgage document review into deterministic minutes with human-in-the-loop). PDF generated via ReportLab and verified via pypdf and PyMuPDF: exactly 1 page, zero text collisions, mortgage ops heading carefully balanced, 154pt bottom margin breathing room. Actionable One-Tap Application Card and multiple DM options staged for Principal Pavel Cherkashin. Copies staged in workspace/goals/goal-4/files/copperlane/. Zero outbound messages sent.",
+  "acceptance": {
+    "single_page_cv_pdf_verified": "PASS",
+    "zero_text_collisions_layout": "PASS",
+    "hd_png_300dpi_generated": "PASS",
+    "workspace_goal4_files_mirrored": "PASS",
+    "builder_script_reproducible": "PASS",
+    "six_month_automation_arc_paradigm": "PASS",
+    "hero_statement_warm_a_chair": "PASS",
+    "penny_mortgage_ops_hook": "PASS",
+    "one_tap_application_card_staged": "PASS",
+    "direct_outreach_dm_options_ready": "PASS",
+    "honest_disclaimers_ic_and_metrics": "PASS",
+    "minimax_vendor_benchmark_excluded": "PASS",
+    "zero_auto_apply_guardrail_intact": "PASS",
+    "constitutional_compliance_agents_md": "PASS"
+  },
+  "metrics": {
+    "pdf_page_count": 1,
+    "pdf_content_height_pt": 637.8,
+    "pdf_bottom_margin_pt": 154.2,
+    "png_dpi": 300,
+    "png_file_size_bytes": 690182,
+    "text_overlap_count": 0,
+    "outbound_sent_count": 0,
+    "fit_conviction_score": 98.5
+  },
+  "artifacts": {
+    "cv_pdf": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-207-COPPERLANE-0001/cv-pavel-cherkashin-copper.pdf",
+    "cv_png_hd": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-207-COPPERLANE-0001/cv-pavel-cherkashin-copper-hd.png",
+    "cv_pdf_workspace_goal4": "/Users/pavelcherkashin/workspace/goals/goal-4/files/copperlane/cv-pavel-cherkashin-copper.pdf",
+    "cv_png_workspace_goal4": "/Users/pavelcherkashin/workspace/goals/goal-4/files/copperlane/cv-pavel-cherkashin-copper-hd.png",
+    "cv_builder_script": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-207-COPPERLANE-0001/build_copper_cv.py",
+    "cv_builder_workspace_goal4": "/Users/pavelcherkashin/workspace/goals/goal-4/files/copperlane/build_copper_cv.py",
+    "tailored_cv_md": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-207-COPPERLANE-0001/docs/TAILORED_CV_COPPERLANE.md",
+    "one_tap_card": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-207-COPPERLANE-0001/docs/ONE_TAP_APPLICATION_CARD.md",
+    "outreach_copy": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-207-COPPERLANE-0001/docs/DM_OUTREACH_VERONICA_GARG.md",
+    "strategy_brief": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-207-COPPERLANE-0001/docs/COPPERLANE_STRATEGY_BRIEF.md",
+    "codex_insight": "/Users/pavelcherkashin/ChitAkasha-Wolfram/codex-insights/min-207-copperlane-automation-lead.md",
+    "manifest_sha256": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-207-COPPERLANE-0001/evidence/MANIFEST.sha256"
+  },
+  "limitations": [
+    "Hiring post on X named traits (>highly motivated, >fast learner, >care about problems) and on-site SF rather than a rigid job specification; materials are founder-aligned and systems-focused.",
+    "Internal autonomous fleet throughput figures (>=20 issues/day, >=1 project/week) are omitted pending third-party audit.",
+    "MiniMax M3.1 Flash speed/throughput numbers in post thread are vendor benchmarks, not Copperlane internal figures, and are excluded.",
+    "Founding Engineer is conventionally an IC role; CV explicitly positions Pavel as a high-leverage builder through autonomous systems and shipped code.",
+    "Zero auto-apply rule strictly enforced: all assets staged in review; outbound dispatch requires human tap."
+  ]
+}
