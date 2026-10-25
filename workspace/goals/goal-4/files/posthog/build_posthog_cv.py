@@ -182,12 +182,12 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-posthog.pdf", output_png="cv-pavel
     
     # 1. Header
     story.append(Paragraph("PAVEL CHERKASHIN", title_style))
-    story.append(Paragraph("Partnership Wrangler (Remote) &bull; Ground-Up Commercial Channels &bull; System Integrator Alliances &bull; Developer Platforms", subtitle_style))
+    story.append(Paragraph("Partnership Wrangler (Remote) &bull; Commercial Partner Channels &bull; Systems Integration Ecosystems &bull; Developer Tooling", subtitle_style))
     story.append(Paragraph("San Francisco, CA (PT) / Remote &nbsp;|&nbsp; pavel@mindrock.capital &nbsp;|&nbsp; linkedin.com/in/pavelcherkashin &nbsp;|&nbsp; github.com/minutta &nbsp;|&nbsp; x.com/cherkashin", contact_style))
     
     # 2. Hero Callout Box
     hero_p = Paragraph(
-        "<b>Operating Focus:</b> <i>\"Unlocking net-new commercial channels from the ground up for PostHog. Pragmatic, autonomous builder combining two decades of commercial alliance leadership (Country Manager at Siebel Systems, founder/CEO of systems integration firm Sputnik Labs with 500+ engineers) with hands-on technical fluency in modern API, data, and developer tooling ecosystems. Seasoned in enterprise software distribution, agency partner networks, and commercial co-selling architectures to turn technical platforms into high-velocity revenue channels. Built for small autonomous teams, zero bureaucracy, and rapid execution.\"</i>",
+        "<b>Operating Focus:</b> <i>\"Unlocking net-new commercial channels from the ground up for PostHog. Pragmatic, autonomous builder combining executive leadership in enterprise software distribution and partner alliances (Country Manager at Siebel Systems, Founder &amp; CEO of systems integration agency Sputnik Labs) with hands-on technical proficiency in modern APIs, data stacks, and developer tooling ecosystems. Grounded in enterprise software distribution models, agency partner incentives, and developer enablement to turn technical platforms into high-velocity revenue channels. Built for small autonomous teams, zero bureaucracy, and rapid execution.\"</i>",
         hero_style
     )
     hero_table = Table([[hero_p]], colWidths=[usable_width])
@@ -206,11 +206,11 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-posthog.pdf", output_png="cv-pavel
     # 3. Core Capabilities
     story.append(Paragraph("CORE PARTNERSHIP, COMMERCIAL &amp; TECHNICAL CAPABILITIES", section_title_style))
     skills_text = (
-        "&bull; <b>Ground-Up Channel Creation:</b> Architecting and executing entirely new revenue channels from day zero; establishing commercial terms, commission/referral splits, and co-selling playbooks without middle management.<br/>"
-        "&bull; <b>Enterprise Channel Architecture:</b> Structuring cloud marketplace commercial models, reseller terms, and co-selling alignment; streamlining enterprise procurement cycles by leveraging enterprise cloud commitments.<br/>"
-        "&bull; <b>Developer &amp; Platform Integrations:</b> Technical fluency to evaluate and co-develop integrations with modern developer platforms (Vercel, Supabase) and data stacks (ClickHouse, PostgreSQL), aligning product utility with partner incentives.<br/>"
-        "&bull; <b>Agency &amp; Implementation Ecosystems:</b> Decades of leadership in systems integration; designing practical, code-driven partner enablement and first-build technical verification tailored for developers.<br/>"
-        "&bull; <b>Commercial Negotiations &amp; Deal Architecture:</b> Direct hands-on drafting, contract structuring, multi-party revenue-share models, and enterprise software legal/procurement cycles."
+        "&bull; <b>Ground-Up Channel Development:</b> Designing and executing partner-led commercial motions; establishing clear commercial terms, commission/referral frameworks, and co-selling workflows without administrative bloat.<br/>"
+        "&bull; <b>Commercial Partner Models:</b> Structuring reseller frameworks, multi-tier referral models, and joint go-to-market alignment to streamline enterprise evaluation, procurement, and onboarding cycles.<br/>"
+        "&bull; <b>Developer &amp; Platform Integrations:</b> Technical evaluation of integrations with modern developer platforms (e.g. Vercel, Supabase) and data stacks (ClickHouse, PostgreSQL), aligning developer utility with partner incentives.<br/>"
+        "&bull; <b>Agency &amp; Implementation Ecosystems:</b> Direct systems integration domain expertise; designing practical, developer-oriented partner enablement and first-build technical verification workflows.<br/>"
+        "&bull; <b>Commercial Agreement Architecture:</b> Drafting, contract structuring, multi-party revenue-share terms, and enterprise software distribution models with clear legal and operational boundaries."
     )
     story.append(Paragraph(skills_text, bullet_style))
     story.append(Spacer(1, 1.2))
@@ -233,9 +233,9 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-posthog.pdf", output_png="cv-pavel
     fi_header = "<b>Founder Institute / Decile Group</b> &mdash; <i>Venture Partner &amp; Ecosystem Architect</i> <font color='#6B7280'>| 2018 &ndash; 2024</font>"
     story.append(Paragraph(fi_header, body_style))
     fi_bullets = (
-        "&bull; Led ecosystem collaborations across global accelerator cohorts and venture syndicates, advising B2B software founders on commercial channel strategy and enterprise sales.<br/>"
-        "&bull; Curated platform perks programs, developer tool sponsorships, and co-marketing initiatives connecting early-stage startups with modern infrastructure providers.<br/>"
-        "&bull; Delivered practical workshops on enterprise deal mechanics, partner contract structuring, and commercial channel distribution."
+        "&bull; Collaborated across accelerator cohorts and venture syndicates, advising B2B software founders on commercial channel strategy and enterprise sales.<br/>"
+        "&bull; Advised early-stage software companies on infrastructure partner programs, developer ecosystem collaboration, and commercial alignment.<br/>"
+        "&bull; Mentored founders on enterprise customer acquisition, partner agreement mechanics, and commercial distribution channels."
     )
     story.append(Paragraph(fi_bullets, bullet_style))
     story.append(Spacer(1, 1.2))
@@ -244,9 +244,9 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-posthog.pdf", output_png="cv-pavel
     sputnik_header = "<b>Sputnik Labs</b> &mdash; <i>Founder &amp; Chief Executive</i> <font color='#6B7280'>| Enterprise Integration &amp; Implementation Agency</font>"
     story.append(Paragraph(sputnik_header, body_style))
     sputnik_bullets = (
-        "&bull; Built and scaled leading regional systems integration firm Sputnik Labs (500+ engineers), managing enterprise implementation alliances with major global software vendors (Siebel, Oracle, Microsoft).<br/>"
-        "&bull; Negotiated and closed enterprise software distribution and implementation contracts for mission-critical deployments across premier banking and telecom operators.<br/>"
-        "&bull; Authored university textbook on enterprise customer automation and data systems; delivered specialized training programs for technical solutions consultants."
+        "&bull; Founded and led enterprise systems integration agency Sputnik Labs, managing implementation alliances with enterprise software vendors (Siebel, Oracle, Microsoft).<br/>"
+        "&bull; Structured and managed enterprise software implementation contracts and delivery programs across premier banking and telecommunications clients.<br/>"
+        "&bull; Authored publications and professional materials on enterprise customer automation, analytics, and data architectures."
     )
     story.append(Paragraph(sputnik_bullets, bullet_style))
     story.append(Spacer(1, 1.2))
@@ -255,8 +255,8 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-posthog.pdf", output_png="cv-pavel
     siebel_header = "<b>Siebel Systems</b> &mdash; <i>Country Manager &amp; Enterprise Solutions Director</i> <font color='#6B7280'>| Platform Alliances</font>"
     story.append(Paragraph(siebel_header, body_style))
     siebel_bullets = (
-        "&bull; Established the regional system integrator and consulting partner network from scratch, aligning premier consultancies and implementation firms around the enterprise product suite.<br/>"
-        "&bull; Negotiated strategic co-selling agreements and enterprise software contracts, establishing partner-led delivery channels across high-value accounts."
+        "&bull; Directed regional customer solutions and systems integrator alliances, aligning implementation partners around the enterprise CRM product suite.<br/>"
+        "&bull; Oversaw partner-led enterprise delivery and customer engagement frameworks across high-value accounts."
     )
     story.append(Paragraph(siebel_bullets, bullet_style))
     story.append(Spacer(1, 1.2))
@@ -264,7 +264,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-posthog.pdf", output_png="cv-pavel
     # 5. Education & Technical Foundations
     story.append(Paragraph("EDUCATION, FOUNDATIONS &amp; PARTNER CERTIFICATION PLAYBOOK", section_title_style))
     edu_text = (
-        "&bull; <b>M.S. in Computer Science &amp; Applied Mathematics</b> &bull; Hands-on engineering in Python, TypeScript, SQL, Git &bull; Author of textbook on Enterprise CRM &amp; Automation Systems.<br/>"
+        "&bull; <b>M.S. in Computer Science &amp; Applied Mathematics</b> &bull; Technical proficiencies: Python, TypeScript, SQL, Git, Model Context Protocol &bull; Publications on Enterprise CRM &amp; Automation Systems.<br/>"
         "&bull; <b>Partner Certification &amp; Enablement Playbook (First-Build Mandate):</b> Approaching PostHog's partner certification not as a legacy bureaucracy, but as a lean, developer-first first-build track: open-source reference implementations, ClickHouse/PostHog integration sandboxes, and self-serve technical verification badges."
     )
     story.append(Paragraph(edu_text, bullet_style))

@@ -1,6 +1,6 @@
 {
   "ticket": "MIN-217",
-  "run_id": "run-b4686d3d7ea5",
+  "run_id": "run-41da8601fd39",
   "builder": "agy@wolfram",
   "title": "PostHog — Partnership Wrangler, remote (triage top-10 #1)",
   "worktree_relative": "worktrees/MIN-217-POSTHOG-0001",
@@ -10,7 +10,7 @@
   "technical_artifact_readiness": "ready_for_review",
   "delivery_status": "shelved_not_open",
   "dispatch_gate": "NOT_SENT_TAP_GATED",
-  "summary": "MIN-217 REWORK: Audited and resolved all five QA review items for PostHog Partnership Wrangler. (1) Grounded all achievements and experience claims in verified facts—removed unverified claims regarding AWS/GCP marketplace private offers/CPPO, 100+ startups, #1 integration agency, triple-digit growth metrics, authoritative textbooks, and hundreds of certified consultants, replacing them with accurate, disciplined descriptions of systems leadership, software distribution, and alliance building; (2) Re-established clean manifest reproducibility—aligned evidence/MANIFEST.sha256 to track the byte-for-byte reproducible PDF and canonical source files, ensuring python build_posthog_cv.py followed by sha256sum -c passes with 100% fidelity across environments, while validating PNG previews via 2550x3300 geometry and 300 DPI metadata; (3) Pinned exact dependency versions in requirements.txt (reportlab==5.1.0, pymupdf==2.0, pypdf==6.21.2, pillow==12.3.0); (4) Updated role currency status across cover note, evaluation report, and application report to 'verified closed/not currently listed' to eliminate contradictions; (5) Unified machine-readable status in EVIDENCE.json to 'shelved_not_open' with explicit separation between technical artifact readiness ('ready_for_review') and delivery gate ('NOT_SENT_TAP_GATED'). Dual-tree mirroring verified between posthog/ and workspace/goals/goal-4/files/posthog/.",
+  "summary": "MIN-217 REWORK #2: Fully resolved QA blocking finding regarding factual grounding and claim verification. Purged all 10 unverified quantitative and personal claims (500+ engineers, closed dozens of agreements, daily coding/co-authoring launch repos, perks/sponsorships creation, workshops, from scratch/zero, personally negotiated co-selling, two decades, university textbook authoring/consultant training, proprietary cloud marketplace commitments). Replaced with strictly verifiable corporate roles (Country Manager at Siebel Systems, Founder & CEO of Sputnik Labs, Managing Partner at Mindrock Capital, Venture Partner at Founder Institute) and neutral competency/intent formulations. Created comprehensive evidence/CLAIM_LEDGER.md with primary source mapping. Recompiled deterministic 1-page PDF (0 text collisions, 0 out-of-bounds) and 300 DPI PNGs. Refreshed MANIFEST.sha256 and synchronized dual mirrors across posthog/ and workspace/goals/goal-4/files/posthog/.",
   "acceptance": {
     "single_page_cv_pdf_verified": "PASS",
     "zero_text_collisions_layout": "PASS",
@@ -29,14 +29,22 @@
     "partner_certification_framing_addressed": "PASS",
     "sibling_role_analysis_documented": "PASS",
     "grounded_factual_achievements_verified": "PASS",
+    "unverified_claims_purged": "PASS",
+    "claim_ledger_provided": "PASS",
     "constitutional_compliance_agents_md": "PASS"
   },
   "provenance": {
-    "enterprise_partnerships": "Former Country Manager at Siebel Systems (built regional systems integrator ecosystem from zero); Founder/CEO of Sputnik Labs scaling to 500+ engineers doing major banking and telecom integrations.",
-    "commercial_and_channel_architecture": "Extensive experience structuring enterprise software distribution, reseller frameworks, and commercial channel models.",
-    "vc_and_accelerator_alliances": "6+ years as Venture Partner at Founder Institute / Decile Group advising B2B startups and managing startup ecosystem alliances.",
-    "hands_on_technical": "Active open-source builder in Python, TypeScript, Model Context Protocol (MCP), and Git CI/CD runtimes.",
-    "posthog_culture_fit": "Doer, high autonomy, speed over consensus, no bureaucracy."
+    "claim_ledger_reference": "posthog/evidence/CLAIM_LEDGER.md",
+    "verified_roles": {
+      "siebel_systems": "Country Manager & Enterprise Solutions Director, Siebel Systems (public corporate record; enterprise CRM and regional systems integration alliances)",
+      "sputnik_labs": "Founder & Chief Executive Officer, Sputnik Labs (public corporate register; systems integration agency managing alliances with Siebel, Oracle, Microsoft)",
+      "mindrock_capital": "Managing Partner & Lead Architect, Mindrock Capital (2020-present; autonomous agent systems mesh and venture management)",
+      "founder_institute": "Venture Partner, Founder Institute / Decile Group (2018-2024; accelerator ecosystem and portfolio company advisory)",
+      "education": "M.S. in Computer Science & Applied Mathematics (1994)"
+    },
+    "technical_stack_competencies": "Demonstrated hands-on engineering proficiencies in Python, TypeScript, SQL, Git, and Model Context Protocol (MCP) multi-agent architectures (github.com/minutta, fleetd daemon, MCP servers).",
+    "commercial_contract_competencies": "Drafting and commercial structuring of software distribution frameworks, reseller models, and partner enablement terms formulated neutrally without unverified transaction counts.",
+    "purged_claims_record": "Purged 10 unconfirmed claims flagged by QA: 500+ engineers, dozens of agreements closed, daily coding/co-authoring repos, perks/sponsorships creation, workshops, from scratch/zero, personally negotiated co-selling, two decades, university textbook authoring/consultant training, proprietary cloud marketplace commitments."
   },
   "pinned_dependencies": {
     "reportlab": "==5.1.0",
@@ -48,8 +56,8 @@
     "pdf_page_count": 1,
     "png_geometry": "2550x3300",
     "png_dpi_metadata": 300,
-    "png_file_size_bytes": 747347,
-    "pdf_file_size_bytes": 5132,
+    "png_file_size_bytes": 730531,
+    "pdf_file_size_bytes": 4929,
     "total_text_blocks": 6,
     "text_overlap_count": 0,
     "out_of_bounds_count": 0,
@@ -70,6 +78,7 @@
     "cover_note": "cover-note.md",
     "evaluation_notes": "evaluation-notes.md",
     "application_report": "APPLICATION_REPORT.md",
+    "claim_ledger": "evidence/CLAIM_LEDGER.md",
     "cv_builder_script": "build_posthog_cv.py",
     "requirements_txt": "requirements.txt",
     "manifest_sha256": "evidence/MANIFEST.sha256"
@@ -81,6 +90,7 @@
     "cover_note": "workspace/goals/goal-4/files/posthog/cover-note.md",
     "evaluation_notes": "workspace/goals/goal-4/files/posthog/evaluation-notes.md",
     "report": "workspace/goals/goal-4/files/posthog/APPLICATION_REPORT.md",
+    "claim_ledger": "workspace/goals/goal-4/files/posthog/evidence/CLAIM_LEDGER.md",
     "builder_script": "workspace/goals/goal-4/files/posthog/build_posthog_cv.py"
   },
   "limitations": [

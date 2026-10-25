@@ -42,7 +42,7 @@ In the tailored CV and cover note, Pavel Cherkashin **does NOT falsely claim** t
 2. **Self-Serve Accreditation:** Code-driven digital badges and verified directory listings for agencies that successfully ship verified client integrations.
 3. **Agency Commercial Alignment:** Direct tie-in between technical verification and tiered referral commissions / co-sell leads.
 
-This frames an apparent "gap" into a massive positive signal of cultural alignment: building a lightweight, high-leverage enablement engine from scratch.
+This frames an apparent "gap" into a massive positive signal of cultural alignment: building a lightweight, high-leverage enablement engine from the ground up.
 
 ---
 

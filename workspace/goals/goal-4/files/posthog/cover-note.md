@@ -19,19 +19,19 @@ I am writing to express my direct interest in the Partnership Wrangler role at P
 
 PostHog is legendary for building an open-source product machine that developers love, moving fast without middle management, and letting doers ship without bureaucratic committees. Opening partnerships as a dedicated revenue channel shouldn't dilute that culture with bloated slide decks or ceremonial partner summits. It should be built the exact same way you build product: as an autonomous, high-leverage revenue engine that scales through code, clear commercials, and genuine developer utility.
 
-Why I am built to wrangle PostHog's partner channels from scratch:
+Why I am built to develop PostHog's partner channels:
 
 1. Unlocking Enterprise Budgets via Cloud & Commercial Channels:
-   A high-leverage route to high-ACV enterprise deals is streamlining procurement through cloud marketplace and enterprise partner channels. Having structured enterprise software distribution models and alliance agreements for two decades, I understand the commercial mechanics required to align partner incentives, structure reseller frameworks, and streamline enterprise procurement so partners proactively bring PostHog into tier-1 accounts.
+   A high-leverage route to high-ACV enterprise deals is streamlining procurement through cloud and commercial partner channels. With extensive background structuring enterprise software distribution models and alliance frameworks, I understand the commercial mechanics required to align partner incentives, structure reseller frameworks, and streamline enterprise evaluation so partners proactively bring PostHog into tier-1 accounts.
 
 2. Standing Up Agency & Systems Integrator Channels:
-   As Founder & CEO of Sputnik Labs, I built a leading regional systems integration firm to 500+ engineers, establishing long-term implementation and delivery alliances with software giants (Siebel Systems, Oracle, Microsoft) across top-tier banking and telecom enterprises. Having run an implementation firm myself, I understand exactly what agencies need to recommend and deploy PostHog: rapid onboarding, dependable referral/revenue-share models, clear co-sell support, and zero friction.
+   As Founder & CEO of Sputnik Labs, an enterprise systems integration agency, I managed implementation and delivery alliances with enterprise software vendors (Siebel Systems, Oracle, Microsoft) across premier banking and telecom accounts. Having run an implementation firm myself, I understand exactly what agencies need to recommend and deploy PostHog: rapid onboarding, dependable referral/revenue-share models, clear co-sell support, and zero friction.
 
 3. Developer & Modern Tech Integrations (Vercel, Replit, Supabase):
-   I am a hands-on technical founder and engineer. In our autonomous agent mesh (Mindrock), I build daily with Python, TypeScript, modern API standards, Model Context Protocol (MCP), and Git-driven CI/CD runtimes. When negotiating technical partnerships with modern dev platforms like Vercel, Replit, or Supabase, I can speak directly to engineering leads, evaluate API interoperability, co-author launch repos, and run co-marketing plays that resonate with real builders.
+   I work hands-on with Python, TypeScript, modern API standards, Model Context Protocol (MCP), and Git-driven CI/CD runtimes. When collaborating on technical partnerships with modern dev platforms like Vercel, Replit, or Supabase, I can speak directly with engineering leads on API interoperability, joint workflows, and developer-first co-marketing.
 
-4. Commercial Deal Architecture from Zero:
-   As Country Manager at Siebel Systems and Managing Partner at Mindrock Capital, I have closed and papered dozens of software distribution, reseller, and alliance agreements. I do not need a legal department to hold my hand to draft clear commercial terms, revenue splits, or co-selling agreements.
+4. Commercial Deal Architecture:
+   As Country Manager at Siebel Systems and Managing Partner at Mindrock Capital, I bring extensive experience drafting and structuring software distribution, reseller, and alliance terms. I do not need a legal department to hold my hand to draft clear commercial terms, revenue splits, or co-selling agreements.
 
 5. Partner Enablement & Certification — The "First-Build" Approach:
    I want to be upfront: I am NOT coming in claiming to have run a legacy, corporate 50-slide partner certification bureaucracy. That would fail at PostHog. Instead, I view PostHog's partner certification as a lean, first-build engineering asset: self-serve technical verification, interactive sample apps (e.g., ClickHouse + PostHog event pipelines), and code-driven badges that prove an agency can actually architect and maintain PostHog in production.
@@ -59,7 +59,7 @@ Big admirer of PostHog's radical transparency and product velocity.
 
 Saw the Partnership Wrangler brief (opening agency ecosystems, cloud channels, and developer integrations into a net-new revenue engine).
 
-I'm an SF-based technical founder, former Country Manager at Siebel Systems, founder/CEO of 500+ engineer integration firm Sputnik Labs, and active builder (Python/TypeScript/MCP multi-agent architectures). I specialize in designing commercial channel agreements from scratch—particularly turning implementation agencies and developer platforms into distribution flywheels without adding corporate drag.
+I'm an SF-based technical founder, former Country Manager at Siebel Systems, founder/CEO of systems integration firm Sputnik Labs, and active builder in Python/TypeScript/MCP multi-agent architectures. I specialize in designing commercial channel agreements—particularly turning implementation agencies and developer platforms into distribution flywheels without adding corporate drag.
 
 Would love to send over a concise 1-page proposal on structuring PostHog's commercial agency channel and developer-first partner certification. Let me know if you have 10 minutes to trade notes!
 

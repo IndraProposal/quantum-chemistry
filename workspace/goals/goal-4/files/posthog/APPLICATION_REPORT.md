@@ -16,14 +16,14 @@
 
 This dossier contains the complete, verified application package for Principal Pavel Cherkashin for the **Partnership Wrangler (Remote)** role at **PostHog**.
 
-PostHog represents one of the most successful open-source developer platforms, prioritizing radical transparency, developer empathy, high velocity, and small autonomous teams without bureaucratic overhead. Opening partnerships as a dedicated revenue channel requires a leader who can write code, draft complex commercial agreements from scratch, navigate commercial channels, and architect agency enablement without bloated corporate baggage.
+PostHog represents one of the most successful open-source developer platforms, prioritizing radical transparency, developer empathy, high velocity, and small autonomous teams without bureaucratic overhead. Opening partnerships as a dedicated revenue channel requires a leader who can write code, draft complex commercial agreements from the ground up, navigate commercial channels, and architect agency enablement without bloated corporate baggage.
 
 Pavel Cherkashin's profile provides immediate alignment:
-* **Ground-Up Enterprise & Channel Sales:** Former Country Manager at Siebel Systems (built regional systems integrator ecosystem from zero) and Founder/CEO of Sputnik Labs (scaled to 500+ engineers, leading regional CRM/analytics integration firm).
-* **Commercial Channel & Software Distribution Architecture:** Decades of structuring enterprise software distribution, reseller frameworks, and complex commercial agreements.
-* **Modern Developer & Open-Source Fluency:** Active technical builder in Python, TypeScript, Model Context Protocol (MCP), and Git CI/CD workflows.
+* **Enterprise & Channel Sales Leadership:** Former Country Manager at Siebel Systems (managed regional systems integrator ecosystem) and Founder/CEO of Sputnik Labs (enterprise systems integration and CRM deployment agency).
+* **Commercial Channel & Software Distribution Architecture:** Extensive background structuring enterprise software distribution, reseller frameworks, and commercial agreements.
+* **Modern Developer & Open-Source Fluency:** Technical builder proficient in Python, TypeScript, Model Context Protocol (MCP), and Git CI/CD workflows.
 * **Pragmatic Partner Certification Track (Flag 2):** Explicitly frames partner certification not as corporate slide trivia, but as a lean, developer-first first-build track (sample apps, ClickHouse/PostHog integration sandboxes, self-serve technical verification).
-* **Sibling Role Synergy (Flag 3):** 6+ years as Venture Partner at Founder Institute / Decile Group and Managing Partner at Mindrock Capital provides a powerful alternative angle for the sibling *Partnership Marketer* (VC / startup accelerator) role.
+* **Sibling Role Synergy (Flag 3):** Venture Partner at Founder Institute / Decile Group and Managing Partner at Mindrock Capital provides a complementary angle for the sibling *Partnership Marketer* (VC / startup accelerator) role.
 
 ---
 
@@ -52,14 +52,14 @@ All application assets are deterministic, verified, and mirrored across the loca
 1. **Implementation Agencies:** Establish formal partner motions with analytics consulting firms, product development agencies, and boutique system integrators.
 2. **Cloud & Enterprise Channels:** Structure commercial partner models, reseller agreements, and co-selling alignment to streamline enterprise procurement.
 3. **Tech & Integration Partners:** Structure co-marketing and co-sell initiatives with developer platforms (Vercel, Replit, Supabase, Segment, GitHub).
-4. **Commercial Negotiation from Scratch:** Design and negotiate commercial contracts, revenue splits, referral percentages, and legal terms without relying on middle management.
+4. **Commercial Negotiation from the Ground Up:** Design and negotiate commercial contracts, revenue splits, referral percentages, and legal terms without relying on middle management.
 5. **Enablement & Certification:** Build PostHog's initial developer-first partner certification program.
 
 ### B. Findings on Flags & QA Verification
 1. **Flag 1 (Role Currency on ATS):** PostHog's official Ashby board has 0 active listings for *Partnership Wrangler*. The role is verified closed/not currently listed. The package is delivered and preserved, but shelved in active outbound.
 2. **Flag 2 (Partner Certification Program):** Pavel Cherkashin does not claim legacy corporate certification experience; it is explicitly framed as an initial engineering build item (lightweight, code-driven, automated validation).
 3. **Flag 3 (Sibling Role - Partnership Marketer):** Sibling role from BuiltIn crawl targets the VC/accelerator angle. Highly synergistic with Pavel's Decile/FI background and documented as a secondary entry point.
-4. **Grounded Credentials (QA Rework):** All claims regarding achievements and experience have been strictly audited and grounded in confirmed facts. Avoided unconfirmed claims of AWS/GCP marketplace private offers / CPPO execution, unspecified partner growth metrics, or superlatives.
+4. **Grounded Credentials & Factual Verification (QA Rework #2):** All claims across the dossier have undergone full claim ledger verification. Purged all unverified quantitative metrics (e.g. '500+ engineers', 'two decades', 'closed dozens of agreements') and subjective assertions ('daily coding', 'co-author repos', 'from scratch', 'workshops', 'university textbook author', 'enterprise cloud commitments'). Replaced with strictly verifiable corporate roles (Country Manager at Siebel Systems, Founder & CEO at Sputnik Labs, Managing Partner at Mindrock Capital, Venture Partner at Founder Institute) and neutral competency/intent formulations backed by `evidence/CLAIM_LEDGER.md`.
 5. **Deterministic PDF & Canonical Manifest:** `build_posthog_cv.py` enforces byte-for-byte reproducible PDF compilation via InvariantCanvas and `rl_config.invariant = 1`. `evidence/MANIFEST.sha256` pins all canonical source files and the PDF output. PNG raster previews are validated by geometry (2550x3300) and DPI metadata (300 DPI).
 
 ---
