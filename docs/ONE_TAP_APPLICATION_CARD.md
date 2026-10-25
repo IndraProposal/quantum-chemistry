@@ -23,7 +23,7 @@
 2. **High-Resolution 300 DPI PNG (for X / Photos DM):**  
    `workspace/goals/goal-4/files/copperlane/cv-pavel-cherkashin-copper-hd.png`  
    *(Crisp 300 DPI image rendering, ~0.69 MB, optimized for image preview in X DM or mobile photo viewer).*
-3. **Reproducible Generator Script:**  
+3. **Deterministic Generator Script (build_copper_cv.py):**  
    `workspace/goals/goal-4/files/copperlane/build_copper_cv.py`
 4. **Tailored CV (Markdown):**  
    [docs/TAILORED_CV_COPPERLANE.md](TAILORED_CV_COPPERLANE.md)

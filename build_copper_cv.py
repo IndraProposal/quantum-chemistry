@@ -4,6 +4,18 @@ build_copper_cv.py — Generates tailored 1-page executive CV for Copperlane (Ve
 Paradigm: 6-Month Automation Arc & Autonomous Mortgage Verification (Penny)
 Author: agy@wolfram (Mindrock Autonomous Network)
 Linear Ticket: MIN-207
+
+Reproducibility & Dual-Artifact Model:
+- cv-pavel-cherkashin-copper.pdf: Deterministic 1-page PDF compiled from Python/ReportLab
+  source with invariant timestamps (rl_config.invariant=1, SOURCE_DATE_EPOCH=946684800).
+  Produces identical bit-for-bit SHA-256 across all platforms (Darwin, Linux).
+- cv-pavel-cherkashin-copper-hd.png: Canonical visual artifact rendered at 300 DPI (2550x3300).
+  Because rasterized font anti-aliasing depends on host OS font-rendering engines
+  (FreeType/MuPDF variations across Linux and macOS Darwin), byte-for-byte binary identity
+  across heterogeneous OS environments is not claimed for rendered PNGs.
+  The builder validates that the canonical PNG meets all required constraints
+  (2550x3300, 300 DPI) and preserves it to avoid working-tree churn across heterogeneous nodes.
+  If missing or passed with --force, a fresh HD PNG is rendered using the host rasterizer.
 """
 
 import os
@@ -283,7 +295,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-copper.pdf", output_png="cv-pavel-
                 if im.size == (2550, 3300) and dpi == 300:
                     png_reused = True
                     png_size = os.path.getsize(output_png)
-                    print(f"Verified canonical 300 DPI HD PNG: {output_png} ({png_size} bytes)")
+                    print(f"Validated canonical 300 DPI HD PNG: {output_png} ({im.size}, {dpi} DPI, {png_size} bytes; preserved to prevent cross-platform rasterizer drift)")
             except Exception:
                 png_reused = False
 
@@ -297,7 +309,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-copper.pdf", output_png="cv-pavel-
             img = Image.open(io.BytesIO(pix.tobytes("png")))
             img.save(output_png, dpi=(300, 300))
             png_size = os.path.getsize(output_png)
-            print(f"Successfully generated 300 DPI HD PNG: {output_png} ({png_size} bytes, ~{png_size / (1024*1024):.2f} MB)")
+            print(f"Rendered fresh 300 DPI HD PNG via host rasterizer: {output_png} ({png_size} bytes, ~{png_size / (1024*1024):.2f} MB)")
             doc_fitz.close()
     
     # Atomic evidence refresh workflow
