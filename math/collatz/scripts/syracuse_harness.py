@@ -308,8 +308,11 @@ $$S^{{[k]}}(n) < n$$
 All certificates are machine-verifiable with zero manual exemptions.
 """
 
-    report_path.write_text(md, encoding="utf-8")
-    print(f"Generated report at {report_path}")
+    try:
+        report_path.write_text(md, encoding="utf-8")
+        print(f"Generated report at {report_path}")
+    except OSError as e:
+        print(f"Notice: Read-only or sandboxed environment, skipped writing report ({e}).")
 
 if __name__ == "__main__":
     res = run_harness()
