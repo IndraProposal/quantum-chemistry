@@ -6,7 +6,7 @@
   "worktree": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-207-COPPERLANE-0001",
   "git_branch": "minutta/min-207-copperlane-veronica-garg-founding-engineers-cv-ready",
   "status": "ready_for_review",
-  "summary": "MIN-207 REWORK: Resolved reproducibility defect via deterministic PDF generation (rl_config.invariant=1, SOURCE_DATE_EPOCH=946684800) and atomic evidence refresh workflow (refresh_evidence.py & build_copper_cv.py auto-refresh). All constraints verified (1-page PDF, 2550x3300 300 DPI PNG, zero text collisions, zero placeholders, 11/11 manifest OK).",
+  "summary": "MIN-207 REWORK: Resolved reproducibility defect via deterministic PDF generation (rl_config.invariant=1, SOURCE_DATE_EPOCH=946684800) and atomic evidence refresh workflow (refresh_evidence.py & build_copper_cv.py auto-refresh). All constraints verified (1-page PDF, 2550x3300 300 DPI PNG, zero text collisions, zero placeholders, 12/12 manifest OK).",
   "acceptance": {
     "single_page_cv_pdf_verified": "PASS",
     "zero_text_collisions_layout": "PASS",

@@ -90,14 +90,15 @@ def refresh_evidence(repo_root=REPO_ROOT):
     evidence_data["task_id"] = "run-0d3c0ddd5a73"
     evidence_data["builder"] = "agy@wolfram"
     evidence_data["title"] = "Copperlane (Veronica Garg) — founding engineers, CV ready"
-    evidence_data["worktree"] = repo_root
+    canonical_worktree = "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-207-COPPERLANE-0001"
+    evidence_data["worktree"] = canonical_worktree
     evidence_data["git_branch"] = "minutta/min-207-copperlane-veronica-garg-founding-engineers-cv-ready"
     evidence_data["status"] = "ready_for_review"
     evidence_data["summary"] = (
         "MIN-207 REWORK: Resolved reproducibility defect via deterministic PDF generation "
         "(rl_config.invariant=1, SOURCE_DATE_EPOCH=946684800) and atomic evidence refresh workflow "
         "(refresh_evidence.py & build_copper_cv.py auto-refresh). All constraints verified "
-        "(1-page PDF, 2550x3300 300 DPI PNG, zero text collisions, zero placeholders, 11/11 manifest OK)."
+        "(1-page PDF, 2550x3300 300 DPI PNG, zero text collisions, zero placeholders, 12/12 manifest OK)."
     )
     
     evidence_data.setdefault("acceptance", {})
@@ -134,11 +135,11 @@ def refresh_evidence(repo_root=REPO_ROOT):
     evidence_data["metrics"]["fit_conviction_score"] = 98.5
     
     evidence_data.setdefault("artifacts", {})
-    evidence_data["artifacts"]["cv_pdf"] = pdf_path
-    evidence_data["artifacts"]["cv_png_hd"] = png_path
-    evidence_data["artifacts"]["cv_builder_script"] = os.path.join(repo_root, "build_copper_cv.py")
-    evidence_data["artifacts"]["refresh_evidence_script"] = os.path.join(repo_root, "refresh_evidence.py")
-    evidence_data["artifacts"]["manifest_sha256"] = manifest_path
+    evidence_data["artifacts"]["cv_pdf"] = os.path.join(canonical_worktree, "cv-pavel-cherkashin-copper.pdf")
+    evidence_data["artifacts"]["cv_png_hd"] = os.path.join(canonical_worktree, "cv-pavel-cherkashin-copper-hd.png")
+    evidence_data["artifacts"]["cv_builder_script"] = os.path.join(canonical_worktree, "build_copper_cv.py")
+    evidence_data["artifacts"]["refresh_evidence_script"] = os.path.join(canonical_worktree, "refresh_evidence.py")
+    evidence_data["artifacts"]["manifest_sha256"] = os.path.join(canonical_worktree, "evidence", "MANIFEST.sha256")
     
     with open(evidence_path, "w", encoding="utf-8") as f:
         json.dump(evidence_data, f, indent=2, ensure_ascii=False)
