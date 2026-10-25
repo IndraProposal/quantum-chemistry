@@ -1,0 +1,71 @@
+{
+  "ticket": "MIN-85",
+  "run_id": "run-abb0059ae501",
+  "builder": "agy",
+  "title": "[AMDE-LEAN] Syracuse.lean + LEMMA_TARGET harness",
+  "worktree": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-85-AMDE-LEAN-0001",
+  "branch": "minutta/min-85-amde-lean-syracuselean-lemma_target-harness",
+  "status": "In Review",
+  "acceptance": {
+    "lean_lake_build": "PASS",
+    "zero_sorry_admit_axiom_unsafe": "PASS",
+    "theorems_verified_count": 34,
+    "lemma_target_descent_rate": "100.0%",
+    "lemma_target_certificates_verified": "2000/2000",
+    "out_of_sample_model_selection": "PASS",
+    "step_ratio_winner": "fitted",
+    "theoretical_constant_winner": "3/4"
+  },
+  "theorems": [
+    "Collatz.v2_zero",
+    "Collatz.v2_two",
+    "Collatz.v2_four",
+    "Collatz.v2_eight",
+    "Collatz.v2_sixteen",
+    "Collatz.syracuse_one",
+    "Collatz.syracuse_three",
+    "Collatz.syracuse_five",
+    "Collatz.syracuse_two_steps_three",
+    "Collatz.descent_three",
+    "Collatz.syracuse_seven",
+    "Collatz.syracuse_eleven",
+    "Collatz.syracuse_seventeen",
+    "Collatz.syracuse_thirteen",
+    "Collatz.descent_seven",
+    "Collatz.syracuse_nine",
+    "Collatz.descent_nine",
+    "Collatz.syracuse_fifteen",
+    "Collatz.syracuse_twentythree",
+    "Collatz.syracuse_thirtyfive",
+    "Collatz.syracuse_fiftythree",
+    "Collatz.descent_fifteen",
+    "Collatz.syracuse_nineteen",
+    "Collatz.syracuse_twentynine",
+    "Collatz.descent_nineteen",
+    "Collatz.syracuse_twentyone",
+    "Collatz.descent_twentyone",
+    "Collatz.syracuse_twentyfive",
+    "Collatz.descent_twentyfive",
+    "Collatz.syracuse_twentyseven_step1",
+    "Collatz.syracuse_fortyone",
+    "Collatz.descent_cert_three",
+    "Collatz.descent_cert_seven",
+    "Collatz.descent_cert_fifteen"
+  ],
+  "model_selection": {
+    "train_range": "[3, 1000] (499 odds)",
+    "test_range": "[1001, 5000] (2000 odds)",
+    "step_wise_mse": {
+      "fitted": 0.285774,
+      "3/4": 0.348342,
+      "phi": 0.431778,
+      "1/2": 0.535915
+    },
+    "trajectory_mse": {
+      "fitted": 356.0698,
+      "3/4": 389.8633,
+      "phi": 390.2838,
+      "1/2": 390.4866
+    }
+  }
+}

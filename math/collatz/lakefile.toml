@@ -1,0 +1,15 @@
+name = "collatz"
+version = "0.1.0"
+keywords = ["math", "collatz", "syracuse"]
+defaultTargets = ["Collatz", "AxiomAudit"]
+
+[leanOptions]
+pp.unicode.fun = true
+relaxedAutoImplicit = false
+
+[[lean_lib]]
+name = "Collatz"
+
+[[lean_lib]]
+name = "AxiomAudit"
+roots = ["AxiomAudit"]
