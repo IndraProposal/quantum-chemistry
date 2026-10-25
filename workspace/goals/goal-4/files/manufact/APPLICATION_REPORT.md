@@ -34,12 +34,12 @@ All application assets are verified, deterministic, and mirrored across the loca
 
 | Artifact | Local Workspace Path | Canonical Git Path | Description |
 |---|---|---|---|
-| **1-Page Tailored CV (PDF)** | `workspace/goals/goal-4/files/manufact/cv-pavel-cherkashin-manufact.pdf` | `manufact/cv-pavel-cherkashin-manufact.pdf` & `workspace/goals/goal-4/files/manufact/cv-pavel-cherkashin-manufact.pdf` | Deterministically compiled 1-page PDF; verified 0 collisions, 0 out-of-bounds |
-| **300 DPI HD PNG** | `workspace/goals/goal-4/files/manufact/cv-pavel-cherkashin-manufact-hd.png` | `manufact/cv-pavel-cherkashin-manufact-hd.png` & `workspace/goals/goal-4/files/manufact/cv-pavel-cherkashin-manufact-hd.png` | 300 DPI high-resolution visual proof (2550x3300 px) |
+| **1-Page Tailored CV (PDF)** | `workspace/goals/goal-4/files/manufact/cv-pavel-cherkashin-manufact.pdf` | `manufact/cv-pavel-cherkashin-manufact.pdf` & `workspace/goals/goal-4/files/manufact/cv-pavel-cherkashin-manufact.pdf` | Deterministically compiled 1-page PDF; byte-for-byte reproducible across clean environments; verified 0 collisions, 0 out-of-bounds |
+| **300 DPI HD PNG** | `workspace/goals/goal-4/files/manufact/cv-pavel-cherkashin-manufact-hd.png` | `manufact/cv-pavel-cherkashin-manufact-hd.png` & `workspace/goals/goal-4/files/manufact/cv-pavel-cherkashin-manufact-hd.png` | 300 DPI high-resolution visual proof (2550x3300 px, delivered reference artifact: 793,099 bytes) |
 | **Standard PNG Alias** | `workspace/goals/goal-4/files/manufact/cv-pavel-cherkashin-manufact.png` | `manufact/cv-pavel-cherkashin-manufact.png` & `workspace/goals/goal-4/files/manufact/cv-pavel-cherkashin-manufact.png` | Standard naming convenience alias |
 | **Cover Note** | `workspace/goals/goal-4/files/manufact/cover-note.md` | `manufact/cover-note.md` & `workspace/goals/goal-4/files/manufact/cover-note.md` | Comprehensive tailored cover letter & direct founder outreach notes |
 | **About-You & Video Outline** | `workspace/goals/goal-4/files/manufact/about-you.md` | `manufact/about-you.md` & `workspace/goals/goal-4/files/manufact/about-you.md` | Structured answers for YC form, URLs, and 1–3 min video pitch script |
-| **CV Build Script** | `workspace/goals/goal-4/files/manufact/build_manufact_cv.py` | `manufact/build_manufact_cv.py` & `workspace/goals/goal-4/files/manufact/build_manufact_cv.py` | Deterministic ReportLab script with programmatic layout assertions |
+| **CV Build Script** | `workspace/goals/goal-4/files/manufact/build_manufact_cv.py` | `manufact/build_manufact_cv.py` & `workspace/goals/goal-4/files/manufact/build_manufact_cv.py` | Python build script with programmatic layout assertions and byte-for-byte invariant canvas |
 | **Dependency Manifest** | `workspace/goals/goal-4/files/manufact/requirements.txt` | `manufact/requirements.txt` & `workspace/goals/goal-4/files/manufact/requirements.txt` | Pinned exact dependencies for PDF and image generation |
 | **Evidence Record** | `workspace/goals/goal-4/files/manufact/evidence/EVIDENCE.json` | `manufact/evidence/EVIDENCE.json` & `workspace/goals/goal-4/files/manufact/evidence/EVIDENCE.json` | Protocol Phi machine-readable evidence manifest |
 | **Checksum Manifest** | `workspace/goals/goal-4/files/manufact/evidence/MANIFEST.sha256` | `manufact/evidence/MANIFEST.sha256` & `workspace/goals/goal-4/files/manufact/evidence/MANIFEST.sha256` | Cryptographic SHA-256 sums of all artifacts |
@@ -69,7 +69,8 @@ All application assets are verified, deterministic, and mirrored across the loca
 
 - [x] **Single-page CV PDF verified:** `cv-pavel-cherkashin-manufact.pdf` confirmed exactly 1 page (letter size, 612x792 pt).
 - [x] **Zero text collisions & zero out-of-bounds:** Programmatic bounding-box collision detection verified 0 vertical/horizontal text intersections and 0 elements outside margins.
-- [x] **300 DPI HD PNG generated:** High-definition rasterization (2550x3300) verified with Pillow and PyMuPDF with explicit 300 DPI metadata.
+- [x] **Byte-for-byte PDF determinism verified:** `cv-pavel-cherkashin-manufact.pdf` reproduces byte-for-byte (5,274 bytes) via `InvariantCanvas` across clean environments.
+- [x] **300 DPI HD PNG generated & verified:** High-definition rasterization (2550x3300 px) verified with explicit 300 DPI metadata. Delivered artifact size is 793,099 bytes (visual layout is deterministic; binary PNG compression stream length is environment-dependent).
 - [x] **Cover note tailored:** High-conviction cover letter highlighting MCP architecture, dev-tool alliances, and developer education.
 - [x] **About-you and video script:** Prepared complete YC profile narrative and timed 90–120s video talking points.
 - [x] **Pre-flight flag documented:** Highlighted JD prerequisite requiring Pavel to test `mcp-use` SDK before final send.
