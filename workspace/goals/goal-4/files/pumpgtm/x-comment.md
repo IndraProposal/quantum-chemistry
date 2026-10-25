@@ -2,8 +2,9 @@
 
 **Target Post:** Namanyay Goel ([@NamanyayG](https://x.com/NamanyayG), Y Combinator Founder) hiring post for Full-Stack Engineer, GTM product
 **Account:** Pavel Cherkashin ([@cherkashin](https://x.com/cherkashin))
-**Submission Status:** Posted by Principal Pavel Cherkashin on 2026-10-24 at 22:49 PDT; liked by Namanyay Goel at ~23:15 PDT (confirmed in Linear MIN-214: X comment posted + Google Form submitted)
-**Permalink Note:** Posted directly via X web interface by Principal Pavel Cherkashin; specific comment snowflake ID was not synced into the local git workspace. Exact text verified below.
+**Permalink:** NOT RECORDED
+**Submission Status:** Recorded in Linear MIN-214 as posted by Principal Pavel Cherkashin on 2026-10-24 at 22:49 PDT and liked by Namanyay Goel at ~23:15 PDT; live permalink was not recorded in local workspace or git repository.
+**Verification Notice:** Because the live tweet snowflake URL is NOT RECORDED, the live publication, founder reaction, and exact match to the posted comment cannot be independently verified from repository artifacts alone. The preserved comment text draft is provided below.
 
 ---
 

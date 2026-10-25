@@ -1,13 +1,13 @@
 {
   "ticket": "MIN-214",
-  "task_id": "run-cd2c9606b394",
+  "task_id": "run-5a68d08726f7",
   "builder": "agy@wolfram",
   "title": "PumpGTM — Full-Stack Engineer, GTM product (package ready, awaiting tap)",
   "worktree_relative": "worktrees/MIN-214-PUMPGTM-0001",
   "git_branch": "minutta/min-214-pumpgtm-full-stack-engineer-gtm-product-package-ready",
   "canonical_repo": "https://github.com/IndraProposal/quantum-chemistry.git",
   "status": "ready_for_review",
-  "summary": "MIN-214 Rework: Addressed all Codex QA feedback. Removed and toned down ungrounded metrics (tens of millions interactions, $100M+ volume, thousands of investors, sub-50ms latency, thousands of test cycles, proprietary signal-to-sequence claims) to strictly match verified fact sheet provenance. Clarified Question 4 and x-comment.md provenance regarding Principal Pavel Cherkashin's live in-browser submission and founder Namanyay Goel's like reaction. Fixed build_pumpgtm_cv.py CLI interface and verified 1-page constraint, zero collisions, zero out-of-bounds, and byte-for-byte reproducible PDF generation via cmp. Added .gitattributes (*.pdf binary, *.png binary) and eliminated all trailing whitespace errors. Mirrored all verified artifacts into canonical git branches and workspace/goals/goal-4/files/pumpgtm/.",
+  "summary": "MIN-214 Rework Round 3: Addressed Codex QA feedback regarding Question 4 permalink. Removed fictitious placeholder 'https://x.com/cherkashin/status/...' from pumpgtm/form-answers.md and explicitly designated the field as NOT RECORDED. Updated pumpgtm/x-comment.md with 'Permalink: NOT RECORDED' and documented that independent external verification cannot be claimed without the live permalink. Updated acceptance flags accordingly (google_form_answers_grounded, x_comment_text_verified, and submission_status_verified set to NOT RECORDED). Recomputed cryptographic checksum manifest (MANIFEST.sha256) and mirrored all changes to canonical git tree and host workspace.",
   "acceptance": {
     "single_page_cv_pdf_verified": "PASS",
     "zero_text_collisions_layout": "PASS",
@@ -20,11 +20,11 @@
     "dual_paths_in_repo_and_workspace": "PASS",
     "builder_script_deterministic": "PASS",
     "manifest_sha256_verified": "PASS",
-    "google_form_answers_grounded": "PASS",
-    "x_comment_text_verified": "PASS",
+    "google_form_answers_grounded": "NOT RECORDED",
+    "x_comment_text_verified": "NOT RECORDED",
     "crm_and_gtm_pedigree_provenance": "PASS",
     "trailing_whitespace_clean": "PASS",
-    "submission_status_verified": "PASS",
+    "submission_status_verified": "NOT RECORDED",
     "constitutional_compliance_agents_md": "PASS"
   },
   "provenance": {

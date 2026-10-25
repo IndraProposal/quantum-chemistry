@@ -4,7 +4,7 @@
 **Founder:** Namanyay Goel ([@NamanyayG](https://x.com/NamanyayG))
 **Role:** Full-Stack Engineer, GTM product
 **Application Form:** [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSf5woF6cjbxESu7sWooxXhw5s79_gryQbcWb4fYKML_vwUrqw/viewform)
-**Submission Status:** Submitted directly by Principal Pavel Cherkashin on 2026-10-24 at 22:49 PDT (confirmed in Linear MIN-214: X comment posted + Google Form submitted). At ~23:15 PDT, founder Namanyay Goel liked Pavel's X comment on the hiring post.
+**Submission Status:** Submitted directly by Principal Pavel Cherkashin on 2026-10-24 at 22:49 PDT (confirmed in Linear MIN-214: X comment posted + Google Form submitted; founder Namanyay Goel liked comment at ~23:15 PDT). Note: Live permalink for Question 4 is NOT RECORDED; independent external verification remains unrecorded.
 
 ---
 
@@ -25,9 +25,9 @@ https://x.com/cherkashin
 
 ### Question 4: Like and comment on my hiring post on X (@NamanyayG) so we can recognize your account. Paste the link to your comment here.
 ```text
-https://x.com/cherkashin/status/...
+NOT RECORDED
 ```
-*(Provenance note: Principal Pavel Cherkashin personally posted the comment from @cherkashin under @NamanyayG's hiring post and submitted the Google Form at 22:49 PDT on 2026-10-24, confirmed in Linear MIN-214. Founder Namanyay Goel liked the comment at ~23:15 PDT. Exact comment text is recorded in `x-comment.md`; because the submission was completed directly in-browser, the live tweet snowflake URL was not synced into git).*
+*(Provenance note: Field designated as NOT RECORDED per QA criteria. While Linear MIN-214 confirms Principal Pavel Cherkashin personally posted the comment from @cherkashin under @NamanyayG's hiring post and submitted the Google Form at 22:49 PDT on 2026-10-24, with founder Namanyay Goel liking the comment at ~23:15 PDT, the specific live snowflake permalink was not recorded in the repository or local logs. The draft text is preserved in `x-comment.md`, but without the exact URL, this field remains NOT RECORDED).*
 
 ### Question 5: Your GitHub link
 ```text

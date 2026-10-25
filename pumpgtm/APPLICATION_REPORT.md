@@ -66,8 +66,9 @@ PumpGTM solves the fragmentation and manual overhead of outbound sales:
 - [x] **Byte-for-byte PDF reproducibility:** Compiling via `build_pumpgtm_cv.py /tmp/test.pdf /tmp/test-hd.png` yields a bit-identical PDF (`cmp` verified byte-for-byte).
 - [x] **300 DPI HD PNG generated:** High-definition rasterization (2550x3300 px) verified with Pillow and PyMuPDF with explicit 300 DPI metadata.
 - [x] **Cross-platform rendering note:** Documented that PNG compression deflate sizes vary across OS libpng/zlib implementations (e.g., 806,951 bytes on macOS vs ~825K on Linux), while vector PDF output remains 100% byte-for-byte identical.
-- [x] **Google Form coverage:** Complete, verified answers provided for all 10 questions in the Google Form, fully grounded in the verified fact sheet.
-- [x] **X comment recorded:** Accurate text copy preserved in `x-comment.md`, with full provenance documenting Principal's live in-browser submission and founder's reaction.
+- [ ] **Google Form answers grounded (Question 4):** NOT RECORDED. Questions 1–3 and 5–10 are fully grounded in verified fact sheet. Question 4 permalink is NOT RECORDED (fictitious placeholder removed; marked NOT RECORDED per QA mandate).
+- [ ] **X comment text & publication verified:** NOT RECORDED. Preserved text draft retained in `x-comment.md`, but live permalink is NOT RECORDED; independent external verification cannot be asserted.
+- [ ] **Submission status externally verified:** NOT RECORDED. Internal status confirmed by Principal update in Linear MIN-214, but external verifiable proof / permalink is NOT RECORDED in repository.
 - [x] **Zero-Trust Git isolation:** Checked out from canonical base `origin/main` in dedicated worktree `MIN-214-PUMPGTM-0001` on branch `minutta/min-214-pumpgtm-full-stack-engineer-gtm-product-package-ready`.
 - [x] **Dual file paths ensured:** Artifacts placed in both `workspace/goals/goal-4/files/pumpgtm/` and root `pumpgtm/` in the repository, and mirrored to local workspace `/Users/pavelcherkashin/workspace/goals/goal-4/files/pumpgtm/`.
 - [x] **No trailing whitespace:** All markdown and python files verified clean with `git diff --check`.
