@@ -1,0 +1,5 @@
+# Pin exact dependencies for byte-for-byte reproducible PDF rendering
+reportlab==5.1.0
+PyMuPDF==2.0
+pypdf==6.21.2
+Pillow==12.3.0
