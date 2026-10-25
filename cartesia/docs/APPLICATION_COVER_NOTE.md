@@ -21,7 +21,7 @@ Cartesia's trajectory—from pioneering State Space Models (SSMs) at the Stanfor
 Why my background directly fits this mandate:
 1. Agent Harnesses & Daemon Runtimes: I am the architect of fleetd, a high-performance monolithic daemon written in Rust that manages multi-agent concurrency, slot scheduling (WIP=1), deterministic task dispatch, and autonomous backlog vacuuming across distributed macOS nodes. I live and breathe agent harness orchestration, process isolation, and state machine design.
 2. Latency Profiling & Systems Telemetry: I have built real-time telemetry streaming and latency monitoring pipelines that capture Time-To-First-Token (TTFT), tool-call execution latency, and socket transport metrics, identifying runtime contention across multi-agent loops and shaving critical milliseconds off turn-taking pipelines.
-3. Eval Suites & LLM Judges: I built continuous evaluation substrates (Protocol Phi) that combine programmatic layout and functional assertions with LLM-as-judge scoring, enforcing deterministic regression testing before any release hits production.
+3. Evaluation Suites & QA Verification: I built continuous evaluation substrates (Protocol Phi) combining programmatic layout and functional assertions with multi-tier cross-model review gates (Gemini, Codex, Claude), enforcing deterministic regression testing before any release hits production.
 4. Production Distributed Systems: Decades of distributed systems engineering, high-throughput event-driven architectures, and API platforms built for resilience under burst load.
 5. Coding-Agent Fluency: I build using coding agents daily as core development multipliers, keeping pace with the frontier across Claude Code, Gemini CLI, and custom agent tool protocols.
 
@@ -44,7 +44,7 @@ Hi Aalok,
 
 Saw your post regarding Cartesia's Software Engineer, Agent Harness role for Managed Agents.
 
-I am an SF-based systems engineer and agent harness builder (architect of fleetd, a Rust multi-agent daemon, slot concurrency, and continuous eval/LLM-judge substrates). I focus on sub-second conversational latency profiling, streaming transport, and deployment resilience under load.
+I am an SF-based systems engineer and agent harness builder (architect of fleetd, a Rust multi-agent daemon, slot concurrency, and continuous evaluation/QA substrates). I focus on sub-second conversational latency profiling, streaming transport, and deployment resilience under load.
 
 Submitted my application directly via Ashby. Excited about what Cartesia is building with SSMs and real-time voice agents!
 

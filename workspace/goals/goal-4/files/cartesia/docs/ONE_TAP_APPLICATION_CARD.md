@@ -18,7 +18,7 @@
   1. *Realtime Transport Layer:* Streaming audio between users and agents across web, mobile SDKs, and telephony without regressing latency or audio fidelity.
   2. *Conversational Latency:* Tracing and cutting end-to-end latency across STT, LLM, and TTS pipelines (minimizing time-to-first-token and time-to-first-audio-packet).
   3. *Deployment Resilience:* Fast cold starts, intelligent autoscaling, and graceful degradation under load spikes.
-  4. *Eval Suites & LLM Judges:* Creating rigorous evaluation suites, LLM-as-judge scoring, and regression tracking before release.
+  4. *Evaluation Suites & Regression Catching:* Creating rigorous evaluation suites, multi-tier QA gates, and latency/quality regression tracking before release.
 
 ---
 
@@ -26,7 +26,7 @@
 
 ### High Conviction Strengths
 - **Agent Harnesses in Production Today:** Architect of `fleetd` (Rust monolithic daemon with slot scheduling, autonomous vacuum, WIP limits, zero-trust git handoffs) and multi-agent coordination meshes.
-- **Continuous Evaluation & QA Gates:** Built Protocol Phi and multi-tier regression test suites combining programmatic layout/functional checks with LLM-as-judge scoring.
+- **Continuous Evaluation & QA Gates:** Built Protocol Phi and multi-tier regression test suites combining programmatic layout/functional checks with cross-model audit gates.
 - **Coding-Agent Fluency:** Daily power user of frontier coding agents (Claude Code, Gemini CLI, OpenAI SDKs) operating at maximum velocity.
 - **Distributed Backend Foundations:** Decades of systems architecture, low-latency API design, scalable service backends, and fault-tolerant queue-based orchestration.
 

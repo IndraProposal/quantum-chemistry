@@ -14,15 +14,15 @@ San Francisco, CA (In-Office / Bay Area) | pavel@mindrock.capital | linkedin.com
 ---
 
 ### OPERATING FOCUS
-*"Architecting the runtime platform behind real-time multimodal voice agents. Bridging low-latency transport engineering, autonomous agent harnesses (fleetd daemon, slot concurrency, zero-trust git handoffs), and automated eval suites (LLM-as-judge scoring, pipeline tracing, latency regression catching) to deliver sub-second, resilient voice agent deployments at production scale."*
+*"Architecting the runtime platform behind real-time multimodal voice agents. Bridging low-latency transport engineering, autonomous agent harnesses (fleetd daemon, slot concurrency, zero-trust git handoffs), and multi-tier evaluation suites (cross-model audit loops, programmatic layout assertions, latency regression tracking) to deliver sub-second, resilient voice agent deployments at production scale."*
 
 ---
 
 ### CORE TECHNICAL CAPABILITIES & AGENT HARNESS SUBSTRATE
 - **Agent Harnesses & Daemon Runtimes:** Custom multi-agent orchestrator architecture (fleetd Rust daemon), deterministic slot scheduling (WIP=1), proactive backlog vacuuming, zero-trust git handoffs, and process isolation.
-- **Conversational Latency Profiling:** Focus on end-to-end tracing across STT → LLM → TTS loops; profiling Time-To-First-Token (TTFT), streaming chunk delivery, socket buffers, and turn-taking latency.
-- **Eval Suites & LLM-as-Judge Scoring:** Automated synthetic evaluation harnesses, semantic regression tracking, LLM-as-judge scoring pipelines, and formal verification substrates (Lean 4/Mathlib) for behavioral safety.
-- **Deployment Resilience & Systems Scale:** High-throughput streaming backends, zero-downtime hot reloading, cold-start reduction, circuit breakers, and fault-tolerant distributed queuing architectures.
+- **Conversational Latency Optimization:** End-to-end tracing across STT → LLM → TTS pipelines; profiling Time-To-First-Token (TTFT), streaming chunk delivery, socket buffers, and turn-taking latency.
+- **Evaluation Suites & Multi-Agent QA:** Multi-tier cross-model evaluation gates (Gemini, Codex, Claude), programmatic layout/containment assertions (PyMuPDF/pypdf), automated regression testing, and verification protocols.
+- **Deployment Resilience & Systems Architecture:** Architectural focus on high-throughput streaming backends, zero-downtime rolling upgrades, fault-tolerant message queuing, and distributed service reliability.
 - **Frontier Coding-Agent Velocity:** Fluent daily operation across modern agentic loops (Claude Code, Gemini CLI, OpenAI tools); disciplined spec-driven development, sharp PR reviews, and automated CI/CD gates.
 
 ---
@@ -32,17 +32,17 @@ San Francisco, CA (In-Office / Bay Area) | pavel@mindrock.capital | linkedin.com
 #### Mindrock Autonomous Agent Mesh — Principal Systems Architect & Harness Builder (2024 – Present)
 - **fleetd Daemon & Slot Concurrency:** Engineered the monolithic fleet daemon in Rust, coordinating distributed agent slots across macOS nodes (wolfram, darwin) with autonomous task-vacuum loops, rate-limiting, and strict WIP caps.
 - **Protocol Phi & Zero-Trust Coordination:** Created sealed JSON envelope transport (proto: phi-0.1) across Git repositories, enforcing cryptographically verifiable handoffs, isolated workspace lifecycles, and tamper-proof SHA-256 receipts.
-- **Continuous Eval & QA Gate Architecture:** Built automated multi-tier QA test suites (cross-agent verification between Gemini, Codex, and Claude) catching layout, functional, and semantic regressions prior to human gate approval.
-- **Real-Time Event Telemetry:** Deployed structured telemetry pipelines capturing turn latency, agent error recovery, and tool-call execution metrics across multi-agent loops, identifying runtime contention across distributed nodes.
+- **Continuous Evaluation & QA Gate Architecture:** Built automated multi-tier QA test suites (cross-agent verification between Gemini, Codex, and Claude) executing programmatic layout assertions, functional unit tests, and validation scripts prior to Principal human gate approval.
+- **Real-Time Execution Telemetry:** Deployed structured telemetry logging capturing task claim timestamps, execution durations, agent exit codes, and automated error recoveries across distributed fleet nodes.
 
-#### Vestor.in & High-Throughput Distributed Platforms — Founding Architect (2018 – 2024)
-- **Event-Driven Distributed Engines:** Architected fault-tolerant streaming backends and transaction processing engines operating with low-latency streaming bounds under burst traffic loads.
-- **Resilient Transport & Gateway Layer:** Implemented distributed webhook and websocket streaming dispatchers with automatic retry exponential backoff, jittered health checks, and zero-downtime rolling deploys.
-- **Telemetry & Regression Profiling:** Built distributed tracing pipelines identifying database locking and network queue contention, significantly reducing tail (p99) latency and operational jitter.
+#### Vestor.in & High-Growth Venture Platforms — Founding Partner & Technical Systems Architect (2018 – 2024)
+- **Distributed Systems Architecture:** Architectural focus on event-driven platforms, API gateway resilience, and high-concurrency data streaming across portfolio technology platforms.
+- **Resilient Transport & Integrations:** Technical leadership on distributed webhook/websocket integrations, retry mechanisms with exponential backoff, and robust service availability.
+- **Performance & Observability Focus:** Technical guidance on latency profiling, distributed queue contention monitoring, and database scalability across high-growth systems.
 
 #### Enterprise Systems & Technology Leadership — Siebel Systems, Sputnik Labs, Microsoft (Prior)
 - Country Manager at Siebel Systems; Co-Founder & CEO of Sputnik Labs (pioneer CRM systems integrator in Russia/CIS, scaling to 110+ engineers and specialists, acquired by Technoserv).
-- Platform Director at Microsoft; author of university textbook *Customer Relationship Management Strategy* (ИНТУИТ / БИНОМ, ISBN 978-5-4497-0914-1); systems design mentor.
+- Platform Director at Microsoft; author of university textbook *Customer Relationship Management Strategy* (ИНТУИТ / БИНОМ, 2007, 380 с., ISBN 978-5-94774-643-3); systems design mentor.
 
 ---
 

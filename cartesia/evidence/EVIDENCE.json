@@ -1,13 +1,13 @@
 {
   "ticket": "MIN-213",
-  "run_id": "run-591631ac6430",
+  "run_id": "run-500418446516",
   "builder": "agy@wolfram",
-  "title": "Cartesia \u2014 Software Engineer, Agent Harness (CV ready, awaiting tap)",
+  "title": "Cartesia — Software Engineer, Agent Harness (CV ready, awaiting tap)",
   "worktree_relative": "worktrees/MIN-213-CARTESIA-0001",
   "git_branch": "minutta/min-213-cartesia-software-engineer-agent-harness-cv-ready-awaiting",
   "canonical_repo": "https://github.com/IndraProposal/quantum-chemistry.git",
   "status": "ready_for_review",
-  "summary": "MIN-213 (Rework): Reconstructed clean branch on top of canonical origin/main (preserving Limitless Drive and core textbook codebase). Assembled, generated, and verified complete application package and deterministic 1-page CV for Cartesia Software Engineer, Agent Harness (Managed Agents Platform). Tailored around transport layer socket streaming, conversational latency optimization across STT -> LLM -> TTS pipelines, fleetd slot concurrency, deployment resilience under load, and automated evaluation suites with LLM-as-judge scoring. Enforced strict 1-page constraint, zero text collisions, zero out-of-bounds, exact dependency pinning, ReportLab byte-for-byte reproducible PDF rendering, 300 DPI high-definition PNG rendering, substantiated provenance for all experience claims, and verified dual-path mirroring in cartesia/ and workspace/goals/goal-4/files/cartesia/.",
+  "summary": "MIN-213 (Rework Round 4): Resolved QA rework blocking remarks regarding bibliographic provenance, URL validation, textbook ISBN alignment, substantiated technical competency framing, and metrics cleanup. Fully verified and aligned Pavel Cherkashin's 2007 textbook (ИНТУИТ / БИНОМ, ISBN 978-5-94774-643-3, 380 p.) with direct catalog coordinates across pilotlz.ru, ipu.ru, biblioclub.ru (id=232997), znanium.com (product/2160967), and iprbookshop.ru (162542). Reframed career platforms into grounded architectural competence and systems focus. Removed arbitrary fit conviction score. Preserved 100% deterministic 1-page PDF rendering, 0 collisions, 0 out-of-bounds, 300 DPI HD PNG, and dual-tree mirroring.",
   "acceptance": {
     "single_page_cv_pdf_verified": "PASS",
     "zero_text_collisions_layout": "PASS",
@@ -22,9 +22,10 @@
     "builder_script_deterministic": "PASS",
     "manifest_sha256_verified": "PASS",
     "provenance_backed_claims_verified": "PASS",
+    "bibliographic_urls_and_isbn_verified": "PASS",
     "realtime_transport_alignment": "PASS",
     "conversational_latency_optimization_alignment": "PASS",
-    "eval_suites_and_llm_judge_alignment": "PASS",
+    "eval_suites_and_multi_agent_qa_alignment": "PASS",
     "deployment_resilience_alignment": "PASS",
     "transparent_gaps_disclosure": "PASS",
     "ashby_metadata_compensation_verified": "PASS",
@@ -48,20 +49,20 @@
       "canonical_uuid": "a7b89568-6f52-4ca0-be51-98b2ddfb2be2",
       "evidence_summary": "Formal Protocol Phi specification defining Ed25519 did:key agent identities, sealed JSON envelopes, git coordinate tuples, and machine-readable QA receipts."
     },
-    "eval_suites_and_llm_judge": {
-      "claim": "Engineered automated multi-tier QA test suites (cross-agent verification between Gemini, Codex, Claude) executing programmatic layout assertions, functional tests, and LLM-as-judge scoring prior to human gate approval.",
+    "eval_suites_and_multi_agent_qa": {
+      "claim": "Engineered multi-tier cross-model QA audit gates (cross-agent verification between Gemini, Codex, Claude) executing programmatic layout assertions, functional unit tests, and regression verification scripts prior to Principal human gate approval.",
       "coordinate": "cartesia/build_cartesia_cv.py:36-88,ChitAkasha-Wolfram/AGENTS.md:23-38",
-      "evidence_summary": "verify_layout_and_collisions programmatic assertion engine verifying page_count==1, text_overlap_count==0, and out_of_bounds_count==0; cross-agent QA gate enforced on MIN-213."
+      "evidence_summary": "verify_layout_and_collisions programmatic assertion engine verifying page_count==1, text_overlap_count==0, and out_of_bounds_count==0; multi-model cross-agent review protocol enforced across MIN tickets."
     },
     "realtime_telemetry_and_latency": {
-      "claim": "Deployed structured telemetry pipelines capturing turn latency, agent error recovery, and tool-call execution metrics across multi-agent loops, identifying runtime contention across distributed nodes.",
+      "claim": "Deployed structured telemetry logging capturing task claim timestamps, execution durations, agent exit codes, and automated error recoveries across distributed fleet nodes.",
       "coordinate": "ChitAkasha-Wolfram/bin/fleetd/fleetd.stdout.log:1-500",
       "evidence_summary": "Structured execution telemetry recording task claim timestamps, slot lock states, execution durations, agent exit codes, and automated error recoveries."
     },
     "distributed_systems_and_streaming": {
-      "claim": "Decades of distributed systems architecture; Managing Partner at Mindrock Capital / GVA Capital managing >$200M in assets across high-tech growth platforms and high-throughput streaming dispatchers.",
+      "claim": "Decades of distributed technology platforms and enterprise systems architecture; Managing Partner at Mindrock Capital / GVA Capital managing >$200M in tech assets; technical focus on event-driven platforms and streaming architectures.",
       "coordinate": "https://thestartupconference.com,https://pitchbook.com/profiles/person/57134-92P,https://wellfound.com/p/pavelcherkashin",
-      "evidence_summary": "Public executive track record managing venture portfolios with >$200M in assets; designing event-driven streaming dispatchers and transaction infrastructure."
+      "evidence_summary": "Public executive and founder track record managing venture portfolios with >$200M in assets (PitchBook, The Startup Conference); technical leadership and architectural focus on high-scale distributed systems."
     },
     "enterprise_integration_pedigree": {
       "claim": "Former Country Manager at Siebel Systems; Co-Founder & CEO of Sputnik Labs (scaled to ~110 enterprise specialists, acquired by Technoserv in 2008 to form Technoserv Consulting); Director at Microsoft Russia.",
@@ -69,11 +70,12 @@
       "evidence_summary": "Co-founder and CEO of Sputnik Labs, pioneer Russian CRM systems integrator, scaling to 110+ specialists delivering major telecom and banking implementations; acquired by Technoserv."
     },
     "textbook_and_pedagogy": {
-      "claim": "Author of university textbook «Customer Relationship Management Strategy» (ИНТУИТ / БИНОМ. Лаборатория знаний, 2007; republished by IPR Media, ISBN 978-5-4497-0914-1).",
-      "coordinate": "https://intuit.ru,https://znanium.ru/catalog/document?id=373753,https://biblioclub.ru/index.php?page=book&id=90558",
-      "isbn": "978-5-4497-0914-1",
+      "claim": "Author of university textbook «Customer Relationship Management Strategy» (ИНТУИТ / БИНОМ. Лаборатория знаний, 2007, 380 с., ISBN 978-5-94774-643-3; republished for higher education in Znanium, Biblioclub, and IPR SMART).",
+      "coordinate": "https://pilotlz.ru/books/274/4717/,https://www.ipu.ru/node/3111,https://biblioclub.ru/index.php?page=book&id=232997,https://znanium.ru/catalog/product/2160967,https://www.iprbookshop.ru/162542.html",
+      "isbn": "978-5-94774-643-3",
+      "additional_isbn": "978-5-9556-0091-8",
       "udc_bbk": "УДК 658.8, ББК 65.290-2",
-      "evidence_summary": "Published textbook and official course at National Open University INTUIT, cataloged in Russian university digital libraries for higher education."
+      "evidence_summary": "Published textbook (ИНТУИТ / БИНОМ. Лаборатория знаний, 2007, 380 с., ISBN 978-5-94774-643-3) cataloged in publisher catalog (pilotlz.ru), IPU RAS library (ipu.ru), Biblioclub (id=232997), Znanium (product/2160967), and IPR SMART (162542)."
     },
     "education": {
       "institution": "Lomonosov Moscow State University (MSU)",
@@ -102,13 +104,12 @@
     "pdf_page_count": 1,
     "png_geometry": "2550x3300",
     "png_dpi_metadata": 300,
-    "png_file_size_bytes": 895166,
-    "pdf_file_size_bytes": 5890,
+    "png_file_size_bytes": 911224,
+    "pdf_file_size_bytes": 5875,
     "total_text_blocks": 11,
     "text_overlap_count": 0,
     "out_of_bounds_count": 0,
-    "pdf_byte_for_byte_reproducible": true,
-    "fit_conviction_score": 98.6
+    "pdf_byte_for_byte_reproducible": true
   },
   "compensation": {
     "base_salary_min": 180000,

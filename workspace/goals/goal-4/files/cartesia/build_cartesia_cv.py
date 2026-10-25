@@ -194,7 +194,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-cartesia.pdf", output_png="cv-pave
     
     # 2. Hero Callout Box
     hero_p = Paragraph(
-        "<b>Operating Focus:</b> <i>\"Architecting the runtime platform behind real-time multimodal voice agents. Bridging low-latency transport engineering, autonomous agent harnesses (fleetd daemon, slot concurrency, zero-trust git handoffs), and automated eval suites (LLM-as-judge scoring, pipeline tracing, latency regression catching) to deliver sub-second, resilient voice agent deployments at production scale.\"</i>",
+        "<b>Operating Focus:</b> <i>\"Architecting the runtime platform behind real-time multimodal voice agents. Bridging low-latency transport engineering, autonomous agent harnesses (fleetd daemon, slot concurrency, zero-trust git handoffs), and multi-tier evaluation suites (cross-model audit loops, programmatic layout assertions, latency regression tracking) to deliver sub-second, resilient voice agent deployments at production scale.\"</i>",
         hero_style
     )
     hero_table = Table([[hero_p]], colWidths=[usable_width])
@@ -214,8 +214,8 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-cartesia.pdf", output_png="cv-pave
     skills_text = (
         "&bull; <b>Agent Harnesses &amp; Daemon Runtimes:</b> Custom multi-agent orchestrator architecture (fleetd Rust daemon), deterministic slot scheduling (WIP=1), proactive backlog vacuuming, zero-trust git handoffs, and process isolation.<br/>"
         "&bull; <b>Conversational Latency Optimization:</b> End-to-end tracing across STT &rarr; LLM &rarr; TTS pipelines; profiling Time-To-First-Token (TTFT), streaming chunk delivery, socket buffers, and turn-taking latency.<br/>"
-        "&bull; <b>Eval Suites &amp; LLM-as-Judge Scoring:</b> Automated synthetic evaluation harnesses, semantic regression tracking, LLM-as-judge scoring pipelines, and formal verification substrates (Lean 4/Mathlib) for behavioral safety.<br/>"
-        "&bull; <b>Deployment Resilience &amp; Systems Scale:</b> High-throughput streaming backends, zero-downtime hot reloading, cold-start reduction, circuit breakers, and fault-tolerant distributed queuing architectures.<br/>"
+        "&bull; <b>Evaluation Suites &amp; Multi-Agent QA:</b> Multi-tier cross-model evaluation gates (Gemini, Codex, Claude), programmatic layout/containment assertions (PyMuPDF/pypdf), automated regression testing, and verification protocols.<br/>"
+        "&bull; <b>Deployment Resilience &amp; Systems Architecture:</b> Architectural focus on high-throughput streaming backends, zero-downtime rolling upgrades, fault-tolerant message queuing, and distributed service reliability.<br/>"
         "&bull; <b>Frontier Coding-Agent Velocity:</b> Fluent daily operation across modern agentic loops (Claude Code, Gemini CLI, OpenAI tools); disciplined spec-driven development, sharp PR reviews, and automated CI/CD gates."
     )
     story.append(Paragraph(skills_text, bullet_style))
@@ -230,19 +230,19 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-cartesia.pdf", output_png="cv-pave
     mindrock_bullets = (
         "&bull; <b>fleetd Daemon &amp; Slot Concurrency:</b> Engineered the monolithic fleet daemon in Rust, coordinating distributed agent slots across macOS nodes (wolfram, darwin) with autonomous task-vacuum loops, rate-limiting, and strict WIP caps.<br/>"
         "&bull; <b>Protocol Phi &amp; Zero-Trust Coordination:</b> Created sealed JSON envelope transport (proto: phi-0.1) across Git repositories, enforcing cryptographically verifiable handoffs, isolated workspace lifecycles, and tamper-proof SHA-256 receipts.<br/>"
-        "&bull; <b>Continuous Eval &amp; QA Gate Architecture:</b> Built automated multi-tier QA test suites (cross-agent verification between Gemini, Codex, and Claude) catching layout, functional, and semantic regressions prior to human gate approval.<br/>"
-        "&bull; <b>Real-Time Event Telemetry:</b> Deployed structured telemetry pipes capturing turn latency, agent error recovery, and tool-call execution metrics, identifying runtime contention and latency regressions across distributed nodes."
+        "&bull; <b>Continuous Evaluation &amp; QA Gate Architecture:</b> Built automated multi-tier QA test suites (cross-agent verification between Gemini, Codex, and Claude) executing programmatic layout assertions, functional unit tests, and validation scripts prior to Principal human gate approval.<br/>"
+        "&bull; <b>Real-Time Execution Telemetry:</b> Deployed structured telemetry logging capturing task claim timestamps, execution durations, agent exit codes, and automated error recoveries across distributed fleet nodes."
     )
     story.append(Paragraph(mindrock_bullets, bullet_style))
     story.append(Spacer(1, 2.5))
     
-    # Vestor.in / High-Throughput
-    vestor_header = "<b>Vestor.in &amp; High-Throughput Distributed Platforms</b> &mdash; <i>Founding Architect</i> <font color='#475569'>| 2018 &ndash; 2024</font>"
+    # Vestor.in / High-Growth Platforms
+    vestor_header = "<b>Vestor.in &amp; High-Growth Venture Platforms</b> &mdash; <i>Founding Partner &amp; Technical Systems Architect</i> <font color='#475569'>| 2018 &ndash; 2024</font>"
     story.append(Paragraph(vestor_header, body_style))
     vestor_bullets = (
-        "&bull; <b>Event-Driven Distributed Engines:</b> Architected fault-tolerant streaming backends and transaction processing engines operating with low-latency streaming bounds under burst traffic loads.<br/>"
-        "&bull; <b>Resilient Transport &amp; Gateway Layer:</b> Implemented distributed webhook and websocket streaming dispatchers with automatic retry exponential backoff, jittered health checks, and zero-downtime rolling deploys.<br/>"
-        "&bull; <b>Telemetry &amp; Regression Profiling:</b> Built distributed tracing pipelines identifying database locking and network queue contention, significantly reducing tail (p99) latency and operational jitter."
+        "&bull; <b>Distributed Systems Architecture:</b> Architectural focus on event-driven platforms, API gateway resilience, and high-concurrency data streaming across portfolio technology platforms.<br/>"
+        "&bull; <b>Resilient Transport &amp; Integrations:</b> Technical leadership on distributed webhook/websocket integrations, retry mechanisms with exponential backoff, and robust service availability.<br/>"
+        "&bull; <b>Performance &amp; Observability Focus:</b> Technical guidance on latency profiling, distributed queue contention monitoring, and database scalability across high-growth systems."
     )
     story.append(Paragraph(vestor_bullets, bullet_style))
     story.append(Spacer(1, 2.5))
@@ -252,7 +252,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-cartesia.pdf", output_png="cv-pave
     story.append(Paragraph(early_header, body_style))
     early_bullets = (
         "&bull; Country Manager at Siebel Systems; Co-Founder &amp; CEO of Sputnik Labs (pioneer CRM systems integrator in Russia/CIS, scaling to 110+ engineers and specialists, acquired by Technoserv).<br/>"
-        "&bull; Platform Director at Microsoft; author of university textbook <i>Customer Relationship Management Strategy</i> (ИНТУИТ / БИНОМ, ISBN 978-5-4497-0914-1); systems design mentor."
+        "&bull; Platform Director at Microsoft; author of university textbook <i>Customer Relationship Management Strategy</i> (ИНТУИТ / БИНОМ, 2007, 380 с., ISBN 978-5-94774-643-3); systems design mentor."
     )
     story.append(Paragraph(early_bullets, bullet_style))
     story.append(Spacer(1, 2.5))
