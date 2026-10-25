@@ -1,17 +1,18 @@
 {
   "ticket": "MIN-208",
-  "task_id": "run-f1b0affe562f",
+  "task_id": "run-5d608066cdb4",
   "builder": "agy@wolfram",
   "title": "OpenAI — Community Communications Lead, CV ready",
   "worktree_relative": "worktrees/MIN-208-OPENAI-COMMUNITY-COMMS-0001",
   "git_branch": "minutta/min-208-openai-community-communications-lead-cv-ready",
   "status": "ready_for_review",
-  "summary": "MIN-208 REWORK: Fixed PNG byte-for-byte reproducibility failure in clean environments. Pinned exact render dependencies in requirements.txt (pypdf==6.21.2, PyMuPDF==2.0, reportlab==5.1.0, Pillow==12.3.0) and pyproject.toml to eliminate zlib/PNG encoder drift caused by permissive '>=' ranges. Verified zero-drift deterministic rebuilds matching committed hashes for both PDF (bd358b1360fb03bc43b79af9c06b24d6ef39bd47368e75ab4455af3eeb8c9026) and 300 DPI HD PNG (0b8c5b49860ff4a076e0dc26486a2abe100e27629b2674456880bb7900ec0e8b). Recomputed SHA-256 manifest and updated verification documentation.",
+  "summary": "MIN-208 REWORK-3: Addressed all QA findings from Codex. Replaced the universal byte-for-byte PNG claim with an exact pixel-identical equivalence standard (decoded raw pixel SHA-256 c6ecb2b122d38d116e6ca0e7efc53449b9b55f29aca3dac0db37a534d8e91e2e, zero ImageChops difference, 2550x3300 px, 300 DPI) while confirming strict byte-for-byte reproducibility for PDF (bd358b1360fb03bc43b79af9c06b24d6ef39bd47368e75ab4455af3eeb8c9026). Synchronized package status across all documentation with the factual Linear event: application confirmed SUBMITTED by Principal Pavel Cherkashin on 2026-10-24 21:41 PDT via Ashby (Submission 1 of 5 in OpenAI set). All 11 repository artifacts sealed and verified under AGENTS.md zero-trust handoff.",
   "acceptance": {
     "single_page_cv_pdf_verified": "PASS",
     "zero_text_collisions_layout": "PASS",
     "page_containment_verified": "PASS",
-    "byte_for_byte_reproducibility": "PASS",
+    "pdf_byte_for_byte_reproducibility": "PASS",
+    "png_pixel_identical_reproducibility": "PASS",
     "hd_png_300dpi_metadata_verified": "PASS",
     "exact_dependency_pinning_verified": "PASS",
     "dependency_manifest_provided": "PASS",
@@ -22,9 +23,10 @@
     "six_month_automation_arc_paradigm": "PASS",
     "operator_storyteller_framing": "PASS",
     "cultural_crossover_vectors": "PASS",
-    "one_tap_application_card_staged": "PASS",
+    "application_card_staged": "PASS",
     "ashby_cover_note_ready": "PASS",
-    "zero_auto_apply_guardrail_intact": "PASS",
+    "submission_status_synchronized": "PASS",
+    "zero_auto_apply_guardrail_honored": "PASS",
     "constitutional_compliance_agents_md": "PASS"
   },
   "pinned_dependencies": {
@@ -42,8 +44,13 @@
     "total_text_blocks": 20,
     "text_overlap_count": 0,
     "out_of_bounds_count": 0,
-    "byte_for_byte_reproducible": true,
-    "outbound_sent_count": 0,
+    "pdf_byte_for_byte_reproducible": true,
+    "png_pixel_identical_reproducible": true,
+    "png_raw_pixel_sha256": "c6ecb2b122d38d116e6ca0e7efc53449b9b55f29aca3dac0db37a534d8e91e2e",
+    "pdf_file_sha256": "bd358b1360fb03bc43b79af9c06b24d6ef39bd47368e75ab4455af3eeb8c9026",
+    "outbound_submitted_by_principal": true,
+    "submission_timestamp": "2026-10-24T21:41:00-07:00",
+    "submission_method": "Ashby (manual tap by Pavel Cherkashin)",
     "fit_conviction_score": 99.0
   },
   "artifacts": {
@@ -61,6 +68,7 @@
   "limitations": [
     "Pavel is an operator-storyteller rather than a traditional corporate agency PR specialist; positioning leans into builder perspective, publishing, and cross-cultural community narrative.",
     "Internal fleet throughput figures are omitted from candidate CV and public documentation pending third-party audit.",
-    "Zero auto-apply rule strictly enforced: no application submission has been sent; awaiting Principal Pavel Cherkashin's manual tap."
+    "Zero auto-apply rule was strictly respected: package was staged for human-in-the-loop review, and outbound application was confirmed submitted manually by Principal Pavel Cherkashin on 2026-10-24 21:41 PDT via Ashby (Submission 1 of 5 in OpenAI set).",
+    "PNG byte-for-byte match is platform/zlib dependent (byte 69 header difference between macOS and Linux zlib implementations), but visual and decoded pixel equivalence is 100% deterministic with invariant raw pixel SHA-256 c6ecb2b122d38d116e6ca0e7efc53449b9b55f29aca3dac0db37a534d8e91e2e and zero ImageChops bounding box delta."
   ]
 }

@@ -76,4 +76,4 @@ Months 5–6: Codified Architecture & Product Feedback Loops
 - **Title Accuracy:** Explicitly stated as an operator-storyteller and systems builder, not an agency PR account executive.
 - **Fleet Metrics:** Internal autonomous agent throughput metrics withheld pending external validation.
 - **Lean Corpus:** Single canonical reference included to maintain a razor-sharp 1-page CV design.
-- **Decision Tap:** Staged for 100% human-in-the-loop review by Principal Pavel Cherkashin.
+- **Decision Tap:** SUBMITTED by Principal Pavel Cherkashin on 2026-10-24 21:41 PDT via Ashby (Submission 1 of 5 in OpenAI portfolio). Staged and verified with 100% human-in-the-loop governance.

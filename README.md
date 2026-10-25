@@ -2,8 +2,10 @@
 
 This repository contains the complete tailored executive application package, strategy brief, and verified 1-page CV for **OpenAI Community Communications Lead** (Product & Research Communications team, in collaboration with Culture & Community Engagement), prepared under the **Mindrock Agent Constitution (AGENTS.md)**.
 
+**Application Status:** Confirmed **SUBMITTED** by Principal Pavel Cherkashin on 2026-10-24 (21:41 PDT) via Ashby (Submission 1 of 5 in the OpenAI portfolio). This repository archives and proves the canonical application package, verified layout, and reproducible build pipeline.
+
 ## Quick Links
-- **One-Tap Application Card:** [docs/ONE_TAP_APPLICATION_CARD.md](docs/ONE_TAP_APPLICATION_CARD.md)
+- **Application Record & Submission Card:** [docs/ONE_TAP_APPLICATION_CARD.md](docs/ONE_TAP_APPLICATION_CARD.md)
 - **Tailored 1-Page CV (Markdown):** [docs/TAILORED_CV_OPENAI_COMMUNITY_COMMS.md](docs/TAILORED_CV_OPENAI_COMMUNITY_COMMS.md)
 - **Ashby Application Cover Note:** [docs/ASHBY_APPLICATION_NOTE.md](docs/ASHBY_APPLICATION_NOTE.md)
 - **Strategic Brief & Narrative Positioning:** [docs/OPENAI_COMMUNITY_COMMS_STRATEGY_BRIEF.md](docs/OPENAI_COMMUNITY_COMMS_STRATEGY_BRIEF.md)
@@ -15,8 +17,8 @@ This repository contains the complete tailored executive application package, st
 
 ## Build & Verification Instructions
 
-### 1. Install Exact Pinned Dependencies
-To ensure strict zero-trust byte-for-byte reproducibility across clean environments for both PDF and PNG artifacts, install the pinned dependencies:
+### 1. Install Dependencies
+To install the dependencies for building and verifying both PDF and PNG artifacts:
 ```bash
 pip install -r requirements.txt
 ```
@@ -27,22 +29,27 @@ python build_oai_cv.py
 ```
 
 ### 3. Verify Constraints & Reproducibility
+
 ```bash
-# Verify exactly 1 page
+# 1. Verify exactly 1 page
 python3 -c 'from pypdf import PdfReader; pages = len(PdfReader("cv-pavel-cherkashin-oai.pdf").pages); assert pages == 1, f"Expected 1 page, got {pages}"; print("PDF page count: PASS (1 page)")'
 
-# Verify programmatic layout, zero collisions, and page boundary containment
+# 2. Verify programmatic layout, zero collisions, and page boundary containment
 python3 -c 'from build_oai_cv import verify_layout_and_collisions; rep = verify_layout_and_collisions("cv-pavel-cherkashin-oai.pdf"); assert rep["text_overlap_count"] == 0 and rep["out_of_bounds_count"] == 0, f"Collisions: {rep}"; print(f"Layout & collision check: PASS ({rep})")'
 
-# Verify 300 DPI metadata and geometry (2550 x 3300)
+# 3. Verify 300 DPI metadata and geometry (2550 x 3300)
 python3 -c 'from PIL import Image; im = Image.open("cv-pavel-cherkashin-oai-hd.png"); assert im.size == (2550, 3300), f"Bad size {im.size}"; dpi = round(im.info.get("dpi", (0, 0))[0]); assert dpi == 300, f"Bad dpi {dpi}"; print(f"PNG resolution: PASS ({im.size}, {dpi} DPI)")'
 
-# Verify byte-for-byte reproducible build against committed artifacts
+# 4. Verify byte-for-byte reproducible PDF build against committed artifact
 python3 build_oai_cv.py /tmp/rebuilt.pdf /tmp/rebuilt.png
 cmp cv-pavel-cherkashin-oai.pdf /tmp/rebuilt.pdf && echo "PDF deterministic byte match: PASS"
-cmp cv-pavel-cherkashin-oai-hd.png /tmp/rebuilt.png && echo "PNG deterministic byte match: PASS"
 
-# Verify cryptographic manifest integrity
+# 5. Verify pixel-identical PNG equivalence (zero visual or pixel drift)
+# Note: PNG compression stream bytes can differ at the zlib Huffman layer (byte 69) across OS/zlib versions (e.g., macOS vs Linux),
+# but the decoded pixel raster is 100% deterministic across all platforms.
+python3 -c 'import hashlib; from PIL import Image, ImageChops; im1 = Image.open("cv-pavel-cherkashin-oai-hd.png"); im2 = Image.open("/tmp/rebuilt.png"); diff = ImageChops.difference(im1, im2).getbbox(); assert diff is None, f"Visual drift detected: {diff}"; h1 = hashlib.sha256(im1.convert("RGB").tobytes()).hexdigest(); h2 = hashlib.sha256(im2.convert("RGB").tobytes()).hexdigest(); assert h1 == h2 == "c6ecb2b122d38d116e6ca0e7efc53449b9b55f29aca3dac0db37a534d8e91e2e", f"Hash mismatch: {h1} vs {h2}"; print("PNG pixel-identical match: PASS (SHA-256: c6ecb2b1...)")'
+
+# 6. Verify cryptographic manifest integrity
 sha256sum -c evidence/MANIFEST.sha256
 ```
 

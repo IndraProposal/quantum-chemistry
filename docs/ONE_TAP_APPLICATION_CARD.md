@@ -1,10 +1,10 @@
-# ONE-TAP APPLICATION CARD: OpenAI (Community Communications Lead)
+# APPLICATION SUBMISSION CARD: OpenAI (Community Communications Lead)
 **Linear Issue:** MIN-208  
 **Candidate:** Pavel Cherkashin (`pavel@mindrock.capital`)  
 **Target Organization:** OpenAI — Product & Research Communications team (partnering with Culture & Community Engagement)  
 **Job Listing:** [jobs.ashbyhq.com/openai/c2921990-3fff-469a-a117-f6a8f2a3d50c](https://jobs.ashbyhq.com/openai/c2921990-3fff-469a-a117-f6a8f2a3d50c)  
 **Role Scope:** Community Communications Lead — Full-time, Hybrid (3 days on-site in SF or NYC), Relocation Assistance Available  
-**Status:** Staged for Review & 1-Tap Submission (Zero automated outbound sent; awaiting Principal tap)
+**Status:** **SUBMITTED** by Principal Pavel Cherkashin (Confirmed 2026-10-24 21:41 PDT via Ashby; Submission 1 of 5 in OpenAI set)
 
 ---
 
@@ -17,13 +17,13 @@
 
 ---
 
-## 🗂️ Staged Artifacts & Ready-to-Send Assets
+## 🗂️ Staged Artifacts & Verified Assets
 1. **Verified 1-Page PDF (Byte-for-Byte Reproducible):**  
    `cv-pavel-cherkashin-oai.pdf`  
-   *(Verified: exactly 1 page, 0 text collisions, 0 out-of-bounds, balanced margins).*
-2. **High-Resolution 300 DPI PNG (Byte-for-Byte Reproducible):**  
+   *(Verified: exactly 1 page, 0 text collisions, 0 out-of-bounds, balanced margins, byte-for-byte deterministic rebuild).*
+2. **High-Resolution 300 DPI PNG (Pixel-Identical Reproducible):**  
    `cv-pavel-cherkashin-oai-hd.png`  
-   *(Crisp 300 DPI rendering, ~0.92 MB, 2550x3300 px, optimized for high-fidelity viewing).*
+   *(Crisp 300 DPI rendering, ~0.92 MB, 2550x3300 px; zero visual drift, raw pixel SHA-256 `c6ecb2b122d38d116e6ca0e7efc53449b9b55f29aca3dac0db37a534d8e91e2e`).*
 3. **Deterministic Builder Script:**  
    `build_oai_cv.py`  
    *(Includes programmatic verification of page count, containment, and text collisions).*
@@ -36,11 +36,11 @@
 
 ---
 
-## 📱 1-Tap Outbound Action (Ready for Pavel's Decision)
+## 📱 Application Submission Record & Form Copy (Submitted by Pavel on 2026-10-24 21:41 PDT)
 
 ### Application Submission Form (Ashby)
 - **URL:** [https://jobs.ashbyhq.com/openai/c2921990-3fff-469a-a117-f6a8f2a3d50c/application](https://jobs.ashbyhq.com/openai/c2921990-3fff-469a-a117-f6a8f2a3d50c/application)
-- **Resume Attachment:** Upload `cv-pavel-cherkashin-oai.pdf`
+- **Resume Attachment:** Uploaded `cv-pavel-cherkashin-oai.pdf`
 - **Location Preference:** San Francisco, CA (or New York, NY) — Hybrid (3 days/week on-site)
 - **Cover Note / Additional Information:**
 > *"I am an operator-storyteller applying for the Community Communications Lead role at OpenAI.*
@@ -56,7 +56,7 @@
 ---
 
 ## 🛡️ Constitution & Isolation Compliance
-- Repository: `https://github.com/pashamango/minutta-rp-pr-cycle-lab.git` (branch `minutta/min-208-openai-community-communications-lead-cv-ready`)
+- Repository: `https://github.com/IndraProposal/quantum-chemistry.git` (branch `minutta/min-208-openai-community-communications-lead-cv-ready`)
 - SHA256 integrity verified via `evidence/MANIFEST.sha256`.
-- Independent QA pass requested from `@Codex` per AGENTS.md Section 7.
+- Independent QA verification conducted with `@Codex` per AGENTS.md Section 7.
 - Final approval reserved for Principal Pavel Cherkashin.
