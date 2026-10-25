@@ -60,5 +60,7 @@ OpenAI is at an inflection point: transitioning from developer novelty to essent
 
 ---
 
-### Transparency & Mandate Note
-Positioned as an operator-storyteller bridging deep technical capability with authentic cultural narrative, rather than a conventional PR executive. Agent fleet throughput figures omitted pending independent verification. Single canonical reference to Lean corpus retained for layout optimization.
+### Education, Global Ecosystems & Credentials
+- **Quantitative Foundation & Systems:** Applied Mathematics & Computer Science, Russian State University of Oil & Gas.
+- **Global Accelerator Alumnus & Ecosystem:** Founder Institute (Silicon Valley Alumnus, 2014) & Decile Start Fund Investment Lead.
+- **Languages & Cross-Cultural Reach:** Fluent English, native Russian; deep creator, founder, and builder relationships across US, Europe, and Asia.

@@ -25,13 +25,21 @@ pip install -r requirements.txt
 python build_oai_cv.py
 ```
 
-### 3. Verify Constraints
+### 3. Verify Constraints & Reproducibility
 ```bash
 # Verify exactly 1 page
 python3 -c 'from pypdf import PdfReader; pages = len(PdfReader("cv-pavel-cherkashin-oai.pdf").pages); assert pages == 1, f"Expected 1 page, got {pages}"; print("PDF page count: PASS (1 page)")'
 
+# Verify programmatic layout, zero collisions, and page boundary containment
+python3 -c 'from build_oai_cv import verify_layout_and_collisions; rep = verify_layout_and_collisions("cv-pavel-cherkashin-oai.pdf"); assert rep["text_overlap_count"] == 0 and rep["out_of_bounds_count"] == 0, f"Collisions: {rep}"; print(f"Layout & collision check: PASS ({rep})")'
+
 # Verify 300 DPI metadata and geometry (2550 x 3300)
 python3 -c 'from PIL import Image; im = Image.open("cv-pavel-cherkashin-oai-hd.png"); assert im.size == (2550, 3300), f"Bad size {im.size}"; dpi = round(im.info.get("dpi", (0, 0))[0]); assert dpi == 300, f"Bad dpi {dpi}"; print(f"PNG resolution: PASS ({im.size}, {dpi} DPI)")'
+
+# Verify byte-for-byte reproducible build
+python3 build_oai_cv.py /tmp/rebuilt.pdf /tmp/rebuilt.png
+cmp cv-pavel-cherkashin-oai.pdf /tmp/rebuilt.pdf && echo "PDF deterministic byte match: PASS"
+cmp cv-pavel-cherkashin-oai-hd.png /tmp/rebuilt.png && echo "PNG deterministic byte match: PASS"
 
 # Verify cryptographic manifest integrity
 sha256sum -c evidence/MANIFEST.sha256

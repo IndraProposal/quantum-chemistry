@@ -18,6 +18,64 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 )
+from reportlab.pdfgen import canvas
+from reportlab import rl_config
+
+# Enforce deterministic byte-for-byte ReportLab PDF rendering
+rl_config.invariant = 1
+
+class InvariantCanvas(canvas.Canvas):
+    """Custom ReportLab Canvas enforcing byte-level reproducible output."""
+    def __init__(self, *args, **kwargs):
+        kwargs['invariant'] = 1
+        kwargs['pageCompression'] = 1
+        super().__init__(*args, **kwargs)
+
+def verify_layout_and_collisions(pdf_path):
+    """
+    Programmatically verifies:
+    1. Single-page constraint (len == 1)
+    2. Page boundary containment (all text blocks inside printable page rectangle)
+    3. Pairwise text collisions between distinct text blocks
+    """
+    reader = pypdf.PdfReader(pdf_path)
+    page_count = len(reader.pages)
+    if page_count != 1:
+        raise ValueError(f"CV is {page_count} pages; must be exactly 1 page!")
+    
+    doc_fitz = pymupdf.open(pdf_path)
+    page = doc_fitz[0]
+    page_rect = page.rect
+    blocks = page.get_text("blocks")
+    
+    # Check text block containment
+    out_of_bounds = []
+    text_blocks = [b for b in blocks if b[4].strip()]
+    for i, b in enumerate(text_blocks):
+        r = pymupdf.Rect(b[:4])
+        if not page_rect.contains(r):
+            out_of_bounds.append((i, r, b[4][:20]))
+            
+    # Check pairwise bounding box collisions
+    overlaps = []
+    tol = 0.5  # points tolerance
+    for i in range(len(text_blocks)):
+        r1 = pymupdf.Rect(text_blocks[i][:4])
+        for j in range(i + 1, len(text_blocks)):
+            r2 = pymupdf.Rect(text_blocks[j][:4])
+            inter = r1 & r2
+            if not inter.is_empty and inter.width > tol and inter.height > tol:
+                overlaps.append((i, j, inter, text_blocks[i][4][:20], text_blocks[j][4][:20]))
+                
+    doc_fitz.close()
+    
+    return {
+        "page_count": page_count,
+        "total_text_blocks": len(text_blocks),
+        "out_of_bounds_count": len(out_of_bounds),
+        "text_overlap_count": len(overlaps),
+        "overlaps": overlaps
+    }
 
 def build_pdf(output_pdf="cv-pavel-cherkashin-oai.pdf", output_png="cv-pavel-cherkashin-oai-hd.png"):
     pdf_dir = os.path.dirname(os.path.abspath(output_pdf))
@@ -30,7 +88,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-oai.pdf", output_png="cv-pavel-che
         pagesize=letter,
         leftMargin=34,
         rightMargin=34,
-        topMargin=25,
+        topMargin=24,
         bottomMargin=20,
     )
     
@@ -51,8 +109,8 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-oai.pdf", output_png="cv-pavel-che
         'DocTitle',
         parent=base_styles['Normal'],
         fontName='Helvetica-Bold',
-        fontSize=19,
-        leading=21,
+        fontSize=18.5,
+        leading=20.5,
         textColor=c_primary,
         spaceAfter=2
     )
@@ -61,28 +119,28 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-oai.pdf", output_png="cv-pavel-che
         'DocSubtitle',
         parent=base_styles['Normal'],
         fontName='Helvetica-Bold',
-        fontSize=9.2,
-        leading=11.5,
+        fontSize=9.0,
+        leading=11.0,
         textColor=c_oai,
-        spaceAfter=2.5
+        spaceAfter=2.0
     )
     
     contact_style = ParagraphStyle(
         'DocContact',
         parent=base_styles['Normal'],
         fontName='Helvetica',
-        fontSize=8.3,
-        leading=10.5,
+        fontSize=8.2,
+        leading=10.2,
         textColor=c_muted,
-        spaceAfter=3.5
+        spaceAfter=3.0
     )
     
     hero_style = ParagraphStyle(
         'HeroText',
         parent=base_styles['Normal'],
         fontName='Helvetica',
-        fontSize=8.2,
-        leading=11,
+        fontSize=8.1,
+        leading=10.8,
         textColor=c_primary,
     )
     
@@ -90,19 +148,19 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-oai.pdf", output_png="cv-pavel-che
         'SectionTitle',
         parent=base_styles['Normal'],
         fontName='Helvetica-Bold',
-        fontSize=9.2,
-        leading=11.5,
+        fontSize=9.0,
+        leading=11.2,
         textColor=c_navy,
-        spaceBefore=3.5,
-        spaceAfter=2
+        spaceBefore=3.0,
+        spaceAfter=1.8
     )
     
     body_style = ParagraphStyle(
         'BodyTextCustom',
         parent=base_styles['Normal'],
         fontName='Helvetica',
-        fontSize=7.9,
-        leading=10.5,
+        fontSize=8.1,
+        leading=10.8,
         textColor=c_body,
     )
     
@@ -110,20 +168,11 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-oai.pdf", output_png="cv-pavel-che
         'BulletCustom',
         parent=base_styles['Normal'],
         fontName='Helvetica',
-        fontSize=7.9,
-        leading=10.4,
+        fontSize=8.1,
+        leading=10.8,
         textColor=c_body,
         leftIndent=8,
         firstLineIndent=-8,
-    )
-    
-    note_style = ParagraphStyle(
-        'NoteText',
-        parent=base_styles['Normal'],
-        fontName='Helvetica',
-        fontSize=6.9,
-        leading=8.8,
-        textColor=c_muted,
     )
 
     story = []
@@ -143,13 +192,13 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-oai.pdf", output_png="cv-pavel-che
         ('BACKGROUND', (0,0), (-1,-1), c_bg),
         ('BOX', (0,0), (-1,-1), 0.75, c_border),
         ('LINELEFT', (0,0), (-1,-1), 3.0, c_oai),
-        ('TOPPADDING', (0,0), (-1,-1), 3.5),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 3.5),
+        ('TOPPADDING', (0,0), (-1,-1), 3.0),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 3.0),
         ('LEFTPADDING', (0,0), (-1,-1), 7),
         ('RIGHTPADDING', (0,0), (-1,-1), 7),
     ]))
     story.append(hero_table)
-    story.append(Spacer(1, 3))
+    story.append(Spacer(1, 3.5))
     
     # 3. Strategic Alignment: Bridging Products to Communities & Mainstream Culture
     story.append(Paragraph("STRATEGIC FOCUS: COMMUNITY-FIRST NARRATIVES &amp; CULTURAL CROSSOVER", section_title_style))
@@ -157,22 +206,22 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-oai.pdf", output_png="cv-pavel-che
         "OpenAI is at an inflection point: transitioning from developer novelty to essential everyday fabric across global society. True earned media is not won through dry product feature announcements, but by illuminating the human builders, small business owners, students, and creative communities whose lives are transformed by AI. As an operator-storyteller who has conducted 5,000+ deep founder interviews, authored university textbooks, spearheaded regional tech ecosystems, and built autonomous agent workflows, I align narrative strategy from campaign inception. I connect decentralized community stories into enduring cultural narratives—bridging technical precision with popular resonance across music, culinary arts, sports, and grassroots builder fandoms."
     )
     story.append(Paragraph(thesis_text, body_style))
-    story.append(Spacer(1, 3))
+    story.append(Spacer(1, 3.5))
     
     # 4. The 6-Month Comms Automation Arc
     story.append(Paragraph("THE 6-MONTH COMMS AUTOMATION ARC (OPERATIONAL PRIORITIES &amp; MILESTONES)", section_title_style))
     
     arc_data = [
         [
-            Paragraph("<b>Months 1–2</b><br/><font color='#10A37F'><b>Sourcing &amp; Radar</b></font>", ParagraphStyle('H1', parent=body_style, fontName='Helvetica-Bold', fontSize=7.8, leading=9.5)),
+            Paragraph("<b>Months 1–2</b><br/><font color='#10A37F'><b>Sourcing &amp; Radar</b></font>", ParagraphStyle('H1', parent=body_style, fontName='Helvetica-Bold', fontSize=7.8, leading=9.6)),
             Paragraph("<b>Community Sourcing Engine &amp; Cultural Radar:</b> Deploy automated discovery pipelines to source high-impact builder, student, and small-business stories. Establish cultural listening radar across non-tech verticals (sports, music, industrial design, culinary arts). Codify authentic voice guidelines: human-first tone, zero corporate puffery, and strict technical accuracy on AI capabilities and boundaries.", body_style)
         ],
         [
-            Paragraph("<b>Months 3–4</b><br/><font color='#10A37F'><b>Campaigns &amp; Voices</b></font>", ParagraphStyle('H2', parent=body_style, fontName='Helvetica-Bold', fontSize=7.8, leading=9.5)),
+            Paragraph("<b>Months 3–4</b><br/><font color='#10A37F'><b>Campaigns &amp; Voices</b></font>", ParagraphStyle('H2', parent=body_style, fontName='Helvetica-Bold', fontSize=7.8, leading=9.6)),
             Paragraph("<b>Cultural Campaigns, Earned Attention &amp; Regional Hubs:</b> Execute sustained multi-month narrative arcs moving AI into popular culture. Partner with regional comms teams to localize creator stories globally. Turn community participation into the core story through interactive campaigns, earned media features, and trusted spokesperson representation for community-led initiatives.", body_style)
         ],
         [
-            Paragraph("<b>Months 5–6</b><br/><font color='#10A37F'><b>Systems &amp; Hand-Off</b></font>", ParagraphStyle('H3', parent=body_style, fontName='Helvetica-Bold', fontSize=7.8, leading=9.5)),
+            Paragraph("<b>Months 5–6</b><br/><font color='#10A37F'><b>Systems &amp; Hand-Off</b></font>", ParagraphStyle('H3', parent=body_style, fontName='Helvetica-Bold', fontSize=7.8, leading=9.6)),
             Paragraph("<b>Codified Editorial Architecture &amp; Product Feedback Loops:</b> Codify editorial calendars, rapid-response playbooks, and sentiment dashboards into repeatable automated workflows. Embed bi-directional community feedback loops directly into OpenAI product and research roadmaps. Hand off daily execution to regional leads and autonomous monitoring systems, transitioning into ongoing advisory.", body_style)
         ],
     ]
@@ -187,7 +236,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-oai.pdf", output_png="cv-pavel-che
         ('LINEBELOW', (0,0), (-1,-2), 0.5, colors.HexColor("#E2E8F0")),
     ]))
     story.append(arc_table)
-    story.append(Spacer(1, 3))
+    story.append(Spacer(1, 3.5))
     
     # 5. Core Execution Capabilities
     story.append(Paragraph("CORE COMMUNICATIONS &amp; EXECUTION CAPABILITIES", section_title_style))
@@ -210,51 +259,49 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-oai.pdf", output_png="cv-pavel-che
         ('RIGHTPADDING', (0,0), (-1,-1), 4),
     ]))
     story.append(cap_table)
-    story.append(Spacer(1, 3))
+    story.append(Spacer(1, 3.5))
     
     # 6. Selected Track Record: Operator-Storyteller
     story.append(Paragraph("SELECTED CAREER TRACK RECORD &amp; NARRATIVE LEADERSHIP", section_title_style))
     
-    story.append(Paragraph("<b>Managing Partner &amp; Chief Storyteller</b> &mdash; <i>Mindrock Capital / Vestor.In</i> (2016–Present)", ParagraphStyle('Exp1', parent=body_style, fontName='Helvetica-Bold', fontSize=8.1, leading=10.2)))
+    story.append(Paragraph("<b>Managing Partner &amp; Chief Storyteller</b> &mdash; <i>Mindrock Capital / Vestor.In</i> (2016–Present)", ParagraphStyle('Exp1', parent=body_style, fontName='Helvetica-Bold', fontSize=8.0, leading=10.0)))
     story.append(Paragraph("&bull; Orchestrated narratives for $100M+ deployed in technology ventures. Pioneered AI-native communications and autonomous agent meshes, translating complex frontier algorithms into clear institutional narratives.", bullet_style))
-    story.append(Spacer(1, 2))
+    story.append(Spacer(1, 2.0))
     
-    story.append(Paragraph("<b>Author &amp; Educator</b> &mdash; <i>Venture Capital &amp; Entrepreneurship University Textbook</i>", ParagraphStyle('Exp2', parent=body_style, fontName='Helvetica-Bold', fontSize=8.1, leading=10.2)))
+    story.append(Paragraph("<b>Author &amp; Educator</b> &mdash; <i>Venture Capital &amp; Entrepreneurship University Textbook</i>", ParagraphStyle('Exp2', parent=body_style, fontName='Helvetica-Bold', fontSize=8.0, leading=10.0)))
     story.append(Paragraph("&bull; Authored authoritative, voice-driven university textbook utilized in business schools across Eastern Europe; focused entirely on practitioner voice, founder resilience, and community trust without vanity promotion.", bullet_style))
-    story.append(Spacer(1, 2))
+    story.append(Spacer(1, 2.0))
 
-    story.append(Paragraph("<b>Decentralized Publishing &amp; Community Building</b> &mdash; <i>Nostr-First &amp; Cross-Cultural Campaigns</i>", ParagraphStyle('Exp3', parent=body_style, fontName='Helvetica-Bold', fontSize=8.1, leading=10.2)))
+    story.append(Paragraph("<b>Decentralized Publishing &amp; Community Building</b> &mdash; <i>Nostr-First &amp; Cross-Cultural Campaigns</i>", ParagraphStyle('Exp3', parent=body_style, fontName='Helvetica-Bold', fontSize=8.0, leading=10.0)))
     story.append(Paragraph("&bull; Developed 30-day narrative distribution plans, multi-lingual campaign teasers (RU/EN/ZH), and the 'Serendipity Stalking' methodology. Mobilized decentralized communities across open protocols.", bullet_style))
-    story.append(Spacer(1, 2))
+    story.append(Spacer(1, 2.0))
     
-    story.append(Paragraph("<b>Investment Lead &amp; Mentor</b> &mdash; <i>Founder Institute Alumnus (2014) &amp; Decile Start Fund</i>", ParagraphStyle('Exp4', parent=body_style, fontName='Helvetica-Bold', fontSize=8.1, leading=10.2)))
+    story.append(Paragraph("<b>Investment Lead &amp; Mentor</b> &mdash; <i>Founder Institute Alumnus (2014) &amp; Decile Start Fund</i>", ParagraphStyle('Exp4', parent=body_style, fontName='Helvetica-Bold', fontSize=8.0, leading=10.0)))
     story.append(Paragraph("&bull; Conducted 5,000+ founder interviews; mentored first-time creators and students on positioning, story architecture, and pitching; structured regional accelerator hubs in San Francisco bridging global founders with US partners.", bullet_style))
-    story.append(Spacer(1, 4))
+    story.append(Spacer(1, 3.5))
     
-    # 7. Disclaimers & Mandate Note
-    note_p = Paragraph(
-        "<b>Transparency &amp; Mandate Note:</b> Positioned as an operator-storyteller bridging deep technical capability with authentic cultural narrative, rather than a conventional PR executive. Agent fleet throughput figures omitted pending independent verification. Single canonical reference to Lean corpus retained for layout optimization.",
-        note_style
+    # 7. Education & Global Community Footprint (Replaces internal mandate note)
+    story.append(Paragraph("EDUCATION, GLOBAL ECOSYSTEMS &amp; CREDENTIALS", section_title_style))
+    edu_text = (
+        "&bull; <b>Quantitative Foundation &amp; Systems:</b> Applied Mathematics &amp; Computer Science, Russian State University of Oil &amp; Gas.<br/>"
+        "&bull; <b>Global Accelerator Alumnus &amp; Ecosystem:</b> Founder Institute (Silicon Valley Alumnus, 2014) &amp; Decile Start Fund Investment Lead.<br/>"
+        "&bull; <b>Languages &amp; Cross-Cultural Reach:</b> Fluent English, native Russian; deep creator, founder, and builder relationships across US, Europe, and Asia."
     )
-    note_table = Table([[note_p]], colWidths=[usable_width])
-    note_table.setStyle(TableStyle([
-        ('BACKGROUND', (0,0), (-1,-1), c_bg),
-        ('BOX', (0,0), (-1,-1), 0.5, c_border),
-        ('TOPPADDING', (0,0), (-1,-1), 3),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 3),
-        ('LEFTPADDING', (0,0), (-1,-1), 6),
-        ('RIGHTPADDING', (0,0), (-1,-1), 6),
-    ]))
-    story.append(note_table)
+    story.append(Paragraph(edu_text, bullet_style))
     
-    doc.build(story)
+    doc.build(story, canvasmaker=InvariantCanvas)
     
-    # Verification
-    reader = pypdf.PdfReader(output_pdf)
-    page_count = len(reader.pages)
-    if page_count != 1:
-        raise ValueError(f"CV is {page_count} pages; must be exactly 1 page!")
+    # Programmatic Layout & Collision Verification
+    report = verify_layout_and_collisions(output_pdf)
+    print(f"Programmatic verification: page_count={report['page_count']}, text_blocks={report['total_text_blocks']}, collisions={report['text_overlap_count']}, out_of_bounds={report['out_of_bounds_count']}")
     
+    if report['page_count'] != 1:
+        raise ValueError(f"CV is {report['page_count']} pages; must be exactly 1 page!")
+    if report['text_overlap_count'] != 0:
+        raise ValueError(f"Found {report['text_overlap_count']} text collisions: {report['overlaps']}")
+    if report['out_of_bounds_count'] != 0:
+        raise ValueError(f"Found {report['out_of_bounds_count']} blocks out of bounds!")
+        
     print(f"Successfully generated 1-page CV: {output_pdf}")
     
     # Export 300 DPI HD PNG

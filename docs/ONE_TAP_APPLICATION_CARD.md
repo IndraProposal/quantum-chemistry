@@ -18,20 +18,21 @@
 ---
 
 ## 🗂️ Staged Artifacts & Ready-to-Send Assets
-1. **Verified 1-Page PDF:**  
-   `workspace/goals/goal-4/files/openai-community-comms/cv-pavel-cherkashin-oai.pdf`  
-   *(Verified: exactly 1 page, zero text collisions, balanced margins).*
-2. **High-Resolution 300 DPI PNG:**  
-   `workspace/goals/goal-4/files/openai-community-comms/cv-pavel-cherkashin-oai-hd.png`  
-   *(Crisp 300 DPI rendering, ~0.84 MB, optimized for high-fidelity viewing).*
-3. **Reproducible Generator Script:**  
-   `workspace/goals/goal-4/files/openai-community-comms/build_oai_cv.py`
+1. **Verified 1-Page PDF (Byte-for-Byte Reproducible):**  
+   `cv-pavel-cherkashin-oai.pdf`  
+   *(Verified: exactly 1 page, 0 text collisions, 0 out-of-bounds, balanced margins).*
+2. **High-Resolution 300 DPI PNG (Byte-for-Byte Reproducible):**  
+   `cv-pavel-cherkashin-oai-hd.png`  
+   *(Crisp 300 DPI rendering, ~0.92 MB, 2550x3300 px, optimized for high-fidelity viewing).*
+3. **Deterministic Builder Script:**  
+   `build_oai_cv.py`  
+   *(Includes programmatic verification of page count, containment, and text collisions).*
 4. **Tailored CV (Markdown):**  
    [docs/TAILORED_CV_OPENAI_COMMUNITY_COMMS.md](TAILORED_CV_OPENAI_COMMUNITY_COMMS.md)
 5. **Cover Note for Ashby Application:**  
-   [docs/ASHBY_APPLICATION_NOTE.md](docs/ASHBY_APPLICATION_NOTE.md)
+   [docs/ASHBY_APPLICATION_NOTE.md](ASHBY_APPLICATION_NOTE.md)
 6. **Strategic Positioning Brief:**  
-   [docs/OPENAI_COMMUNITY_COMMS_STRATEGY_BRIEF.md](docs/OPENAI_COMMUNITY_COMMS_STRATEGY_BRIEF.md)
+   [docs/OPENAI_COMMUNITY_COMMS_STRATEGY_BRIEF.md](OPENAI_COMMUNITY_COMMS_STRATEGY_BRIEF.md)
 
 ---
 
