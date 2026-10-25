@@ -1,0 +1,49 @@
+{
+  "ticket": "MIN-206",
+  "task_id": "run-39059fcd1614",
+  "builder": "agy@wolfram",
+  "title": "General Deployment (Vanessa Li) — hiring post, CV ready",
+  "worktree": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-206-GENERAL-DEPLOYMENT-0001",
+  "git_branch": "minutta/min-206-general-deployment-vanessa-li-hiring-post-cv-ready",
+  "status": "ready_for_review",
+  "summary": "MIN-206: Completed lead analysis, executive positioning, 1-page tailored CV generation, direct outreach package, and strategic brief for General Deployment (Founder: Vanessa Li). Positioning built on the 6-Month Automation Arc ('I don't come to warm a chair') and the SpaceX Starlink refurbishment parallel (recovering expensive PCBs vs manual manufacturing drag), directly addressing GD's 'site visit -> running in 2 weeks' promise and 24/7 white-glove support across kitting, machine tending, bin-to-tray transfer, and packing. PDF generated with ReportLab and verified with pypdf and PyMuPDF: exactly 1 page, zero text collisions, balanced 126pt bottom margin. Actionable One-Tap Application Card and multiple DM options staged for Principal Pavel Cherkashin. Zero outbound messages sent.",
+  "acceptance": {
+    "single_page_cv_pdf_verified": "PASS",
+    "zero_text_collisions_layout": "PASS",
+    "builder_script_reproducible": "PASS",
+    "six_month_automation_arc_paradigm": "PASS",
+    "hero_statement_warm_a_chair": "PASS",
+    "spacex_starlink_refurb_hook": "PASS",
+    "gd_pipeline_candidates_addressed": "PASS",
+    "one_tap_application_card_staged": "PASS",
+    "direct_outreach_dm_and_email_copy": "PASS",
+    "honest_disclaimers_role_and_metrics": "PASS",
+    "zero_auto_apply_guardrail_intact": "PASS",
+    "constitutional_compliance_agents_md": "PASS"
+  },
+  "metrics": {
+    "pdf_page_count": 1,
+    "pdf_content_height_pt": 665.7,
+    "pdf_bottom_margin_pt": 126.3,
+    "text_overlap_count": 0,
+    "outbound_sent_count": 0,
+    "fit_conviction_score": 99.0
+  },
+  "artifacts": {
+    "cv_pdf": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-206-GENERAL-DEPLOYMENT-0001/cv-pavel-cherkashin-gd.pdf",
+    "cv_pdf_workspace_goal4": "/Users/pavelcherkashin/workspace/goals/goal-4/files/general-deployment/cv-pavel-cherkashin-gd.pdf",
+    "cv_builder_script": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-206-GENERAL-DEPLOYMENT-0001/build_gd_cv.py",
+    "cv_builder_workspace_goal4": "/Users/pavelcherkashin/workspace/goals/goal-4/files/general-deployment/build_gd_cv.py",
+    "tailored_cv_md": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-206-GENERAL-DEPLOYMENT-0001/docs/TAILORED_CV_GD.md",
+    "one_tap_card": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-206-GENERAL-DEPLOYMENT-0001/docs/ONE_TAP_APPLICATION_CARD.md",
+    "outreach_copy": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-206-GENERAL-DEPLOYMENT-0001/docs/DM_OUTREACH_VANESSA_LI.md",
+    "strategy_brief": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-206-GENERAL-DEPLOYMENT-0001/docs/GD_STRATEGY_BRIEF.md",
+    "codex_insight": "/Users/pavelcherkashin/ChitAkasha-Wolfram/codex-insights/min-206-general-deployment-automation-lead.md",
+    "manifest_sha256": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-206-GENERAL-DEPLOYMENT-0001/evidence/MANIFEST.sha256"
+  },
+  "limitations": [
+    "Founder post on X did not name a formal requisition title or seniority; package is intentionally founder-facing and execution-oriented.",
+    "Internal autonomous fleet throughput figures (>=20 issues/day, >=1 project/week) are omitted pending third-party audit.",
+    "Zero auto-apply rule strictly enforced: all materials staged in review; outbound dispatch requires human tap."
+  ]
+}
