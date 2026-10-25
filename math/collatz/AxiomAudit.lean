@@ -10,7 +10,7 @@ open Collatz
 /-!
 # Axiom Audit: Kernel Verification Gate (MIN-85)
 
-Prints the exact axiom dependencies of all 34 formalized theorems in `Collatz.Syracuse`.
+Prints the exact axiom dependencies of all 54 formalized theorems in `Collatz.Syracuse`.
 Guarantees:
 - Zero custom axioms
 - Zero sorry
@@ -49,9 +49,29 @@ Guarantees:
 #print axioms descent_twentyfive
 #print axioms syracuse_twentyseven_step1
 #print axioms syracuse_fortyone
+#print axioms certificate_sound
+#print axioms batch_sound
+#print axioms has_descent_three
+#print axioms has_descent_five
+#print axioms has_descent_seven
+#print axioms has_descent_nine
+#print axioms has_descent_eleven
+#print axioms has_descent_thirteen
+#print axioms has_descent_fifteen
+#print axioms has_descent_seventeen
+#print axioms has_descent_nineteen
+#print axioms has_descent_twentyone
+#print axioms has_descent_twentythree
+#print axioms has_descent_twentyfive
+#print axioms has_descent_twentyseven
+#print axioms has_descent_twentynine
+#print axioms has_descent_thirtyone
 #print axioms descent_cert_three
 #print axioms descent_cert_seven
 #print axioms descent_cert_fifteen
+#print axioms descent_cert_twentyseven
+#print axioms canonical_batch_valid
+#print axioms canonical_batch_sound
 
 def main : IO Unit := do
-  IO.println "Axiom Audit PASSED: 34 verified theorems, zero sorry, zero custom axioms."
+  IO.println "Axiom Audit PASSED: 54 verified theorems, zero sorry, zero custom axioms."

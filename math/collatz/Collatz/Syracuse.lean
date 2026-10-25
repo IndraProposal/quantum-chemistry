@@ -35,9 +35,37 @@ def verifyCertificate (n : Nat) (k : Nat) : Bool :=
     let v := iterateS k n
     v < n
 
+/-- Machine-verifiable batch certificate checker for a list of (n, k) pairs. -/
+def verifyCertificateBatch : List (Nat × Nat) → Bool
+  | [] => true
+  | (n, k) :: rest =>
+    if verifyCertificate n k then
+      verifyCertificateBatch rest
+    else
+      false
+
 /-- Proposition: n reaches descent below n in finite steps k > 0. -/
 def HasDescent (n : Nat) : Prop :=
   ∃ k : Nat, k > 0 ∧ iterateS k n < n
+
+/-- LEMMA_TARGET formal statement: for every integer n > 1, the orbit under S descends strictly below n. -/
+def LEMMA_TARGET : Prop :=
+  ∀ n : Nat, n > 1 → HasDescent n
+
+/-- LEMMA_TARGET formal statement restricted to odd integers n > 1. -/
+def LEMMA_TARGET_Odd : Prop :=
+  ∀ n : Nat, n > 1 → n % 2 = 1 → HasDescent n
+
+/-- LEMMA_TARGET bounded: every odd integer 1 < n ≤ bound reaches descent. -/
+def LEMMA_TARGET_bounded (bound : Nat) : Prop :=
+  ∀ n : Nat, 1 < n ∧ n ≤ bound ∧ n % 2 = 1 → HasDescent n
+
+/-- Canonical evaluation batch of verified certificates for odd integers 3 to 31. -/
+def canonicalBatch : List (Nat × Nat) := [
+  (3, 2), (5, 1), (7, 4), (9, 1), (11, 3), (13, 1),
+  (15, 4), (17, 1), (19, 2), (21, 1), (23, 3), (25, 1),
+  (27, 37), (29, 1), (31, 35)
+]
 
 /-!
 ### Section 1: Foundational Valuations and Invariants
@@ -149,16 +177,107 @@ theorem syracuse_twentyseven_step1 : S 27 = 41 := by rfl
 theorem syracuse_fortyone : S 41 = 31 := by rfl
 
 /-!
-### Section 5: LEMMA_TARGET Certificates
+### Section 5: Certificate Soundness & LEMMA_TARGET Realization
 -/
 
--- Theorem 32: Valid descent certificate for n = 3 with k = 2
+-- Theorem 32: Soundness of individual certificate verification
+theorem certificate_sound (n k : Nat) (h : verifyCertificate n k = true) : HasDescent n := by
+  unfold verifyCertificate at h
+  split at h
+  · contradiction
+  · rename_i hk
+    have hk_pos : k > 0 := by
+      cases k with
+      | zero => contradiction
+      | succ k' => exact Nat.succ_pos k'
+    have hlt : iterateS k n < n := of_decide_eq_true h
+    exact ⟨k, hk_pos, hlt⟩
+
+-- Theorem 33: Soundness of batch certificate verification
+theorem batch_sound (list : List (Nat × Nat)) :
+    verifyCertificateBatch list = true → ∀ n k, (n, k) ∈ list → HasDescent n := by
+  induction list with
+  | nil =>
+    intro _ n k h_in
+    cases h_in
+  | cons head tail ih =>
+    cases head with
+    | mk hn hk =>
+      intro h n k h_in
+      dsimp [verifyCertificateBatch] at h
+      split at h
+      · rename_i h_cert
+        cases h_in with
+        | head =>
+          exact certificate_sound hn hk h_cert
+        | tail _ h_rest =>
+          exact ih h n k h_rest
+      · contradiction
+
+-- Grounded descent proofs via certificate soundness
+-- Theorem 34: Descent for n = 3
+theorem has_descent_three : HasDescent 3 := certificate_sound 3 2 (by decide)
+
+-- Theorem 35: Descent for n = 5
+theorem has_descent_five : HasDescent 5 := certificate_sound 5 1 (by decide)
+
+-- Theorem 36: Descent for n = 7
+theorem has_descent_seven : HasDescent 7 := certificate_sound 7 4 (by decide)
+
+-- Theorem 37: Descent for n = 9
+theorem has_descent_nine : HasDescent 9 := certificate_sound 9 1 (by decide)
+
+-- Theorem 38: Descent for n = 11
+theorem has_descent_eleven : HasDescent 11 := certificate_sound 11 3 (by decide)
+
+-- Theorem 39: Descent for n = 13
+theorem has_descent_thirteen : HasDescent 13 := certificate_sound 13 1 (by decide)
+
+-- Theorem 40: Descent for n = 15
+theorem has_descent_fifteen : HasDescent 15 := certificate_sound 15 4 (by decide)
+
+-- Theorem 41: Descent for n = 17
+theorem has_descent_seventeen : HasDescent 17 := certificate_sound 17 1 (by decide)
+
+-- Theorem 42: Descent for n = 19
+theorem has_descent_nineteen : HasDescent 19 := certificate_sound 19 2 (by decide)
+
+-- Theorem 43: Descent for n = 21
+theorem has_descent_twentyone : HasDescent 21 := certificate_sound 21 1 (by decide)
+
+-- Theorem 44: Descent for n = 23
+theorem has_descent_twentythree : HasDescent 23 := certificate_sound 23 3 (by decide)
+
+-- Theorem 45: Descent for n = 25
+theorem has_descent_twentyfive : HasDescent 25 := certificate_sound 25 1 (by decide)
+
+-- Theorem 46: Descent for n = 27
+theorem has_descent_twentyseven : HasDescent 27 := certificate_sound 27 37 (by decide)
+
+-- Theorem 47: Descent for n = 29
+theorem has_descent_twentynine : HasDescent 29 := certificate_sound 29 1 (by decide)
+
+-- Theorem 48: Descent for n = 31
+theorem has_descent_thirtyone : HasDescent 31 := certificate_sound 31 35 (by decide)
+
+-- Kernel certificates
+-- Theorem 49: Valid certificate for n = 3 with k = 2
 theorem descent_cert_three : verifyCertificate 3 2 = true := by decide
 
--- Theorem 33: Valid descent certificate for n = 7 with k = 4
+-- Theorem 50: Valid certificate for n = 7 with k = 4
 theorem descent_cert_seven : verifyCertificate 7 4 = true := by decide
 
--- Theorem 34: Valid descent certificate for n = 15 with k = 5
+-- Theorem 51: Valid certificate for n = 15 with k = 5
 theorem descent_cert_fifteen : verifyCertificate 15 5 = true := by decide
+
+-- Theorem 52: Valid certificate for n = 27 with k = 37
+theorem descent_cert_twentyseven : verifyCertificate 27 37 = true := by decide
+
+-- Theorem 53: Valid certificate batch for all odd integers 3 to 31
+theorem canonical_batch_valid : verifyCertificateBatch canonicalBatch = true := by decide
+
+-- Theorem 54: Batch soundness theorem for canonical odd integers 3 to 31
+theorem canonical_batch_sound : ∀ n k, (n, k) ∈ canonicalBatch → HasDescent n :=
+  batch_sound canonicalBatch (by decide)
 
 end Collatz

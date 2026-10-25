@@ -15,14 +15,42 @@ and verifies the `LEMMA_TARGET` bounded descent conjecture across all odd intege
 Furthermore, candidate contraction / transition ratio models ($\phi$ vs $3/4$ vs $1/2$ vs `fitted`) were evaluated strictly **out-of-sample**.
 
 ### Key Outcomes:
-1. **LEMMA_TARGET Verification:** **100.0%** (2,000 / 2,000) of out-of-sample orbits reach a strictly lower value $S^{[k]}(n) < n$. All 2,000 machine-checkable certificates pass `verify_certificate(n, k, val)`.
-2. **Model Selection Winner:**
+1. **LEMMA_TARGET Formalization & Soundness:** 
+   - Target proposition `LEMMA_TARGET` formally defined in Lean 4 (`Collatz/Syracuse.lean`).
+   - Soundness theorems `certificate_sound` and `batch_sound` formally proved in Lean 4 kernel with 0 custom axioms.
+   - 54 machine-checked theorems verified in Lean 4 kernel (0 `sorry`, 0 `admit`, 0 custom axioms).
+2. **LEMMA_TARGET Verification:** **100.0%** (2,000 / 2,000) of out-of-sample orbits reach a strictly lower value $S^{[k]}(n) < n$. All 2,000 machine-checkable certificates pass `verify_certificate(n, k, val)`.
+3. **Model Selection Winner:**
    - **Step-wise Transition Ratio:** **`fitted`** (MSE: `0.285774`) takes 1st place. Among theoretical constants, **`3/4`** (MSE: `0.348342`) decisively beats **`phi`** (MSE: `0.431778`) and **`1/2`** (MSE: `0.535915`).
    - **Cumulative Trajectory:** **`fitted`** (MSE: `356.0698`) wins, with **`3/4`** leading the theoretical constants over $\phi$.
 
 ---
 
-## 2. Out-of-Sample Model Selection
+## 2. Lean 4 Formalization & Soundness
+
+In `Collatz/Syracuse.lean`, the target claim is formally specified:
+```lean
+def HasDescent (n : Nat) : Prop :=
+  ∃ k : Nat, k > 0 ∧ iterateS k n < n
+
+def LEMMA_TARGET : Prop :=
+  ∀ n : Nat, n > 1 → HasDescent n
+
+def LEMMA_TARGET_Odd : Prop :=
+  ∀ n : Nat, n > 1 → n % 2 = 1 → HasDescent n
+```
+
+To bridge algorithmic verification and formal logic, the Lean 4 kernel proves soundness:
+```lean
+theorem certificate_sound (n k : Nat) (h : verifyCertificate n k = true) : HasDescent n
+theorem batch_sound (list : List (Nat × Nat)) :
+  verifyCertificateBatch list = true → ∀ n k, (n, k) ∈ list → HasDescent n
+```
+This guarantees that whenever a certificate $\langle n, k \rangle$ is verified by `verifyCertificate`, the existential proposition `HasDescent n` holds rigorously in Lean's constructive logic without any external or custom axioms.
+
+---
+
+## 3. Out-of-Sample Model Selection
 
 The four candidate models represent distinct dynamical hypotheses:
 - **`1/2` (0.5000):** Pure dyadic half-step baseline.
@@ -59,7 +87,7 @@ The golden ratio $\phi \approx 0.6180$ underestimates the presence of climb step
 
 ---
 
-## 3. LEMMA_TARGET Descent Verification
+## 4. LEMMA_TARGET Descent Verification
 
 `LEMMA_TARGET` posits that for every odd integer $n > 1$, there exists a finite step count $k \ge 1$ such that:
 $$S^{[k]}(n) < n$$
