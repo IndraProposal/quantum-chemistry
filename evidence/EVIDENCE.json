@@ -1,18 +1,19 @@
 {
   "ticket": "MIN-208",
-  "task_id": "run-34adb893aa71",
+  "task_id": "run-f1b0affe562f",
   "builder": "agy@wolfram",
   "title": "OpenAI — Community Communications Lead, CV ready",
   "worktree_relative": "worktrees/MIN-208-OPENAI-COMMUNITY-COMMS-0001",
   "git_branch": "minutta/min-208-openai-community-communications-lead-cv-ready",
   "status": "ready_for_review",
-  "summary": "MIN-208 REWORK: Fixed all 5 QA findings from Codex. Enforced byte-for-byte reproducible PDF/PNG generation via invariant canvas. Added programmatic layout & collision verification checking page count, boundary containment, and pairwise bounding box overlap (0 collisions, 0 out-of-bounds). Removed internal Transparency & Mandate Note from candidate CV and replaced with clean Education & Global Ecosystem credentials. Removed local absolute host paths, making all artifacts repository-relative for zero-trust QA handoff under AGENTS.md Section 10.",
+  "summary": "MIN-208 REWORK: Fixed PNG byte-for-byte reproducibility failure in clean environments. Pinned exact render dependencies in requirements.txt (pypdf==6.21.2, PyMuPDF==2.0, reportlab==5.1.0, Pillow==12.3.0) and pyproject.toml to eliminate zlib/PNG encoder drift caused by permissive '>=' ranges. Verified zero-drift deterministic rebuilds matching committed hashes for both PDF (bd358b1360fb03bc43b79af9c06b24d6ef39bd47368e75ab4455af3eeb8c9026) and 300 DPI HD PNG (0b8c5b49860ff4a076e0dc26486a2abe100e27629b2674456880bb7900ec0e8b). Recomputed SHA-256 manifest and updated verification documentation.",
   "acceptance": {
     "single_page_cv_pdf_verified": "PASS",
     "zero_text_collisions_layout": "PASS",
     "page_containment_verified": "PASS",
     "byte_for_byte_reproducibility": "PASS",
     "hd_png_300dpi_metadata_verified": "PASS",
+    "exact_dependency_pinning_verified": "PASS",
     "dependency_manifest_provided": "PASS",
     "repo_relative_artifacts_isolation": "PASS",
     "internal_mandate_notes_omitted_from_cv": "PASS",
@@ -25,6 +26,12 @@
     "ashby_cover_note_ready": "PASS",
     "zero_auto_apply_guardrail_intact": "PASS",
     "constitutional_compliance_agents_md": "PASS"
+  },
+  "pinned_dependencies": {
+    "pypdf": "6.21.2",
+    "pymupdf": "2.0",
+    "reportlab": "5.1.0",
+    "pillow": "12.3.0"
   },
   "metrics": {
     "pdf_page_count": 1,

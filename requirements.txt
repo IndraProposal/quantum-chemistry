@@ -1,5 +1,6 @@
 # MIN-208 OpenAI Community Communications Lead CV Builder Dependencies
-pypdf>=6.21.0
-PyMuPDF>=2.0.0
-reportlab>=5.0.0
-Pillow>=11.0.0
+# Pinned for strict byte-for-byte reproducible build across environments
+pypdf==6.21.2
+PyMuPDF==2.0
+reportlab==5.1.0
+Pillow==12.3.0

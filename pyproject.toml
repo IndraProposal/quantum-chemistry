@@ -9,8 +9,8 @@ description = "Deterministic 1-page CV & 300 DPI PNG generator for OpenAI Commun
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "pypdf>=6.21.0",
-    "PyMuPDF>=2.0.0",
-    "reportlab>=5.0.0",
-    "Pillow>=11.0.0",
+    "pypdf==6.21.2",
+    "PyMuPDF==2.0",
+    "reportlab==5.1.0",
+    "Pillow==12.3.0",
 ]

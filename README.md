@@ -15,7 +15,8 @@ This repository contains the complete tailored executive application package, st
 
 ## Build & Verification Instructions
 
-### 1. Install Dependencies
+### 1. Install Exact Pinned Dependencies
+To ensure strict zero-trust byte-for-byte reproducibility across clean environments for both PDF and PNG artifacts, install the pinned dependencies:
 ```bash
 pip install -r requirements.txt
 ```
@@ -36,7 +37,7 @@ python3 -c 'from build_oai_cv import verify_layout_and_collisions; rep = verify_
 # Verify 300 DPI metadata and geometry (2550 x 3300)
 python3 -c 'from PIL import Image; im = Image.open("cv-pavel-cherkashin-oai-hd.png"); assert im.size == (2550, 3300), f"Bad size {im.size}"; dpi = round(im.info.get("dpi", (0, 0))[0]); assert dpi == 300, f"Bad dpi {dpi}"; print(f"PNG resolution: PASS ({im.size}, {dpi} DPI)")'
 
-# Verify byte-for-byte reproducible build
+# Verify byte-for-byte reproducible build against committed artifacts
 python3 build_oai_cv.py /tmp/rebuilt.pdf /tmp/rebuilt.png
 cmp cv-pavel-cherkashin-oai.pdf /tmp/rebuilt.pdf && echo "PDF deterministic byte match: PASS"
 cmp cv-pavel-cherkashin-oai-hd.png /tmp/rebuilt.png && echo "PNG deterministic byte match: PASS"
