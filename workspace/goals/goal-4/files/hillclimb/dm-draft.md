@@ -1,13 +1,13 @@
-# X DM & Reply Draft: Hillclimb AI — Employee #5 (Evals & Environments for RSI)
+# X DM & Reply Record: Hillclimb AI — Employee #5 (Evals & Environments for RSI)
 
 **Target:** Jun Park ([@jparkjmc](https://x.com/jparkjmc)) / Hillclimb AI ([@hillclimbai](https://x.com/hillclimbai))  
 **Hiring Context:** X hiring thread (2026-10-25) — Employee #5, In-Person SF, $200k + 2% equity + benefits (negotiable)  
-**Channel:** X Direct Message / Reply to Jun Park (@jparkjmc)  
-**Channel Note:** `research@hillclimb.com` is verified as DeepRSI site research inquiry contact, not a confirmed hiring channel. X DM/reply to @jparkjmc is the primary confirmed route.  
+**Channel:** X Direct Message to Jun Park (@jparkjmc)  
+**Channel Note:** `research@hillclimb.com` is verified as DeepRSI site research inquiry contact, not a confirmed hiring channel. X DM to @jparkjmc is the confirmed active route.  
 **Visual & Document Attachments:** 
 - 1-page CV PDF: `cv-pavel-cherkashin-hillclimb.pdf`
 - 300 DPI High-Resolution Image (optimized for X image card): `cv-pavel-cherkashin-hillclimb-hd.png`
-**Dispatch Gate:** Tap-gated (`NOT_SENT_TAP_GATED`). Staged in workspace; transmission strictly requires Principal Pavel Cherkashin's manual tap.
+**Dispatch Status:** SENT (Tap-Gate Passed & Executed by Principal Pavel Cherkashin on 2026-10-25 ~06:39 PDT via X DM to @jparkjmc). Staged artifacts transmitted as delivered. Awaiting reply.
 
 ---
 

@@ -1,6 +1,6 @@
 {
   "ticket": "MIN-222",
-  "run_id": "run-c4cef5195da8",
+  "run_id": "run-53d100ae2faa",
   "builder": "agy@wolfram",
   "title": "Hillclimb AI — employee #5, evals & environments for RSI (X hiring thread)",
   "worktree_relative": "worktrees/MIN-222-HILLCLIMB-0001",
@@ -8,8 +8,21 @@
   "canonical_repo": "https://github.com/IndraProposal/quantum-chemistry.git",
   "lab_repo": "https://github.com/pashamango/minutta-rp-pr-cycle-lab.git",
   "status": "ready_for_review",
-  "dispatch_gate": "NOT_SENT_TAP_GATED",
-  "summary": "Assembled, verified, and staged the complete application dossier and outreach package for Hillclimb AI Employee #5 (Evals & Environments for RSI). Delivered tailored 1-page CV (PDF + 300 DPI PNG preview), targeted X DM/reply draft for Jun Park (@jparkjmc), verified CLAIM_LEDGER.md grounding all credentials in primary sources, exact pinned requirements.txt, and complete EVIDENCE.json. Honest technical gaps (RL environments and training infra) explicitly declared in both CV and DM; positioning focused strictly on the Evals Research & Technical Systems Writing seat. Package staged across both git worktree and workspace mirror; zero external dispatch executed (tap-gated).",
+  "dispatch_gate": "PASSED_AND_SENT",
+  "dispatch_record": {
+    "status": "SENT",
+    "channel": "X Direct Message",
+    "recipient": "Jun Park (@jparkjmc)",
+    "dispatched_by": "Principal Pavel Cherkashin",
+    "dispatched_at": "2026-10-25 ~06:39 PDT",
+    "historical_tap_gate": "PASSED",
+    "artifacts_transmitted": [
+      "cv-pavel-cherkashin-hillclimb.pdf",
+      "cv-pavel-cherkashin-hillclimb-hd.png",
+      "dm-draft.md"
+    ]
+  },
+  "summary": "Reworked application dossier and outreach package for Hillclimb AI Employee #5 (Evals & Environments for RSI) addressing all QA audit findings. Updated dispatch status to SENT following Principal Pavel Cherkashin's manual transmission on 2026-10-25 ~06:39 PDT via X DM to @jparkjmc; grounded corporate and academic claims with verified public URLs, RSL/NEL catalog coordinates for textbook ISBN 978-5-94774-643-3, and CNews/Tadviser acquisition archives; purged all headcount claims (including Sputnik Labs 110+ metric); calibrated internal architecture claims and provided verifiable evals harness code in this PR; added complete requirements.lock with explicit Python 3.10-3.13 constraints; and clarified that PNG rasterization is verified by geometry/DPI assertions rather than byte-level hash determinism.",
   "target": {
     "company": "Hillclimb AI",
     "x_handle": "@hillclimbai",
@@ -20,8 +33,9 @@
     "hiring_thread_date": "2026-10-25",
     "role": "Employee #5 — Evals & Environments for RSI",
     "seat": "Evals Research & Technical Systems Writing Lead",
-    "application_route": "X DM / reply to Jun Park (@jparkjmc)",
-    "channel_clarification": "research@hillclimb.com is verified as DeepRSI site research inquiry contact, not a confirmed hiring channel"
+    "application_route": "X DM to Jun Park (@jparkjmc)",
+    "channel_clarification": "research@hillclimb.com is verified as DeepRSI site research inquiry contact, not a confirmed hiring channel",
+    "dispatch_status": "SENT"
   },
   "compensation": {
     "base_salary": 200000,
@@ -59,8 +73,10 @@
     "png_byte_for_byte_reproducible": "NOT_ASSERTED",
     "png_geometry_and_dpi_verified": "PASS",
     "exact_dependency_pinning_verified": "PASS",
+    "lockfile_transitive_dependencies_verified": "PASS",
     "claim_ledger_provided": "PASS",
     "grounded_factual_achievements_verified": "PASS",
+    "headcount_claims_purged": "PASS",
     "deeprsi_context_verified": "PASS",
     "honest_gaps_declared_in_dm_and_cv": "PASS",
     "canonical_git_branching_verified": "PASS",
@@ -70,6 +86,7 @@
     "manifest_sha256_verified": "PASS",
     "unverified_claims_purged": "PASS",
     "tap_gated_dispatch_compliance": "PASS",
+    "outreach_dispatch_executed_by_principal": "PASS",
     "constitutional_compliance_agents_md": "PASS"
   },
   "layout_verification": {
@@ -89,6 +106,7 @@
     "dm_draft_alias": "hillclimb/x-dm-draft.md",
     "application_report": "hillclimb/APPLICATION_REPORT.md",
     "claim_ledger": "hillclimb/evidence/CLAIM_LEDGER.md",
+    "requirements_lock": "hillclimb/requirements.lock",
     "requirements_txt": "hillclimb/requirements.txt",
     "evidence_json": "hillclimb/evidence/EVIDENCE.json",
     "manifest_sha256": "hillclimb/evidence/MANIFEST.sha256"
@@ -102,19 +120,20 @@
     "dm_draft_alias": "workspace/goals/goal-4/files/hillclimb/x-dm-draft.md",
     "application_report": "workspace/goals/goal-4/files/hillclimb/APPLICATION_REPORT.md",
     "claim_ledger": "workspace/goals/goal-4/files/hillclimb/evidence/CLAIM_LEDGER.md",
+    "requirements_lock": "workspace/goals/goal-4/files/hillclimb/requirements.lock",
     "requirements_txt": "workspace/goals/goal-4/files/hillclimb/requirements.txt",
     "evidence_json": "workspace/goals/goal-4/files/hillclimb/evidence/EVIDENCE.json",
     "manifest_sha256": "workspace/goals/goal-4/files/hillclimb/evidence/MANIFEST.sha256"
   },
   "reproducibility_notes": {
-    "pdf_determinism": "ReportLab PDF generation uses InvariantCanvas and rl_config.invariant=1 with exact pinned dependencies, guaranteeing byte-for-byte reproducible PDF SHA-256 across all environments.",
-    "png_rasterization": "PNG rendering from PDF uses PyMuPDF (fitz) at 300 DPI (2550x3300) with explicit 300 DPI metadata. Operating system font rasterizer anti-aliasing variations and zlib compression deflate variations produce slight pixel hash variations across platforms, while visual geometry (2550x3300), 300 DPI metadata, layout geometry, zero collisions, and zero out-of-bounds remain strictly identical. PNGs are validated via geometry and metadata assertions and excluded from byte-level MANIFEST.sha256."
+    "pdf_determinism": "ReportLab PDF generation uses InvariantCanvas and rl_config.invariant=1 with exact pinned dependencies, guaranteeing deterministic byte-for-byte PDF output under Python 3.10-3.13 on POSIX/macOS/Linux matching ReportLab configurations. Across heterogeneous environments, ReportLab layout dimensions, page count, and bounding box containment remain strictly invariant.",
+    "png_rasterization": "PNG rendering from PDF uses PyMuPDF (fitz) at 300 DPI (2550x3300) with explicit 300 DPI metadata. Operating system font rasterizer anti-aliasing variations and zlib compression deflate variations produce slight pixel hash variations across platforms and rebuilds, while visual geometry (2550x3300), 300 DPI metadata, layout geometry, zero collisions, and zero out-of-bounds remain strictly identical. PNGs are validated via geometry and metadata assertions and excluded from byte-level MANIFEST.sha256."
   },
   "limitations": [
     "No deep background in reinforcement learning physics simulators or game-engine wrappers; declared as transparent gap.",
     "No background in multi-node distributed GPU cluster infrastructure orchestration; declared as transparent gap.",
     "Candidate is an experienced technology architect and founder deliberately pursuing a hands-on Individual Contributor role in evals research and technical systems writing.",
-    "Application delivery is tap-gated under Section 4 and 5 of AGENTS.md; no automated outbound communication executed.",
+    "Outreach transmitted by Principal Pavel Cherkashin on 2026-10-25 ~06:39 PDT via X DM to @jparkjmc; autonomous agents did not perform unauthorized outbound communication.",
     "Linear issue status maintained at 'In Review' with label 'Role: QA-Needed'; final gate acceptance to 'Done' reserved exclusively for Principal Pavel Cherkashin."
   ]
 }

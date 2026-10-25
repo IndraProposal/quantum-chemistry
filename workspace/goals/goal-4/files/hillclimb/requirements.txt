@@ -1,3 +1,6 @@
+# Direct dependencies for Hillclimb AI CV build & verification harness
+# For full transitive lockfile, see: requirements.lock
+# Python constraints: Python >= 3.10, <= 3.13
 reportlab==5.1.0
 pymupdf==2.0
 pypdf==6.21.2

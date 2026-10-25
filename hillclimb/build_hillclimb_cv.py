@@ -293,7 +293,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-hillclimb.pdf", output_png="cv-pav
     early_header = "<b>Enterprise Systems &amp; Technology Leadership</b> &mdash; <i>Siebel Systems, Sputnik Labs, Microsoft</i> <font color='#475569'>| Prior</font>"
     story.append(Paragraph(early_header, body_style))
     early_bullets = (
-        "&bull; Country Manager at Siebel Systems (Russia &amp; CIS); Founder &amp; Director of Sputnik Labs (pioneer CRM systems integrator in Russia/CIS, scaling to 110+ engineers and specialists, acquired by Technoserv).<br/>"
+        "&bull; Country Manager at Siebel Systems (Russia &amp; CIS); Founder &amp; Director of Sputnik Labs (pioneer CRM systems integrator in Russia/CIS, acquired by Technoserv).<br/>"
         "&bull; Platform Director at Microsoft; author of university textbook <i>Customer Relationship Management Strategy</i> (INTUIT / BINOM, 2007, 384 pp., ISBN 978-5-94774-643-3); systems design mentor."
     )
     story.append(Paragraph(early_bullets, bullet_style))
