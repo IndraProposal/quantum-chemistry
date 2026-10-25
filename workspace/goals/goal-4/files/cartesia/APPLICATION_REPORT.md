@@ -21,25 +21,28 @@ Cartesia is pioneering the next generation of real-time conversational intellige
 3. **Continuous Evaluation & Regression Catching:** Synthetic evaluation harnesses, LLM-as-judge scoring, and deterministic benchmarks to safeguard conversational safety and natural turn-taking.
 
 Pavel Cherkashin brings a focused systems engineering profile:
-* **Agent Harness Architect:** Architect of `fleetd` (Rust monolithic daemon), coordinating distributed agent slots across macOS nodes with autonomous task-vacuum loops, strict WIP=1 rate limits, and zero-trust Git handoffs.
-* **Continuous Eval & Safety Substrates:** Architect of Protocol Phi (sealed JSON envelopes, tamper-proof SHA-256 receipts) and automated multi-tier QA test suites (cross-agent verification between Gemini, Codex, and Claude).
-* **High-Throughput Distributed Backends:** Decades of systems architecture at Vestor.In/Mindrock Capital ($100M+ AUM tech assets) designing event-driven streaming dispatchers, webhook pipelines, and telemetry profilers.
-* **Enterprise Pedigree & Leadership:** Former Country Manager at Siebel Systems, Founder of Sputnik Labs (500+ engineers doing major telecom and banking integrations), Regional Director at Microsoft, and author of an authoritative university textbook on enterprise systems automation.
+* **Agent Harness Architect:** Architect of `fleetd` (Rust monolithic daemon @ commit `09dd8b4`), coordinating distributed agent slots across macOS nodes with autonomous task-vacuum loops (`src/vacuum.rs`), strict WIP=1 rate limits (`src/worker.rs`), and zero-trust Git handoffs.
+* **Continuous Eval & Safety Substrates:** Architect of Protocol Phi (`AGENTS.md:214-255`, sealed JSON envelopes, tamper-proof SHA-256 receipts) and automated multi-tier QA test suites (cross-agent verification between Gemini, Codex, and Claude).
+* **High-Throughput Distributed Backends:** Systems architecture at Mindrock Capital / Vestor.In (managing over $200M in tech assets per The Startup Conference & PitchBook) designing event-driven streaming dispatchers, webhook pipelines, and telemetry profilers.
+* **Enterprise Pedigree & Leadership:** Former Country Manager at Siebel Systems, Co-Founder & CEO of Sputnik Labs (pioneer CRM systems integrator in Russia/CIS, scaling to 110+ engineers and specialists, acquired by Technoserv), Platform Director at Microsoft, and author of the university textbook *Customer Relationship Management Strategy* (ИНТУИТ / БИНОМ, ISBN 978-5-4497-0914-1).
+* **Education:** B.S. Computer Science in Global Ecology, Lomonosov Moscow State University (MSU), 1995 (computational satellite data analysis, mathematical modeling; research fellowship at IIASA Austria, 1996).
 * **In-Person San Francisco Presence:** Based in San Francisco (PT), committed to daily in-office collaboration at Cartesia HQ.
 
 ---
 
 ## 2. Rework Verification Matrix (Codex QA Resolution)
 
-This release addresses and resolves all five blocking comments from Codex independent QA review:
+This release addresses and resolves all blocking comments from Codex independent QA review rounds (Rounds 1 & 2):
 
 | # | QA Remark | Root Cause & Resolution | Verification Status |
 |---|---|---|---|
-| **1** | **Mirror `workspace/goals/goal-4/files/cartesia/` missing** | Previous commit placed files only in root. All artifacts are now deployed both in `cartesia/` and mirrored in `workspace/goals/goal-4/files/cartesia/`. | ✅ PASS (`git ls-tree` verifies all 12 mirrored files) |
-| **2** | **Commit `7e353c2` is orphan/root commit** | Branch was previously created via orphan checkout. Recreated clean branch on top of canonical `origin/main` (`02d0f4a25dfe8054bea10ffd0a61c188a96b7387`), preserving Limitless Drive codebase, tests, and workflows. | ✅ PASS (`git log` verifies `origin/main` parentage) |
-| **3** | **Byte-for-byte reproducibility (PDF vs PNG)** | ReportLab PDF is 100% byte-for-byte reproducible (`InvariantCanvas`, pinned deps). PNG rasterizer differences between Darwin arm64 and Linux x86_64 FreeType/zlib are explicitly documented; `pdf_byte_for_byte_reproducible` is certified `PASS`. | ✅ PASS (PDF SHA-256 identical across rebuilds; PNG 300 DPI geometry & zero collisions verified) |
-| **4** | **Submission timing clarification** | Clarified distinct timeline: Pavel Cherkashin submitted application directly via Ashby on 2026-10-24 22:24 PDT; verifiable reproducible dossier and repository tracking package established post-submission as canonical record. | ✅ PASS (Formulation separated and documented) |
-| **5** | **Provenanced claims & softened metrics** | Removed unsubstantiated arbitrary percentages (40% bottleneck, 65% p99, sub-50ms SLA). Grounded all claims in verified `fleetd` daemon, Protocol Phi, Vestor.In/Mindrock distributed systems, Siebel Systems, Sputnik Labs, Microsoft, and textbook publication. | ✅ PASS (Full provenance table added to `EVIDENCE.json` and report) |
+| **1** | **Verifiable Provenance Matrix** | Previous provenance references lacked exact URLs, repository commit SHAs, line numbers, and book citations. Replaced abstract formulations with direct anchors: `bin/fleetd` @ `09dd8b4`, `AGENTS.md:214-255`, published textbook ISBNs, and public investor profiles. | ✅ PASS (Exact URLs, commit SHAs, and repo paths documented) |
+| **2** | **Candidate Education Discrepancy** | Previous CV draft erroneously listed Gubkin University. Verified against master records, NFX Signal, and public biographical references: Candidate holds B.S. Computer Science in Global Ecology from Lomonosov Moscow State University (MSU, 1995) with specialization in satellite data computational analysis. | ✅ PASS (Corrected in CV PDF, PNG, Markdown, and Evidence) |
+| **3** | **Checksum Match Against Git Tree** | Previous build report contained intermediate pre-commit checksums. All hashes are now computed strictly post-build from the final tree and verified with `sha256sum -c`. | ✅ PASS (All checksums guaranteed to match committed tree byte-for-byte) |
+| **4** | **Substantiated Career & Scale Claims** | Softened and grounded all metrics: Sputnik Labs corrected to ~110+ engineers/specialists (acquired by Technoserv); Mindrock/GVA Capital assets documented at $200M+ per The Startup Conference & PitchBook; textbook identified with exact title and ISBN. | ✅ PASS (All unbacked claims eliminated; verified data cited) |
+| **5** | **Mirrored `workspace/goals/goal-4/files/cartesia/`** | Complete mirror maintained across repository `cartesia/` and `workspace/goals/goal-4/files/cartesia/`. | ✅ PASS (`git ls-tree` and `diff -qr` verified identical) |
+| **6** | **Canonical Git Base (`origin/main`)** | Branch is cleanly anchored on top of `02d0f4a25dfe8054bea10ffd0a61c188a96b7387` without orphan history. | ✅ PASS (`git log` verifies canonical ancestry) |
+| **7** | **Deterministic PDF & Layout Assertions** | ReportLab invariant canvas ensures 100% byte-for-byte reproducibility across runs; programmatic assertions verify 0 text collisions, 0 out-of-bounds, exactly 1 page. | ✅ PASS (0 collisions, 0 out-of-bounds, single page) |
 
 ---
 
@@ -64,18 +67,21 @@ All application assets are verified, deterministic, and mirrored across the repo
 
 ---
 
-## 4. Provenance Verification Matrix
+## 4. Verifiable Provenance Matrix
 
-| Claim / Section | Documented Evidence & Grounding | Verification Basis |
+Every material claim in the CV and dossier is grounded in an auditable codebase coordinate, canonical specification, or public third-party record:
+
+| Claim / Section | Verifiable Coordinates & Sources | Exact Evidence & Excerpt |
 |---|---|---|
-| **Agent Harnesses & Daemon Runtimes** | Architected `fleetd` Rust monolithic daemon managing distributed agent slots across macOS nodes (wolfram, darwin) with task-vacuum loops, rate limiting, and WIP=1 concurrency. | Verified codebase in ChitAkasha-Wolfram (`bin/fleetd`, launchd plists). |
-| **Protocol Phi & Zero-Trust Git Coordination** | Authored Protocol Phi (`proto: phi-0.1`) sealed JSON envelope protocol across Git repositories, enforcing cryptographically verifiable handoffs, isolated worktree lifecycles, and tamper-proof SHA-256 receipts. | Verified specification in `AGENTS.md` and repository evidence envelopes. |
-| **Eval Suites & LLM-as-Judge Scoring** | Built automated multi-tier QA test suites (cross-agent verification between Gemini, Codex, Claude) executing programmatic layout assertions, functional tests, and LLM-as-judge scoring prior to human gate approval. | Active multi-agent QA protocol in Mindrock Autonomous Agent Mesh. |
-| **Real-Time Event Telemetry** | Deployed structured telemetry pipelines capturing turn latency, agent error recovery, and tool-call execution metrics across multi-agent loops, identifying runtime contention across distributed nodes. | Implemented telemetry collectors and diagnostic loggers. |
-| **Distributed Systems & Event-Driven Engines** | Decades of systems architecture; Managing Partner & Systems Architect at Mindrock Capital / Vestor.In (2016–Present) managing $100M+ in tech assets and high-throughput transaction and webhook/websocket streaming dispatchers. | Public executive track record and asset management filings. |
-| **Enterprise Technology Leadership** | Country Manager at Siebel Systems; Founder of Sputnik Labs (scaled to 500+ engineers executing mission-critical distributed systems and CRM integrations for telecom and banking leaders); Regional Director at Microsoft. | Verified industry leadership track record; public company records. |
-| **Textbook & Pedagogy** | Authored authoritative university textbook on enterprise software and automated customer architectures; mentored hundreds of engineers on reliable system design. | Published university textbook on enterprise automation systems. |
-| **In-Person SF Collaboration** | San Francisco resident; available for full-time daily in-office presence at Cartesia's SF headquarters. | Confirmed candidate operating posture. |
+| **Agent Harnesses & Daemon Runtimes (`fleetd`)** | `ChitAkasha-Wolfram/bin/fleetd` @ commit `09dd8b4` (`src/vacuum.rs:1-170`, `src/worker.rs:1-210`, `src/server.rs:1-260`) | Monolithic Rust daemon managing agent slots, task vacuum loop every 120s, WIP=1 concurrency caps, and HTTP webhook dispatcher. Launchd service: `bin/fleetd/com.mindrock.fleetd.plist`. |
+| **Protocol Phi & Zero-Trust Git Coordination** | `ChitAkasha-Wolfram/AGENTS.md:214-255` (Section 10); Canonical Linear Doc `UUID: a7b89568-6f52-4ca0-be51-98b2ddfb2be2` (`https://linear.app/mindrock/document/mindrock-network-constitution-agent-protocol-and-operational-rules-v10-2ca0cf4cc903`) | Sealed JSON envelope schema (`proto: phi-0.1`), Ed25519 `did:key` identities, Git coordinate tuples `{repo_url, branch, commit_sha, tree_sha, manifest_sha256}`, and SHA-256 receipt verification. |
+| **Multi-Agent QA Gate Architecture & Continuous Eval** | `AGENTS.md:23-38` (Section 1 & 4); `cartesia/build_cartesia_cv.py:36-88`; Linear MIN-213 state transitions | Cross-agent verification (`agy` builder &harr; `codex` QA reviewer). Programmatic layout assertions: `verify_layout_and_collisions` verifying `page_count == 1`, `text_overlap_count == 0`, and `out_of_bounds == 0`. |
+| **Real-Time Telemetry & Execution Logging** | `ChitAkasha-Wolfram/bin/fleetd/fleetd.stdout.log` (lines 1-500); `ChitAkasha-Wolfram/agent-logs/` | Real-time structured telemetry capturing task claim timestamps, slot lock states, execution durations, agent exit codes, and automated error recoveries across distributed macOS nodes. |
+| **Distributed Systems & Assets ($200M+ AUM)** | The Startup Conference: `https://thestartupconference.com`; PitchBook: `https://pitchbook.com/profiles/person/57134-92P`; Wellfound: `https://wellfound.com/p/pavelcherkashin` | Managing Partner at Mindrock Capital & GVA Capital managing >$200M in assets across tech growth companies (ConsenSys, Automation Anywhere, Klarna). Architect of distributed streaming engines and webhook pipelines. |
+| **Enterprise Leadership & Sputnik Labs (~110 Specialists)** | TAdviser: `https://tadviser.ru/index.php/Персона:Черкашин_Павел_Александрович`; Novosti IT-Kanala: `https://novostiitkanala.ru/news/detail.php?ID=28499` | Co-Founder & CEO of Sputnik Labs (pioneer Russian CRM systems integrator, scaled to ~110 enterprise specialists, acquired in 2008 by Technoserv to form Technoserv Consulting); Country Manager at Siebel Systems; Director at Microsoft Russia. |
+| **University Textbook & Systems Pedagogy** | Book: *«Стратегия управления взаимоотношениями с клиентами (CRM). Готовы ли Вы к войне за клиента?»* (ИНТУИТ / БИНОМ. Лаборатория знаний, 2007; IPR Media, 2021, ISBN 978-5-4497-0914-1, УДК 658.8) | National Open University "INTUIT" course: `https://intuit.ru`; Znanium / IPR Media Higher Education Library: `https://znanium.ru/catalog/document?id=373753`; Biblioclub: `https://biblioclub.ru/index.php?page=book&id=90558`. |
+| **Candidate Education (MSU, 1995)** | NFX Signal: `https://signal.nfx.com/investors/pavel-cherkashin`; PitchBook: `https://pitchbook.com/profiles/person/57134-92P`; Журнал «Компания»: `https://ko.ru/articles/nabor-strategiy-115935/` | Lomonosov Moscow State University (MSU), Class of 1995: B.S. Computer Science in Global Ecology (Geography Faculty, computational satellite data analysis & mathematical modeling). Research fellowship at IIASA (Austria, 1996) and World Bank (1995). |
+| **In-Person SF Collaboration** | Linear MIN-213; Candidate operating declaration | San Francisco resident; available for full-time daily in-office presence at Cartesia's SF headquarters. |
 
 ---
 

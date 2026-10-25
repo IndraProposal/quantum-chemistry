@@ -251,8 +251,8 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-cartesia.pdf", output_png="cv-pave
     early_header = "<b>Enterprise Systems &amp; Technology Leadership</b> &mdash; <i>Siebel Systems, Sputnik Labs, Microsoft</i> <font color='#475569'>| Prior</font>"
     story.append(Paragraph(early_header, body_style))
     early_bullets = (
-        "&bull; Country Manager at Siebel Systems; Founder of Sputnik Labs (scaled to 500+ engineers executing mission-critical distributed systems and CRM integrations for telecom and banking leaders).<br/>"
-        "&bull; Regional Director at Microsoft; authored authoritative university textbook on enterprise software and automated customer architectures; mentored hundreds of engineers on reliable system design."
+        "&bull; Country Manager at Siebel Systems; Co-Founder &amp; CEO of Sputnik Labs (pioneer CRM systems integrator in Russia/CIS, scaling to 110+ engineers and specialists, acquired by Technoserv).<br/>"
+        "&bull; Platform Director at Microsoft; author of university textbook <i>Customer Relationship Management Strategy</i> (ИНТУИТ / БИНОМ, ISBN 978-5-4497-0914-1); systems design mentor."
     )
     story.append(Paragraph(early_bullets, bullet_style))
     story.append(Spacer(1, 2.5))
@@ -270,7 +270,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-cartesia.pdf", output_png="cv-pave
     # 6. Education
     story.append(Paragraph("EDUCATION &amp; SYSTEMS FOUNDATION", section_title_style))
     edu_text = (
-        "&bull; <b>B.S. / M.S. Applied Mathematics &amp; Computer Science:</b> Russian State University of Oil &amp; Gas (Quantitative algorithms, discrete mathematics, network theory, and systems programming)."
+        "&bull; <b>B.S. Computer Science in Global Ecology:</b> Lomonosov Moscow State University (MSU), 1995 (Computational analysis of satellite data, mathematical modeling; research fellowship at IIASA Austria)."
     )
     story.append(Paragraph(edu_text, bullet_style))
     

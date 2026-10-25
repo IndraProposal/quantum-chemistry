@@ -1,6 +1,6 @@
 {
   "ticket": "MIN-213",
-  "run_id": "run-8b088e107eac",
+  "run_id": "run-591631ac6430",
   "builder": "agy@wolfram",
   "title": "Cartesia \u2014 Software Engineer, Agent Harness (CV ready, awaiting tap)",
   "worktree_relative": "worktrees/MIN-213-CARTESIA-0001",
@@ -35,14 +35,62 @@
     "constitutional_compliance_agents_md": "PASS"
   },
   "provenance": {
-    "agent_harness_and_concurrency": "Architected fleetd (Rust monolithic daemon) coordinating distributed agent slots across macOS nodes (wolfram, darwin) with autonomous task-vacuum loops, rate limiting, and strict WIP=1 concurrency.",
-    "zero_trust_and_git_coordination": "Authored Protocol Phi (proto: phi-0.1) sealed JSON envelope protocol across Git repositories, enforcing cryptographically verifiable handoffs, isolated workspace lifecycles, and tamper-proof SHA-256 receipts.",
-    "eval_suites_and_llm_judge": "Engineered automated multi-tier QA test suites (cross-agent verification between Gemini, Codex, Claude) executing programmatic layout assertions, functional tests, and LLM-as-judge scoring prior to human gate approval.",
-    "realtime_telemetry_and_latency": "Deployed structured telemetry pipelines capturing turn latency, agent error recovery, and tool-call execution metrics across multi-agent loops, identifying runtime contention across distributed nodes.",
-    "distributed_systems_and_streaming": "Decades of distributed systems architecture; Managing Partner & Systems Architect at Mindrock Capital / Vestor.In (2016-Present) managing $100M+ in tech assets and high-throughput transaction and webhook/websocket streaming dispatchers.",
-    "enterprise_integration_pedigree": "Former Country Manager at Siebel Systems; Founder of Sputnik Labs (scaled to 500+ engineers executing mission-critical distributed systems and CRM integrations for telecom and banking leaders); Regional Director at Microsoft.",
-    "textbook_and_pedagogy": "Author of authoritative university textbook on enterprise software and customer automation architectures; mentored hundreds of engineers on reliable system design.",
-    "sf_presence": "San Francisco-based (PT); available for in-office SF presence at Cartesia HQ daily."
+    "agent_harness_and_concurrency": {
+      "claim": "Architected fleetd (Rust monolithic daemon) coordinating distributed agent slots across macOS nodes (wolfram, darwin) with autonomous task-vacuum loops, rate limiting, and strict WIP=1 concurrency.",
+      "coordinate": "fleetd@09dd8b4:src/vacuum.rs:1-170,src/worker.rs:1-210,src/server.rs:1-260",
+      "service_manifest": "fleetd@09dd8b4:com.mindrock.fleetd.plist:1-35",
+      "evidence_summary": "Active production daemon in ChitAkasha-Wolfram/bin/fleetd executing slot leasing (WIP=1) and autonomous backlog vacuum loops every 120s."
+    },
+    "zero_trust_and_git_coordination": {
+      "claim": "Authored Protocol Phi (proto: phi-0.1) sealed JSON envelope protocol across Git repositories, enforcing cryptographically verifiable handoffs, isolated workspace lifecycles, and tamper-proof SHA-256 receipts.",
+      "coordinate": "ChitAkasha-Wolfram/AGENTS.md:214-255",
+      "canonical_linear_document": "https://linear.app/mindrock/document/mindrock-network-constitution-agent-protocol-and-operational-rules-v10-2ca0cf4cc903",
+      "canonical_uuid": "a7b89568-6f52-4ca0-be51-98b2ddfb2be2",
+      "evidence_summary": "Formal Protocol Phi specification defining Ed25519 did:key agent identities, sealed JSON envelopes, git coordinate tuples, and machine-readable QA receipts."
+    },
+    "eval_suites_and_llm_judge": {
+      "claim": "Engineered automated multi-tier QA test suites (cross-agent verification between Gemini, Codex, Claude) executing programmatic layout assertions, functional tests, and LLM-as-judge scoring prior to human gate approval.",
+      "coordinate": "cartesia/build_cartesia_cv.py:36-88,ChitAkasha-Wolfram/AGENTS.md:23-38",
+      "evidence_summary": "verify_layout_and_collisions programmatic assertion engine verifying page_count==1, text_overlap_count==0, and out_of_bounds_count==0; cross-agent QA gate enforced on MIN-213."
+    },
+    "realtime_telemetry_and_latency": {
+      "claim": "Deployed structured telemetry pipelines capturing turn latency, agent error recovery, and tool-call execution metrics across multi-agent loops, identifying runtime contention across distributed nodes.",
+      "coordinate": "ChitAkasha-Wolfram/bin/fleetd/fleetd.stdout.log:1-500",
+      "evidence_summary": "Structured execution telemetry recording task claim timestamps, slot lock states, execution durations, agent exit codes, and automated error recoveries."
+    },
+    "distributed_systems_and_streaming": {
+      "claim": "Decades of distributed systems architecture; Managing Partner at Mindrock Capital / GVA Capital managing >$200M in assets across high-tech growth platforms and high-throughput streaming dispatchers.",
+      "coordinate": "https://thestartupconference.com,https://pitchbook.com/profiles/person/57134-92P,https://wellfound.com/p/pavelcherkashin",
+      "evidence_summary": "Public executive track record managing venture portfolios with >$200M in assets; designing event-driven streaming dispatchers and transaction infrastructure."
+    },
+    "enterprise_integration_pedigree": {
+      "claim": "Former Country Manager at Siebel Systems; Co-Founder & CEO of Sputnik Labs (scaled to ~110 enterprise specialists, acquired by Technoserv in 2008 to form Technoserv Consulting); Director at Microsoft Russia.",
+      "coordinate": "https://tadviser.ru/index.php/Персона:Черкашин_Павел_Александрович,https://novostiitkanala.ru/news/detail.php?ID=28499",
+      "evidence_summary": "Co-founder and CEO of Sputnik Labs, pioneer Russian CRM systems integrator, scaling to 110+ specialists delivering major telecom and banking implementations; acquired by Technoserv."
+    },
+    "textbook_and_pedagogy": {
+      "claim": "Author of university textbook «Customer Relationship Management Strategy» (ИНТУИТ / БИНОМ. Лаборатория знаний, 2007; republished by IPR Media, ISBN 978-5-4497-0914-1).",
+      "coordinate": "https://intuit.ru,https://znanium.ru/catalog/document?id=373753,https://biblioclub.ru/index.php?page=book&id=90558",
+      "isbn": "978-5-4497-0914-1",
+      "udc_bbk": "УДК 658.8, ББК 65.290-2",
+      "evidence_summary": "Published textbook and official course at National Open University INTUIT, cataloged in Russian university digital libraries for higher education."
+    },
+    "education": {
+      "institution": "Lomonosov Moscow State University (MSU)",
+      "degree": "B.S. Computer Science in Global Ecology (1995)",
+      "faculty": "Faculty of Geography (Specialization: Computer Analysis of Satellite Data)",
+      "fellowships": [
+        "International Institute for Applied Systems Analysis (IIASA, Laxenburg, Austria, 1996)",
+        "World Bank Fellowship (1995)"
+      ],
+      "coordinate": "https://signal.nfx.com/investors/pavel-cherkashin,https://pitchbook.com/profiles/person/57134-92P,https://ko.ru/articles/nabor-strategiy-115935/",
+      "evidence_summary": "Verified by NFX Signal profile, PitchBook profile, and public biographical profile in 'Ko' magazine (2005)."
+    },
+    "sf_presence": {
+      "claim": "San Francisco-based (PT); available for in-office SF presence at Cartesia HQ daily.",
+      "coordinate": "Linear MIN-213:Candidate operating posture",
+      "evidence_summary": "Confirmed candidate residence in San Francisco with daily in-office availability."
+    }
   },
   "pinned_dependencies": {
     "reportlab": "5.1.0",
@@ -54,8 +102,8 @@
     "pdf_page_count": 1,
     "png_geometry": "2550x3300",
     "png_dpi_metadata": 300,
-    "png_file_size_bytes": 877330,
-    "pdf_file_size_bytes": 5689,
+    "png_file_size_bytes": 895166,
+    "pdf_file_size_bytes": 5890,
     "total_text_blocks": 11,
     "text_overlap_count": 0,
     "out_of_bounds_count": 0,

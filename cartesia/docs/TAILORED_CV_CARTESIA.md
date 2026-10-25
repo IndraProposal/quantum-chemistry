@@ -41,8 +41,8 @@ San Francisco, CA (In-Office / Bay Area) | pavel@mindrock.capital | linkedin.com
 - **Telemetry & Regression Profiling:** Built distributed tracing pipelines identifying database locking and network queue contention, significantly reducing tail (p99) latency and operational jitter.
 
 #### Enterprise Systems & Technology Leadership — Siebel Systems, Sputnik Labs, Microsoft (Prior)
-- Country Manager at Siebel Systems; Founder of Sputnik Labs (scaled to 500+ engineers executing mission-critical distributed systems and CRM integrations for telecom and banking leaders).
-- Regional Director at Microsoft; authored authoritative university textbook on enterprise software and automated customer architectures; mentored hundreds of engineers on reliable system design.
+- Country Manager at Siebel Systems; Co-Founder & CEO of Sputnik Labs (pioneer CRM systems integrator in Russia/CIS, scaling to 110+ engineers and specialists, acquired by Technoserv).
+- Platform Director at Microsoft; author of university textbook *Customer Relationship Management Strategy* (ИНТУИТ / БИНОМ, ISBN 978-5-4497-0914-1); systems design mentor.
 
 ---
 
@@ -54,4 +54,4 @@ San Francisco, CA (In-Office / Bay Area) | pavel@mindrock.capital | linkedin.com
 ---
 
 ### EDUCATION & SYSTEMS FOUNDATION
-- **B.S. / M.S. Applied Mathematics & Computer Science:** Russian State University of Oil & Gas (Quantitative algorithms, discrete mathematics, network theory, and systems programming).
+- **B.S. Computer Science in Global Ecology:** Lomonosov Moscow State University (MSU), 1995 (Computational analysis of satellite data, mathematical modeling; research fellowship at IIASA Austria).
