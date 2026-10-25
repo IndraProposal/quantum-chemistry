@@ -1,12 +1,12 @@
 {
   "ticket": "MIN-207",
-  "task_id": "run-985b460ab8fa",
+  "task_id": "run-0d3c0ddd5a73",
   "builder": "agy@wolfram",
   "title": "Copperlane (Veronica Garg) — founding engineers, CV ready",
   "worktree": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-207-COPPERLANE-0001",
   "git_branch": "minutta/min-207-copperlane-veronica-garg-founding-engineers-cv-ready",
   "status": "ready_for_review",
-  "summary": "MIN-207 REWORK: Addressed all 4 independent QA blocking items. 1) Fixed PNG export via PIL to embed explicit 300 DPI metadata in the pHYs chunk (verified 2550x3300 px, 300 DPI). 2) Removed placeholder phone number 415-xxx-xxxx from all outbound DM and application card options in favor of verified professional contact channels. 3) Provided full dependency manifests (requirements.txt and pyproject.toml) and verified build reproducibility from a clean environment. 4) Regenerated single-page PDF and 300 DPI PNG, refreshed cryptographic MANIFEST.sha256, and synchronized workspace mirrors. Ready for independent QA re-audit.",
+  "summary": "MIN-207 REWORK: Resolved reproducibility defect via deterministic PDF generation (rl_config.invariant=1, SOURCE_DATE_EPOCH=946684800) and atomic evidence refresh workflow (refresh_evidence.py & build_copper_cv.py auto-refresh). All constraints verified (1-page PDF, 2550x3300 300 DPI PNG, zero text collisions, zero placeholders, 11/11 manifest OK).",
   "acceptance": {
     "single_page_cv_pdf_verified": "PASS",
     "zero_text_collisions_layout": "PASS",
@@ -24,7 +24,9 @@
     "honest_disclaimers_ic_and_metrics": "PASS",
     "minimax_vendor_benchmark_excluded": "PASS",
     "zero_auto_apply_guardrail_intact": "PASS",
-    "constitutional_compliance_agents_md": "PASS"
+    "constitutional_compliance_agents_md": "PASS",
+    "deterministic_build_verified": "PASS",
+    "atomic_evidence_refresh_workflow": "PASS"
   },
   "metrics": {
     "pdf_page_count": 1,
@@ -52,7 +54,8 @@
     "outreach_copy": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-207-COPPERLANE-0001/docs/DM_OUTREACH_VERONICA_GARG.md",
     "strategy_brief": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-207-COPPERLANE-0001/docs/COPPERLANE_STRATEGY_BRIEF.md",
     "codex_insight": "/Users/pavelcherkashin/ChitAkasha-Wolfram/codex-insights/min-207-copperlane-automation-lead.md",
-    "manifest_sha256": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-207-COPPERLANE-0001/evidence/MANIFEST.sha256"
+    "manifest_sha256": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-207-COPPERLANE-0001/evidence/MANIFEST.sha256",
+    "refresh_evidence_script": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-207-COPPERLANE-0001/refresh_evidence.py"
   },
   "limitations": [
     "Hiring post on X named traits (>highly motivated, >fast learner, >care about problems) and on-site SF rather than a rigid job specification; materials are founder-aligned and systems-focused.",

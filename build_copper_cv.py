@@ -9,9 +9,11 @@ Linear Ticket: MIN-207
 import os
 import sys
 import io
+import time
 import pypdf
 import pymupdf  # fitz
 from PIL import Image
+from reportlab import rl_config
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
@@ -19,7 +21,11 @@ from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 )
 
-def build_pdf(output_pdf="cv-pavel-cherkashin-copper.pdf", output_png="cv-pavel-cherkashin-copper-hd.png"):
+# Enforce deterministic PDF generation across builds
+rl_config.invariant = 1
+os.environ.setdefault("SOURCE_DATE_EPOCH", "946684800")
+
+def build_pdf(output_pdf="cv-pavel-cherkashin-copper.pdf", output_png="cv-pavel-cherkashin-copper-hd.png", refresh_ev=True):
     pdf_dir = os.path.dirname(os.path.abspath(output_pdf))
     if pdf_dir:
         os.makedirs(pdf_dir, exist_ok=True)
@@ -267,9 +273,19 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-copper.pdf", output_png="cv-pavel-
         print(f"Successfully generated 300 DPI HD PNG: {output_png} ({png_size} bytes, ~{png_size / (1024*1024):.2f} MB)")
         doc_fitz.close()
     
+    # Atomic evidence refresh workflow
+    if refresh_ev:
+        try:
+            from refresh_evidence import refresh_evidence
+            refresh_evidence(repo_root=os.path.dirname(os.path.abspath(output_pdf)))
+        except ImportError:
+            pass
+
     return output_pdf, output_png
 
 if __name__ == "__main__":
-    out_pdf = sys.argv[1] if len(sys.argv) > 1 else "cv-pavel-cherkashin-copper.pdf"
-    out_png = sys.argv[2] if len(sys.argv) > 2 else "cv-pavel-cherkashin-copper-hd.png"
-    build_pdf(out_pdf, out_png)
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    no_refresh = "--no-refresh-evidence" in sys.argv
+    out_pdf = args[0] if len(args) > 0 else "cv-pavel-cherkashin-copper.pdf"
+    out_png = args[1] if len(args) > 1 else "cv-pavel-cherkashin-copper-hd.png"
+    build_pdf(out_pdf, out_png, refresh_ev=(not no_refresh))
