@@ -1,0 +1,16 @@
+[project]
+name = "openai-education-gtm"
+version = "0.1.0"
+description = "Deterministic CV and application package for OpenAI Global Head of Education GTM (MIN-211)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "reportlab==5.1.0",
+    "PyMuPDF==2.0",
+    "pypdf==6.21.2",
+    "Pillow==12.3.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

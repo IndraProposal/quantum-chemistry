@@ -1,0 +1,86 @@
+{
+  "ticket": "MIN-211",
+  "run_id": "run-1790af4b69da",
+  "timestamp": "2026-10-25T03:32:00-07:00",
+  "builder": "agy@wolfram",
+  "role": "Global Head of Education GTM",
+  "company": "OpenAI",
+  "location": "San Francisco, CA",
+  "posting_url": "https://openai.com/careers/global-head-of-education-gtm-san-francisco/",
+  "git": {
+    "branch": "minutta/min-211-openai-global-head-of-education-gtm-cv-ready-awaiting-tap",
+    "base_commit": "02d0f4a25dfe8054bea10ffd0a61c188a96b7387",
+    "remotes": {
+      "lab": "https://github.com/pashamango/minutta-rp-pr-cycle-lab.git",
+      "origin": "https://github.com/IndraProposal/quantum-chemistry.git"
+    },
+    "worktree": "worktrees/MIN-211-OPENAI-EDUCATION-GTM-0001"
+  },
+  "candidate": {
+    "name": "Pavel Cherkashin",
+    "email": "pavel@mindrock.capital",
+    "positioning": "Operator + Investor + Teacher; Education GTM system and team; Adobe 1.5M+ licenses landmark deal blueprint"
+  },
+  "submission_record": {
+    "submitted": true,
+    "submitter": "Pavel Cherkashin",
+    "channel": "OpenAI Careers / Greenhouse",
+    "timestamp": "2026-10-24T22:01:00-07:00",
+    "confirmation_note": "Status update 2026-10-24 (confirmed by Pavel 22:01 PDT): SUBMITTED by Pavel. Submission 4 of 5 in the OpenAI set."
+  },
+  "artifacts": {
+    "pdf": {
+      "filename": "cv-pavel-cherkashin-edgtm.pdf",
+      "sha256": "cd6f20f9c45a59acd6b2451647f272bc2ca8a92d9e151f4d5014fd2064c65131",
+      "page_count": 1,
+      "bytes": 6175,
+      "single_page_verified": true,
+      "zero_collisions_verified": true,
+      "zero_out_of_bounds_verified": true,
+      "reproducible_byte_for_byte": true
+    },
+    "png": {
+      "filename": "cv-pavel-cherkashin-edgtm-hd.png",
+      "sha256_darwin": "d1371faaa55fec281ec83e8e4cf74b0fc2eeb55645653feec78be6d8fdf1b9e5",
+      "sha256_linux": "517a31244e82df422998393e1b711bc3289dc62a2faeb25ff282367dca467c64",
+      "raw_rgb_pixel_sha256": "75381c93cc8f2ebdef15f4575411aaea5d53e13e7b9bb4b73fec943af8201a1d",
+      "resolution": "2550x3300",
+      "dpi": 300,
+      "bytes": 957328,
+      "pixel_identical_verified": true
+    },
+    "mirrored_goal4_artifacts": {
+      "directory": "workspace/goals/goal-4/files/openai-education-gtm/",
+      "files": [
+        "workspace/goals/goal-4/files/openai-education-gtm/cv-pavel-cherkashin-edgtm.pdf",
+        "workspace/goals/goal-4/files/openai-education-gtm/cv-pavel-cherkashin-edgtm-hd.png",
+        "workspace/goals/goal-4/files/openai-education-gtm/build_edgtm_cv.py"
+      ],
+      "status": "mirrored_and_verified"
+    }
+  },
+  "dependencies": {
+    "reportlab": "5.1.0",
+    "PyMuPDF": "2.0",
+    "pypdf": "6.21.2",
+    "Pillow": "12.3.0"
+  },
+  "checks": {
+    "single_page_cv_pdf_verified": "PASS",
+    "zero_text_collisions_layout": "PASS",
+    "page_containment_verified": "PASS",
+    "pdf_byte_for_byte_reproducible": "PASS",
+    "png_pixel_identical_reproducible": "PASS",
+    "hd_png_300dpi_metadata_verified": "PASS",
+    "manifest_sha256_verified": "PASS",
+    "canonical_git_branching_verified": "PASS",
+    "goal4_mirrored_artifacts_verified": "PASS",
+    "submission_status_synchronized": "PASS",
+    "zero_auto_apply_guardrail_intact": "PASS",
+    "mindrock_constitution_agents_md": "PASS"
+  },
+  "limitations": [
+    "Final status transition to Done is strictly reserved for Principal Pavel Cherkashin.",
+    "PNG file bytes differ at zlib deflate layer between Darwin and Linux platforms (macOS SHA-256 d1371faa... vs Linux 517a3124...), but the decoded pixel raster is 100% deterministic with invariant RGB pixel hash 75381c93cc8f2ebdef15f4575411aaea5d53e13e7b9bb4b73fec943af8201a1d and zero visual drift."
+  ]
+}
