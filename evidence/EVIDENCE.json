@@ -8,7 +8,7 @@
   "location": "San Francisco, CA",
   "posting_url": "https://openai.com/careers/deal-lead-special-situations-san-francisco/",
   "git": {
-    "commit": "pending",
+    "commit": "1121e30b03b933432280a9d758d582c97e07c9ce",
     "branch": "minutta/min-210-openai-deal-lead-special-situations-cv-ready-awaiting-tap",
     "remotes": {
       "lab": "https://github.com/pashamango/minutta-rp-pr-cycle-lab.git",
