@@ -51,7 +51,7 @@ python -c 'from pypdf import PdfReader; pages = len(PdfReader("cv-pavel-cherkash
 # Verify 300 DPI metadata and geometry (2550 x 3300)
 python -c 'from PIL import Image; im = Image.open("cv-pavel-cherkashin-copper-hd.png"); assert im.size == (2550, 3300), f"Bad size {im.size}"; dpi = round(im.info.get("dpi", (0, 0))[0]); assert dpi == 300, f"Bad dpi {dpi}"; print(f"PNG resolution: PASS ({im.size}, {dpi} DPI)")'
 
-# Verify cryptographic manifest integrity (11/11 files OK)
+# Verify cryptographic manifest integrity (12/12 files OK)
 sha256sum -c evidence/MANIFEST.sha256
 ```
 

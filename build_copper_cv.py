@@ -10,6 +10,7 @@ import os
 import sys
 import io
 import time
+import hashlib
 import pypdf
 import pymupdf  # fitz
 from PIL import Image
@@ -25,10 +26,21 @@ from reportlab.platypus import (
 rl_config.invariant = 1
 os.environ.setdefault("SOURCE_DATE_EPOCH", "946684800")
 
-def build_pdf(output_pdf="cv-pavel-cherkashin-copper.pdf", output_png="cv-pavel-cherkashin-copper-hd.png", refresh_ev=True):
+def sha256_file(filepath):
+    if not os.path.exists(filepath):
+        return None
+    h = hashlib.sha256()
+    with open(filepath, "rb") as f:
+        while chunk := f.read(65536):
+            h.update(chunk)
+    return h.hexdigest()
+
+def build_pdf(output_pdf="cv-pavel-cherkashin-copper.pdf", output_png="cv-pavel-cherkashin-copper-hd.png", refresh_ev=True, force=False):
     pdf_dir = os.path.dirname(os.path.abspath(output_pdf))
     if pdf_dir:
         os.makedirs(pdf_dir, exist_ok=True)
+    
+    old_pdf_sha = sha256_file(output_pdf)
     
     # Letter is 612 x 792 pt
     doc = SimpleDocTemplate(
@@ -259,19 +271,34 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-copper.pdf", output_png="cv-pavel-
     
     print(f"Successfully generated 1-page CV: {output_pdf}")
     
+    new_pdf_sha = sha256_file(output_pdf)
+
     # Export 300 DPI HD PNG
     if output_png:
-        doc_fitz = pymupdf.open(output_pdf)
-        page = doc_fitz[0]
-        zoom = 300 / 72  # 300 DPI
-        mat = pymupdf.Matrix(zoom, zoom)
-        pix = page.get_pixmap(matrix=mat)
-        # Preserve 300 DPI resolution in PNG metadata (pHYs chunk) via PIL
-        img = Image.open(io.BytesIO(pix.tobytes("png")))
-        img.save(output_png, dpi=(300, 300))
-        png_size = os.path.getsize(output_png)
-        print(f"Successfully generated 300 DPI HD PNG: {output_png} ({png_size} bytes, ~{png_size / (1024*1024):.2f} MB)")
-        doc_fitz.close()
+        png_reused = False
+        if not force and os.path.exists(output_png) and old_pdf_sha == new_pdf_sha:
+            try:
+                im = Image.open(output_png)
+                dpi = round(im.info.get("dpi", (0, 0))[0])
+                if im.size == (2550, 3300) and dpi == 300:
+                    png_reused = True
+                    png_size = os.path.getsize(output_png)
+                    print(f"Verified canonical 300 DPI HD PNG: {output_png} ({png_size} bytes)")
+            except Exception:
+                png_reused = False
+
+        if not png_reused:
+            doc_fitz = pymupdf.open(output_pdf)
+            page = doc_fitz[0]
+            zoom = 300 / 72  # 300 DPI
+            mat = pymupdf.Matrix(zoom, zoom)
+            pix = page.get_pixmap(matrix=mat)
+            # Preserve 300 DPI resolution in PNG metadata (pHYs chunk) via PIL
+            img = Image.open(io.BytesIO(pix.tobytes("png")))
+            img.save(output_png, dpi=(300, 300))
+            png_size = os.path.getsize(output_png)
+            print(f"Successfully generated 300 DPI HD PNG: {output_png} ({png_size} bytes, ~{png_size / (1024*1024):.2f} MB)")
+            doc_fitz.close()
     
     # Atomic evidence refresh workflow
     if refresh_ev:
@@ -286,6 +313,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-copper.pdf", output_png="cv-pavel-
 if __name__ == "__main__":
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     no_refresh = "--no-refresh-evidence" in sys.argv
+    force = "--force" in sys.argv
     out_pdf = args[0] if len(args) > 0 else "cv-pavel-cherkashin-copper.pdf"
     out_png = args[1] if len(args) > 1 else "cv-pavel-cherkashin-copper-hd.png"
-    build_pdf(out_pdf, out_png, refresh_ev=(not no_refresh))
+    build_pdf(out_pdf, out_png, refresh_ev=(not no_refresh), force=force)

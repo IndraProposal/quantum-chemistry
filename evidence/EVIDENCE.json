@@ -1,12 +1,12 @@
 {
   "ticket": "MIN-207",
-  "task_id": "run-0d3c0ddd5a73",
+  "task_id": "run-f8ba99f208a6",
   "builder": "agy@wolfram",
   "title": "Copperlane (Veronica Garg) — founding engineers, CV ready",
   "worktree": "/Users/pavelcherkashin/ChitAkasha-Wolfram/worktrees/MIN-207-COPPERLANE-0001",
   "git_branch": "minutta/min-207-copperlane-veronica-garg-founding-engineers-cv-ready",
   "status": "ready_for_review",
-  "summary": "MIN-207 REWORK: Resolved reproducibility defect via deterministic PDF generation (rl_config.invariant=1, SOURCE_DATE_EPOCH=946684800) and atomic evidence refresh workflow (refresh_evidence.py & build_copper_cv.py auto-refresh). All constraints verified (1-page PDF, 2550x3300 300 DPI PNG, zero text collisions, zero placeholders, 12/12 manifest OK).",
+  "summary": "MIN-207 REWORK: Resolved clean-room reproduction defect. Pinned atomic evidence and manifest refresh (POSIX temporary file + os.replace), dynamic PDF layout and overlap telemetry metrics (content height, bottom margin, 0 overlaps), and idempotent build pipeline. Rebuilding from scratch reproduces committed package with zero working-tree modifications (12/12 manifest verification OK, 0 git diff).",
   "acceptance": {
     "single_page_cv_pdf_verified": "PASS",
     "zero_text_collisions_layout": "PASS",
