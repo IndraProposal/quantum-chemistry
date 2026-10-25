@@ -5,7 +5,8 @@
 **Target Role:** Partnership Wrangler (Remote)  
 **Evaluator:** agy@wolfram (Autonomous Builder Agent)  
 **Date:** 2026-10-25  
-**Final Status:** **PACKAGE DELIVERED, NOT SENT (SHELVED / TAP-GATED)**
+**Final Status:** **PACKAGE DELIVERED, NOT SENT (SHELVED / TAP-GATED)**  
+**ATS Status:** **Verified Closed / Not Currently Listed**
 
 ---
 
@@ -20,7 +21,7 @@
   * The current board lists ~14 openings across 10 distinct job families (e.g., *Developer Marketer - Sales*, *Product Engineers*, *Site Reliability Engineers*), but contains **no active partnership roles**.
 
 ### B. Verification Conclusion
-The *Partnership Wrangler* role is **not active on PostHog's live ATS**. Proceeding with an automated or cold ATS submission is impossible because the intake form has been closed.
+The *Partnership Wrangler* role is **verified closed/not currently listed on PostHog's live ATS**. Proceeding with an automated or cold ATS submission is impossible because the intake form has been closed.
 
 ---
 
@@ -54,10 +55,10 @@ This frames an apparent "gap" into a massive positive signal of cultural alignme
 ### B. Comparative Fit Assessment: Pavel Cherkashin
 | Dimension | Partnership Wrangler | Partnership Marketer (Sibling) | Pavel Cherkashin Fit |
 |---|---|---|---|
-| **Core Motion** | Cloud Marketplaces (AWS/GCP), SI agencies, commercial contracts | VC/Accelerator alliances, founder perks, startup ecosystem | **Exceptional on both; Sibling role directly matches 6+ years at FI/Decile** |
-| **Target Audience** | Enterprise buyers, agency principals, cloud marketplace leads | Founders, VC platform managers, accelerator directors | Over 100+ B2B startups mentored; direct relationships with major VC platforms |
-| **Commercials** | CPPO private offers, revenue shares, contract redlines | Program credits, co-marketing webinars, startup perks | Seasoned fund manager and accelerator architect |
-| **Live Board Status** | Inactive (0 listings) | Inactive (0 listings; closest is *Developer Marketer - Sales*) | N/A — both currently inactive on ATS |
+| **Core Motion** | Commercial partner channels, SI agencies, commercial contracts | VC/Accelerator alliances, founder perks, startup ecosystem | **Strong alignment across both commercial and ecosystem dimensions** |
+| **Target Audience** | Enterprise buyers, agency principals, channel leads | Founders, VC platform managers, accelerator directors | Mentorship and ecosystem leadership across global accelerator cohorts |
+| **Commercials** | Commercial partnership agreements, reseller/agency splits, contract redlines | Program credits, co-marketing webinars, startup perks | Experienced fund manager and accelerator ecosystem architect |
+| **Live Board Status** | Verified closed/not listed (0 listings) | Verified closed/not listed (0 listings; closest is *Developer Marketer - Sales*) | N/A — both currently verified closed/not listed on live ATS |
 
 ### C. Second-Door Tactical Value
 Should PostHog reopen partnership hiring or should Principal Pavel Cherkashin choose to execute a direct, speculative founder pitch to James Hawkins or Tim Glaser, the **VC / Startup Ecosystem angle** (*Partnership Marketer*) serves as an ideal secondary hook alongside the *Partnership Wrangler* commercial motion.
@@ -68,7 +69,7 @@ Should PostHog reopen partnership hiring or should Principal Pavel Cherkashin ch
 
 1. **Package Status:** The complete application dossier (1-page CV PDF, 300 DPI HD PNG, tailored cover note, evaluation notes, build script, and evidence manifests) is **delivered and verified in the repository**.
 2. **Execution Gate:** **NOT SENT (Tap-Gated & Shelved)**.
-   * Because the role is not currently active on PostHog's ATS, automated or third-party submission is impossible.
+   * Because the role is verified closed/not currently listed on PostHog's live ATS, automated or third-party submission is impossible.
    * The package is shelved in `posthog/` and mirrored in `workspace/goals/goal-4/files/posthog/`.
 3. **Queue Advancement:** PostHog exits the active outbound queue. The autonomous pipeline advances to triage item **#2 (Town - MIN-218)**.
 4. **Human Tap Option:** Principal Pavel Cherkashin retains the option to send the direct founder outreach note to James Hawkins via X/Email if desired.
