@@ -1,13 +1,13 @@
 {
   "ticket": "MIN-213",
-  "run_id": "run-c3f47f99cb36",
+  "run_id": "run-b388a154f711",
   "builder": "agy@wolfram",
   "title": "Cartesia — Software Engineer, Agent Harness (CV ready, awaiting tap)",
   "worktree_relative": "worktrees/MIN-213-CARTESIA-0001",
   "git_branch": "minutta/min-213-cartesia-software-engineer-agent-harness-cv-ready-awaiting",
   "canonical_repo": "https://github.com/IndraProposal/quantum-chemistry.git",
   "status": "ready_for_review",
-  "summary": "MIN-213 (Rework Round 5): Resolved QA rework blocking remarks regarding full commit SHA provenance, exact textbook volume (384 p. verified via IPU RAS library and BINOM publisher catalog), removal of ordinal edition numbering (respecting 2004 earlier publication), and explicit disambiguation of distinct editions and library catalog records (2007 384p canonical foundation; 2004 384p, Biblioclub 2007 376p, Znanium 2016 297p, IPR SMART 2026 420p listed separately). Preserved 100% deterministic 1-page PDF rendering, 0 collisions, 0 out-of-bounds, 300 DPI HD PNG, and dual-tree mirroring.",
+  "summary": "MIN-213 (Rework Round 6): Resolved QA rework blocking remark regarding Cyrillic font glyph rendering in PDF and PNG. Replaced Cyrillic publication details in the English-language CV with clean Latin bibliographic notation (INTUIT / BINOM, 2007, 384 pp., ISBN 978-5-94774-643-3), fully eliminating black box glyph rendering under standard Helvetica while maintaining exact catalog concordance (IPU RAS / BINOM). Preserved 100% deterministic 1-page PDF rendering, 0 collisions, 0 out-of-bounds, 300 DPI HD PNG, and dual-tree mirroring.",
   "acceptance": {
     "single_page_cv_pdf_verified": "PASS",
     "zero_text_collisions_layout": "PASS",
@@ -70,7 +70,7 @@
       "evidence_summary": "Co-founder and CEO of Sputnik Labs, pioneer Russian CRM systems integrator, scaling to 110+ specialists delivering major telecom and banking implementations; acquired by Technoserv."
     },
     "textbook_and_pedagogy": {
-      "claim": "Author of university textbook «Customer Relationship Management Strategy» (2007 edition, ИНТУИТ / БИНОМ. Лаборатория знаний, 384 с., ISBN 978-5-94774-643-3; verified in IPU RAS library and publisher catalog; other editions and catalog records listed separately).",
+      "claim": "Author of university textbook «Customer Relationship Management Strategy» (2007 edition, INTUIT / BINOM, 384 pp., ISBN 978-5-94774-643-3; verified in IPU RAS library and publisher catalog; other editions and catalog records listed separately).",
       "edition_framing": "2007 edition (without ordinal numbering, acknowledging 2004 earlier publication)",
       "canonical_foundation": {
         "title": "Стратегия управления взаимоотношениями с клиентами (CRM)",
@@ -132,7 +132,7 @@
         }
       ],
       "coordinate": "https://pilotlz.ru/books/274/4717/,https://www.ipu.ru/node/3111",
-      "evidence_summary": "Canonical CV citation is the 2007 edition (ИНТУИТ / БИНОМ, 384 с., ISBN 978-5-94774-643-3) verified in IPU RAS library (ipu.ru/node/3111) and publisher catalog (pilotlz.ru/books/274/4717/). Distinct earlier publication (2004, 384 p., ISBN 5-9556-0016-7), differing catalog records (Biblioclub 2007, 376 p.; Znanium 2016, 297 p.), and higher-ed re-issue (IPR SMART 2026, 420 p.) documented as separate records without conflation."
+      "evidence_summary": "Canonical CV citation is the 2007 edition (INTUIT / BINOM, 384 pp., ISBN 978-5-94774-643-3; rendered in Latin to ensure clean font display without missing glyphs) verified in IPU RAS library (ipu.ru/node/3111) and publisher catalog (pilotlz.ru/books/274/4717/). Distinct earlier publication (2004, 384 p., ISBN 5-9556-0016-7), differing catalog records (Biblioclub 2007, 376 p.; Znanium 2016, 297 p.), and higher-ed re-issue (IPR SMART 2026, 420 p.) documented as separate records without conflation."
     },
     "education": {
       "institution": "Lomonosov Moscow State University (MSU)",

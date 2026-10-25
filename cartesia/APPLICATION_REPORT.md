@@ -32,7 +32,7 @@ Pavel Cherkashin brings a focused systems engineering profile:
 
 ## 2. Rework Verification Matrix (Codex QA Resolution)
 
-This release addresses and resolves all blocking comments across independent QA review rounds (including Rework Round 5 addressing commit SHA provenance and bibliographic accuracy):
+This release addresses and resolves all blocking comments across independent QA review rounds (including Rework Round 5 addressing commit SHA provenance and bibliographic accuracy, and Rework Round 6 resolving Cyrillic font glyph rendering in PDF/PNG via Latin bibliographic notation):
 
 | # | QA Remark | Root Cause & Resolution | Verification Status |
 |---|---|---|---|
@@ -45,6 +45,7 @@ This release addresses and resolves all blocking comments across independent QA 
 | **7** | **Mirrored `workspace/goals/goal-4/files/cartesia/`** | Complete mirror maintained across repository `cartesia/` and `workspace/goals/goal-4/files/cartesia/`. | ✅ PASS (`git ls-tree` and `diff -qr` verified identical) |
 | **8** | **Canonical Git Base (`origin/main`)** | Branch is cleanly anchored on top of `02d0f4a25dfe8054bea10ffd0a61c188a96b7387` without orphan history. | ✅ PASS (`git log` verifies canonical ancestry) |
 | **9** | **Deterministic PDF & Layout Assertions** | ReportLab invariant canvas ensures 100% byte-for-byte reproducibility across runs; programmatic assertions verify 0 text collisions, 0 out-of-bounds, exactly 1 page. | ✅ PASS (0 collisions, 0 out-of-bounds, single page) |
+| **10** | **Cyrillic Font Rendering & Missing Glyphs in PDF/PNG (Round 6)** | Standard ReportLab Helvetica Type 1 font does not contain Cyrillic glyphs, causing publisher and page designations to render as black boxes (`■■■■■■ / ■■■■■, 2007, 384 ■.`) in generated PDF and PNGs. Resolved by replacing Cyrillic publication details in the English-language CV with standard Latin transliteration/notation (`INTUIT / BINOM, 2007, 384 pp., ISBN 978-5-94774-643-3`). Completely eliminated missing glyphs while maintaining exact catalog concordance (IPU RAS / BINOM) and preserving byte-level invariant canvas determinism without fragile external system font dependencies. | ✅ PASS (Clean Latin rendering, 0 missing glyphs, verified in PDF & PNG) |
 
 ---
 
