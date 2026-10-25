@@ -1,0 +1,5 @@
+# Pinned dependencies for PumpGTM CV and dossier generation
+reportlab==5.1.0
+pymupdf==2.0
+pypdf==6.21.2
+pillow==12.3.0
