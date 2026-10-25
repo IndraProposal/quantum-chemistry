@@ -1,6 +1,6 @@
 {
   "ticket": "MIN-222",
-  "run_id": "run-53d100ae2faa",
+  "run_id": "run-f520986f45a4",
   "builder": "agy@wolfram",
   "title": "Hillclimb AI — employee #5, evals & environments for RSI (X hiring thread)",
   "worktree_relative": "worktrees/MIN-222-HILLCLIMB-0001",
@@ -22,7 +22,7 @@
       "dm-draft.md"
     ]
   },
-  "summary": "Reworked application dossier and outreach package for Hillclimb AI Employee #5 (Evals & Environments for RSI) addressing all QA audit findings. Updated dispatch status to SENT following Principal Pavel Cherkashin's manual transmission on 2026-10-25 ~06:39 PDT via X DM to @jparkjmc; grounded corporate and academic claims with verified public URLs, RSL/NEL catalog coordinates for textbook ISBN 978-5-94774-643-3, and CNews/Tadviser acquisition archives; purged all headcount claims (including Sputnik Labs 110+ metric); calibrated internal architecture claims and provided verifiable evals harness code in this PR; added complete requirements.lock with explicit Python 3.10-3.13 constraints; and clarified that PNG rasterization is verified by geometry/DPI assertions rather than byte-level hash determinism.",
+  "summary": "Reworked application package addressing all QA audit points: calibrated supported Python runtime strictly to Python >= 3.12, < 3.14 (validated on CPython 3.12.13 and 3.13.13 macOS Darwin arm64); added automated smoke test suite (test_cv_harness.py) executing 7 end-to-end assertions; clearly scoped PDF byte-level determinism to the verified Darwin CPython environment while asserting cross-platform layout geometry and pagination invariance; implemented a rigorous 5-tier source classification schema in CLAIM_LEDGER.md (Primary Library Catalogs, Secondary Press Archives, Self-Reported Academic/Venture history, and Internal Specifications vs Executable PR Code); fixed Sputnik Labs TAdviser URL to canonical Cyrillic slug (HTTP 200); and calibrated CV technical claims to reflect internal architecture and systems design experience rather than submitted production code.",
   "target": {
     "company": "Hillclimb AI",
     "x_handle": "@hillclimbai",
@@ -69,13 +69,17 @@
     "zero_text_collisions_layout": "PASS",
     "page_containment_verified": "PASS",
     "pdf_byte_for_byte_reproducible": "PASS",
+    "cross_platform_pdf_invariance_scope": "GEOMETRY_AND_PAGINATION_ASSERTED_BYTE_LEVEL_SCOPED_TO_VERIFIED_DARWIN_CPYTHON",
     "hd_png_300dpi_metadata_verified": "PASS",
     "png_byte_for_byte_reproducible": "NOT_ASSERTED",
     "png_geometry_and_dpi_verified": "PASS",
     "exact_dependency_pinning_verified": "PASS",
     "lockfile_transitive_dependencies_verified": "PASS",
+    "python_runtime_constraint_verified": "PASS",
     "claim_ledger_provided": "PASS",
+    "claim_source_tiering_verified": "PASS",
     "grounded_factual_achievements_verified": "PASS",
+    "internal_architecture_claims_calibrated": "PASS",
     "headcount_claims_purged": "PASS",
     "deeprsi_context_verified": "PASS",
     "honest_gaps_declared_in_dm_and_cv": "PASS",
@@ -85,6 +89,7 @@
     "builder_mirror_auto_sync_verified": "PASS",
     "manifest_sha256_verified": "PASS",
     "unverified_claims_purged": "PASS",
+    "automated_harness_test_verified": "PASS",
     "tap_gated_dispatch_compliance": "PASS",
     "outreach_dispatch_executed_by_principal": "PASS",
     "constitutional_compliance_agents_md": "PASS"
@@ -95,6 +100,7 @@
     "total_text_blocks": 17,
     "text_overlap_count": 0,
     "out_of_bounds_count": 0,
+    "pdf_sha256_darwin_arm64": "f4f00dff003ea41fc9945ed4e0262f11eb4b344ec6df2e4b54772e8eb42756bc",
     "pdf_byte_for_byte_reproducible": true
   },
   "artifacts": {
@@ -102,6 +108,7 @@
     "cv_png_hd": "hillclimb/cv-pavel-cherkashin-hillclimb-hd.png",
     "cv_png_standard": "hillclimb/cv-pavel-cherkashin-hillclimb.png",
     "cv_builder_script": "hillclimb/build_hillclimb_cv.py",
+    "test_cv_harness": "hillclimb/test_cv_harness.py",
     "dm_draft": "hillclimb/dm-draft.md",
     "dm_draft_alias": "hillclimb/x-dm-draft.md",
     "application_report": "hillclimb/APPLICATION_REPORT.md",
@@ -116,6 +123,7 @@
     "cv_png_hd": "workspace/goals/goal-4/files/hillclimb/cv-pavel-cherkashin-hillclimb-hd.png",
     "cv_png_standard": "workspace/goals/goal-4/files/hillclimb/cv-pavel-cherkashin-hillclimb.png",
     "cv_builder_script": "workspace/goals/goal-4/files/hillclimb/build_hillclimb_cv.py",
+    "test_cv_harness": "workspace/goals/goal-4/files/hillclimb/test_cv_harness.py",
     "dm_draft": "workspace/goals/goal-4/files/hillclimb/dm-draft.md",
     "dm_draft_alias": "workspace/goals/goal-4/files/hillclimb/x-dm-draft.md",
     "application_report": "workspace/goals/goal-4/files/hillclimb/APPLICATION_REPORT.md",
@@ -126,13 +134,15 @@
     "manifest_sha256": "workspace/goals/goal-4/files/hillclimb/evidence/MANIFEST.sha256"
   },
   "reproducibility_notes": {
-    "pdf_determinism": "ReportLab PDF generation uses InvariantCanvas and rl_config.invariant=1 with exact pinned dependencies, guaranteeing deterministic byte-for-byte PDF output under Python 3.10-3.13 on POSIX/macOS/Linux matching ReportLab configurations. Across heterogeneous environments, ReportLab layout dimensions, page count, and bounding box containment remain strictly invariant.",
+    "pdf_determinism": "ReportLab PDF generation uses InvariantCanvas and rl_config.invariant=1 with exact pinned dependencies, guaranteeing deterministic byte-for-byte PDF output (digest f4f00dff003ea41fc9945ed4e0262f11eb4b344ec6df2e4b54772e8eb42756bc) under CPython 3.12 and 3.13 on macOS Darwin arm64 with ReportLab 5.1.0. Across heterogeneous environments (e.g. Linux POSIX), ReportLab layout dimensions (612x792 pt), page count (1), and zero bounding box collisions remain strictly invariant, while binary PDF byte hashes may vary due to OS-level font rasterizers and compression libraries.",
     "png_rasterization": "PNG rendering from PDF uses PyMuPDF (fitz) at 300 DPI (2550x3300) with explicit 300 DPI metadata. Operating system font rasterizer anti-aliasing variations and zlib compression deflate variations produce slight pixel hash variations across platforms and rebuilds, while visual geometry (2550x3300), 300 DPI metadata, layout geometry, zero collisions, and zero out-of-bounds remain strictly identical. PNGs are validated via geometry and metadata assertions and excluded from byte-level MANIFEST.sha256."
   },
   "limitations": [
     "No deep background in reinforcement learning physics simulators or game-engine wrappers; declared as transparent gap.",
     "No background in multi-node distributed GPU cluster infrastructure orchestration; declared as transparent gap.",
     "Candidate is an experienced technology architect and founder deliberately pursuing a hands-on Individual Contributor role in evals research and technical systems writing.",
+    "Internal architecture specifications (fleetd, Protocol Phi, slot leasing, telemetry) reflect candidate systems engineering experience and are not submitted as verifiable external code; verifiable evals harness code is contained in build_hillclimb_cv.py and test_cv_harness.py.",
+    "Historical academic degree (MSU 1995) and IIASA fellowship predate digital online student registries and are classified as self-reported candidate bio corroborated by printed author biography.",
     "Outreach transmitted by Principal Pavel Cherkashin on 2026-10-25 ~06:39 PDT via X DM to @jparkjmc; autonomous agents did not perform unauthorized outbound communication.",
     "Linear issue status maintained at 'In Review' with label 'Role: QA-Needed'; final gate acceptance to 'Done' reserved exclusively for Principal Pavel Cherkashin."
   ]

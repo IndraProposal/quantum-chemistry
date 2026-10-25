@@ -1,7 +1,7 @@
 # Application Dossier & Evaluation Report: Hillclimb AI — Employee #5 (Evals & Environments for RSI)
 
 **Linear Ticket:** [MIN-222](https://linear.app/mindrock/issue/MIN-222/hillclimb-ai-employee-5-evals-environments-for-rsi-x-hiring-thread)  
-**Run ID:** `run-53d100ae2faa` (Reworked from `run-c4cef5195da8`)  
+**Run ID:** `run-f520986f45a4` (Reworked from `run-53d100ae2faa` / `run-c4cef5195da8`)  
 **Builder Slot:** `agy@wolfram`  
 **Target Entity:** Hillclimb AI ([@hillclimbai](https://x.com/hillclimbai))  
 **Founders:** Jun Park ([@jparkjmc](https://x.com/jparkjmc)) & Ibrakhim Ustelbay  
@@ -53,16 +53,17 @@ All artifacts have been compiled, programmatically verified, and synchronized ac
 
 | Artifact Name | Canonical Repo Path | Workspace Mirror Path | Technical Verification & Specification |
 |---|---|---|---|
-| **1-Page CV (PDF)** | `hillclimb/cv-pavel-cherkashin-hillclimb.pdf` | `workspace/goals/goal-4/files/hillclimb/cv-pavel-cherkashin-hillclimb.pdf` | Programmatically verified: 1 page Letter (`612x792 pt`), 0 text collisions, 0 out-of-bounds elements, deterministic ReportLab build (`rl_config.invariant=1`). Verified digest: `bcbe206...`. |
-| **High-Res PNG (300 DPI)** | `hillclimb/cv-pavel-cherkashin-hillclimb-hd.png` | `workspace/goals/goal-4/files/hillclimb/cv-pavel-cherkashin-hillclimb-hd.png` | `2550x3300 px`, explicit 300 DPI metadata (`(299.9994, 299.9994)`). Ready for direct attachment in X DM. Note: visual geometry & DPI metadata are verified; byte-level hash determinism is explicitly not asserted for PNG rasterization. |
+| **1-Page CV (PDF)** | `hillclimb/cv-pavel-cherkashin-hillclimb.pdf` | `workspace/goals/goal-4/files/hillclimb/cv-pavel-cherkashin-hillclimb.pdf` | Programmatically verified: 1 page Letter (`612x792 pt`), 0 text collisions, 0 out-of-bounds elements, deterministic ReportLab build (`rl_config.invariant=1`). Verified digest: `f4f00dff003ea41fc9945ed4e0262f11eb4b344ec6df2e4b54772e8eb42756bc` on CPython 3.12/3.13 macOS Darwin arm64. |
+| **High-Res PNG (300 DPI)** | `hillclimb/cv-pavel-cherkashin-hillclimb-hd.png` | `workspace/goals/goal-4/files/hillclimb/cv-pavel-cherkashin-hillclimb-hd.png` | `2550x3300 px`, explicit 300 DPI metadata (`(300, 300)`). Ready for direct attachment in X DM. Note: visual geometry & DPI metadata are verified; byte-level hash determinism is explicitly not asserted for PNG rasterization. |
 | **Standard PNG Alias** | `hillclimb/cv-pavel-cherkashin-hillclimb.png` | `workspace/goals/goal-4/files/hillclimb/cv-pavel-cherkashin-hillclimb.png` | Direct alias of high-resolution card for universal platform preview. |
-| **CV Builder Script** | `hillclimb/build_hillclimb_cv.py` | `workspace/goals/goal-4/files/hillclimb/build_hillclimb_cv.py` | Python 3 script with InvariantCanvas, programmatic collision engine, and automatic dual-tree mirror synchronization. |
+| **CV Builder Script** | `hillclimb/build_hillclimb_cv.py` | `workspace/goals/goal-4/files/hillclimb/build_hillclimb_cv.py` | Python 3 script with InvariantCanvas, programmatic collision engine, and automatic dual-tree mirror synchronization. Calibrated with modest systems architecture framing. |
+| **Automated Test Harness** | `hillclimb/test_cv_harness.py` | `workspace/goals/goal-4/files/hillclimb/test_cv_harness.py` | Automated 7-step smoke test suite validating runtime constraints (Python >= 3.12, < 3.14), imports, layout assertions, digest verification, PNG geometry, manifest, and dual-tree mirror parity. |
 | **X DM Record** | `hillclimb/dm-draft.md` | `workspace/goals/goal-4/files/hillclimb/dm-draft.md` | High-signal outreach record transmitted to Jun Park (@jparkjmc) highlighting DeepRSI context, declared gaps, and evals+writing seat. |
 | **X DM Record (Alias)** | `hillclimb/x-dm-draft.md` | `workspace/goals/goal-4/files/hillclimb/x-dm-draft.md` | Identical alias of outreach record (`cmp` verified). |
-| **Claim Ledger** | `hillclimb/evidence/CLAIM_LEDGER.md` | `workspace/goals/goal-4/files/hillclimb/evidence/CLAIM_LEDGER.md` | Comprehensive mapping of all CV claims to verified primary sources (MSU degree, Siebel Systems, Sputnik Labs, INTUIT textbook ISBN) with exact public catalog and archive links. Headcount claim purged. |
-| **Machine Evidence** | `hillclimb/evidence/EVIDENCE.json` | `workspace/goals/goal-4/files/hillclimb/evidence/EVIDENCE.json` | Machine-readable manifest tracking ticket, git branch, acceptance assertions, compensation details, limitations, and `SENT` status. |
-| **SHA-256 Manifest** | `hillclimb/evidence/MANIFEST.sha256` | `workspace/goals/goal-4/files/hillclimb/evidence/MANIFEST.sha256` | Tamper-evident checksums of all tracked canonical source files, lockfile, and reproducible PDF. |
-| **Transitive Lockfile** | `hillclimb/requirements.lock` | `workspace/goals/goal-4/files/hillclimb/requirements.lock` | Full transitive lockfile pinning all 16 direct and transitive dependencies with explicit Python runtime (Python >= 3.10, <= 3.13) and platform constraints. |
+| **Claim Ledger** | `hillclimb/evidence/CLAIM_LEDGER.md` | `workspace/goals/goal-4/files/hillclimb/evidence/CLAIM_LEDGER.md` | Comprehensive mapping of all claims across 5 strict tiers (Primary Catalog ISBN 978-5-94774-643-3, Secondary Press CNews/TAdviser, Self-Reported 1995 MSU degree/IIASA, Self-Reported venture history, and Internal Architecture vs Executable PR Code). |
+| **Machine Evidence** | `hillclimb/evidence/EVIDENCE.json` | `workspace/goals/goal-4/files/hillclimb/evidence/EVIDENCE.json` | Machine-readable manifest tracking ticket, git branch, calibrated acceptance assertions, compensation details, limitations, and `SENT` status. |
+| **SHA-256 Manifest** | `hillclimb/evidence/MANIFEST.sha256` | `workspace/goals/goal-4/files/hillclimb/evidence/MANIFEST.sha256` | Tamper-evident checksums of all tracked canonical source files, lockfile, test suite, and reproducible PDF. |
+| **Transitive Lockfile** | `hillclimb/requirements.lock` | `workspace/goals/goal-4/files/hillclimb/requirements.lock` | Full transitive lockfile pinning all 16 direct and transitive dependencies with calibrated Python runtime (Python >= 3.12, < 3.14) and platform constraints. |
 | **Direct Dependencies** | `hillclimb/requirements.txt` | `workspace/goals/goal-4/files/hillclimb/requirements.txt` | Direct pinned dependencies (`reportlab==5.1.0`, `pymupdf==2.0`, `pypdf==6.21.2`, `pillow==12.3.0`). |
 
 ---
@@ -72,15 +73,17 @@ All artifacts have been compiled, programmatically verified, and synchronized ac
 1. **Single-Page Constraint:** Programmatic inspection via PyMuPDF and pypdf confirms `page_count == 1`.
 2. **Zero Layout Collisions:** Bounding-box intersection scan confirms `text_overlap_count == 0` across all 17 distinct text blocks.
 3. **Zero Out-of-Bounds Text:** Every element is strictly contained within printable dimensions (`out_of_bounds_count == 0`).
-4. **Deterministic PDF Scope:** Recompiling with `build_hillclimb_cv.py` produces the identical SHA-256 digest (`bcbe206...`) under Python 3.10–3.13 on POSIX/macOS/Linux matching ReportLab configurations. Across heterogeneous platforms, ReportLab layout dimensions, page count, and bounding box containment remain strictly invariant.
-5. **Image Geometry & DPI Metadata vs. Rasterizer Non-Determinism:** Pillow inspection confirms geometry `(2550, 3300)` and 300 DPI metadata. Note that PNG rasterization is subject to OS-level font rasterizer anti-aliasing and Deflate compression variations; byte-level hash determinism for PNG is explicitly **NOT asserted** (`NOT_ASSERTED`).
+4. **Deterministic PDF Scope & Platform Boundaries:** Recompiling with `build_hillclimb_cv.py` produces an identical SHA-256 digest (`f4f00dff003ea41fc9945ed4e0262f11eb4b344ec6df2e4b54772e8eb42756bc`) under CPython 3.12 and 3.13 on macOS Darwin arm64 with ReportLab 5.1.0. For heterogeneous OS environments (Linux POSIX, differing font rasterizers), layout geometry invariants (1 page Letter, 0 collisions, 0 out-of-bounds containment) remain strictly invariant, while byte-level PDF hashes are scoped to the Darwin CPython build environment.
+5. **Image Geometry & DPI Metadata vs. Rasterizer Non-Determinism:** Pillow inspection confirms geometry `(2550, 3300)` and 300 DPI metadata. Byte-level hash determinism for PNG is explicitly **NOT asserted** (`NOT_ASSERTED`) due to OS font rasterizer anti-aliasing and Deflate compression variations.
 6. **Dual-Tree Mirror Parity:** `diff -rq hillclimb workspace/goals/goal-4/files/hillclimb` yields zero discrepancies.
-7. **Factual Grounding & Claim Ledger:** All biographical claims strictly map to confirmed primary sources with public links:
-   - Undergraduate Degree: MSU 1995 B.S. in Computer Science in Global Ecology (`msu.ru`); IIASA research fellowship (`iiasa.ac.at`).
-   - Published Textbook: INTUIT / BINOM, Moscow, 2007, 384 pp., ISBN 978-5-94774-643-3, cataloged in Russian State Library (RSL ID `01003185368`) and National Electronic Library (NEL).
-   - Enterprise Leadership: Sputnik Labs (CNews M&A archive: acquired by Technoserv in 2008), Siebel Systems (Country Manager, Russia & CIS), Microsoft Russia.
-   - Headcount Audit: Unverified headcount metric ("110+") purged from CV and ledger.
-8. **Transitive Dependency Pinning:** Full `requirements.lock` generated and validated across clean virtual environments.
+7. **Factual Grounding & Claim Ledger Tiering:**
+   - **Tier 1 (Primary Library Catalog):** Published textbook *Customer Relationship Management Strategy*, INTUIT / BINOM, Moscow, 2007, 384 pp., ISBN 978-5-94774-643-3, cataloged in Russian State Library (RSL ID `01003185368`).
+   - **Tier 2 (Secondary Industry Press & Dossiers):** Sputnik Labs (CNews M&A archive: acquired by Technoserv in 2008), IT Channel News, corrected TAdviser company dossier (`Компания:Спутник_Лабс`), Siebel Systems and Microsoft executive dossiers (`Персона:Черкашин_Павел_Александрович`).
+   - **Tier 3 (Self-Reported / Candidate Bio):** MSU 1995 B.S. in Computer Science in Global Ecology and IIASA fellowship (1994–1995) are pre-digital era academic credentials predating online student registrar verification; institutional domains `msu.ru` and `iiasa.ac.at` provide institutional context.
+   - **Tier 4 (Self-Reported / Venture Advisory):** Vestor.in & high-growth platform advisory history reflected in professional profile (`linkedin.com/in/cherkashin`).
+   - **Tier 5 (Internal Architecture vs. Submitted PR Code):** `fleetd` and `Protocol Phi` are internal architectural specifications; the only submitted executable code in this PR is the programmatic CV evaluation harness (`build_hillclimb_cv.py`, `test_cv_harness.py`).
+8. **Automated Smoke Test Suite:** Added `hillclimb/test_cv_harness.py` to automate end-to-end environment, layout, hash, geometry, and manifest verification.
+9. **Calibrated Python Runtime:** Constrained runtime to `Python >= 3.12, < 3.14` and validated via clean virtual environment installations on CPython 3.12.13 and 3.13.13.
 
 ---
 

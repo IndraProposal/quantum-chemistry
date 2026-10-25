@@ -243,11 +243,11 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-hillclimb.pdf", output_png="cv-pav
         Paragraph("&bull; Deterministic test harnesses &amp; isolated worktrees<br/>&bull; Tamper-evident manifest verification (SHA-256)<br/>&bull; Long-horizon execution tracing &amp; state auditability<br/>&bull; Zero-trust verification between builder &amp; QA agents", bullet_style),
     ]
     col2 = [
-        Paragraph("<b>Systems Engineering &amp; Orchestration</b>", ParagraphStyle('C3', parent=body_style, fontName='Helvetica-Bold', textColor=c_primary)),
-        Paragraph("&bull; Monolithic fleet daemon in Rust (fleetd)<br/>&bull; Slot leasing &amp; strict concurrency gating (WIP=1)<br/>&bull; Model Context Protocol (MCP) tool integration<br/>&bull; Autonomous backlog vacuum loops &amp; crash recovery", bullet_style),
+        Paragraph("<b>Systems Architecture &amp; Orchestration</b>", ParagraphStyle('C3', parent=body_style, fontName='Helvetica-Bold', textColor=c_primary)),
+        Paragraph("&bull; Autonomous agent orchestration &amp; daemon architecture<br/>&bull; Slot leasing models &amp; strict concurrency gating (WIP=1)<br/>&bull; Model Context Protocol (MCP) tool integration<br/>&bull; Autonomous backlog vacuum loops &amp; crash recovery", bullet_style),
         Spacer(1, 2),
         Paragraph("<b>Technical Writing &amp; Research Communication</b>", ParagraphStyle('C4', parent=body_style, fontName='Helvetica-Bold', textColor=c_primary)),
-        Paragraph("&bull; Textbook author: <i>CRM Strategy</i> (INTUIT/BINOM, 384 pp.)<br/>&bull; Deep technical specifications &amp; architecture reports<br/>&bull; Clear public benchmark documentation &amp; research notes<br/>&bull; Structured agent communication protocols (Protocol Phi)", bullet_style),
+        Paragraph("&bull; Textbook author: <i>CRM Strategy</i> (INTUIT/BINOM, 384 pp.)<br/>&bull; Deep technical specifications &amp; architecture reports<br/>&bull; Clear public benchmark documentation &amp; research notes<br/>&bull; Structured agent communication specifications (Protocol Phi)", bullet_style),
     ]
     grid_table = Table(
         [[col1, col2]],
@@ -267,13 +267,13 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-hillclimb.pdf", output_png="cv-pav
     story.append(Paragraph("SYSTEMS, EVALS &amp; AGENT HARNESS EXPERIENCE", section_title_style))
     
     # Mindrock
-    mindrock_header = "<b>Mindrock Autonomous Agent Mesh</b> &mdash; <i>Principal Systems Architect &amp; Harness Builder</i> <font color='#475569'>| 2024 &ndash; Present</font>"
+    mindrock_header = "<b>Mindrock Autonomous Agent Mesh</b> &mdash; <i>Principal Systems Architect &amp; Harness Builder</i> <font color='#475569'>| 2024 &ndash; Present (Internal Architecture &amp; Specifications)</font>"
     story.append(Paragraph(mindrock_header, body_style))
     mindrock_bullets = (
-        "&bull; <b>Multi-Agent Evaluation &amp; QA Gate Architecture:</b> Built automated multi-tier QA test suites (cross-agent verification between Gemini, Codex, Claude) executing programmatic layout assertions, functional unit tests, and regression verification scripts prior to Principal human gate approval.<br/>"
-        "&bull; <b>fleetd Daemon &amp; Slot Concurrency:</b> Engineered monolithic fleet daemon in Rust, coordinating distributed agent slots across macOS nodes (wolfram, darwin) with autonomous task-vacuum loops, rate limiting, and strict WIP=1 concurrency.<br/>"
-        "&bull; <b>Protocol Phi &amp; Zero-Trust Coordination:</b> Created sealed JSON envelope transport (proto: phi-0.1) across Git repositories, enforcing cryptographically verifiable handoffs, isolated workspace lifecycles, and tamper-proof SHA-256 receipts.<br/>"
-        "&bull; <b>Execution Telemetry &amp; Failure Analysis:</b> Deployed structured telemetry logging capturing task claim timestamps, execution durations, agent exit codes, and automated error recoveries across distributed fleet nodes."
+        "&bull; <b>Multi-Agent Evaluation &amp; QA Gate Architecture:</b> Designed automated multi-tier QA test suites (cross-agent verification between independent LLM agents) executing programmatic layout assertions, functional unit tests, and regression verification scripts (demonstrated in this repository's programmatic evals harness).<br/>"
+        "&bull; <b>Agent Orchestration &amp; Concurrency Architecture:</b> Designed distributed agent task routing and execution models, specifying slot leasing protocols, strict WIP=1 concurrency, and autonomous task-vacuuming logic across heterogeneous nodes.<br/>"
+        "&bull; <b>Protocol Phi &amp; Zero-Trust Coordination:</b> Authored architectural specification for structured agent envelope transport (proto: phi-0.1) across Git repositories, specifying isolated workspace lifecycles and tamper-evident SHA-256 receipts.<br/>"
+        "&bull; <b>Execution Tracing &amp; Telemetry Design:</b> Specified structured execution telemetry capturing task claim timestamps, execution durations, agent exit codes, and failure taxonomy classification across autonomous agent pipelines."
     )
     story.append(Paragraph(mindrock_bullets, bullet_style))
     story.append(Spacer(1, 2.5))

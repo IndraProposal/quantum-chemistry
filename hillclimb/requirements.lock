@@ -1,7 +1,8 @@
 # Pinned lockfile for Hillclimb AI CV build & verification harness
 # Generated for reproducible environment validation (MIN-222)
-# Supported Python environments: Python >= 3.10, <= 3.13 (tested on CPython 3.12)
-# Supported Platforms: macOS (Darwin arm64/x86_64), Linux (POSIX x86_64/aarch64)
+# Supported Python environments: Python >= 3.12, < 3.14 (tested on CPython 3.12.13 and 3.13.13 macOS Darwin arm64)
+# Note: Transitive dependencies networkx==3.7 and onnxruntime==1.31.0 require Python >= 3.12.
+# Supported Platforms: macOS (Darwin arm64)
 
 charset-normalizer==3.5.2
 flatbuffers==25.12.19
