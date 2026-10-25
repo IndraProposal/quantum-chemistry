@@ -81,7 +81,7 @@ def verify_layout_and_collisions(pdf_path):
         "out_of_bounds": out_of_bounds
     }
 
-def build_pdf(output_pdf="cv-pavel-cherkashin-hillclimb.pdf", output_png="cv-pavel-cherkashin-hillclimb-hd.png"):
+def build_pdf(output_pdf="cv-pavel-cherkashin-hillclimb.pdf", output_png="cv-pavel-cherkashin-hillclimb-hd.png", sync_to_mirror=True):
     script_dir = os.path.dirname(os.path.abspath(__file__))
     if not os.path.isabs(output_pdf) and not os.path.dirname(output_pdf):
         output_pdf = os.path.join(script_dir, output_pdf)
@@ -352,24 +352,32 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-hillclimb.pdf", output_png="cv-pav
             pix_img.save(standard_png, dpi=(300, 300))
             print(f"Successfully generated standard PNG alias: {standard_png}")
 
-    # Auto-synchronize generated artifacts to workspace mirror
-    mirror_candidates = [
-        "/Users/pavelcherkashin/workspace/goals/goal-4/files/hillclimb",
-        "workspace/goals/goal-4/files/hillclimb",
-        "../workspace/goals/goal-4/files/hillclimb",
-        "../../workspace/goals/goal-4/files/hillclimb"
-    ]
-    for mc in mirror_candidates:
-        if os.path.exists(mc) and os.path.isdir(mc):
-            abs_mc = os.path.abspath(mc)
-            if abs_mc != os.path.abspath(pdf_dir or "."):
-                shutil.copy2(output_pdf, os.path.join(abs_mc, os.path.basename(output_pdf)))
-                shutil.copy2(output_png, os.path.join(abs_mc, os.path.basename(output_png)))
-                standard_png = output_png.replace("-hd.png", ".png")
-                if standard_png != output_png:
-                    shutil.copy2(standard_png, os.path.join(abs_mc, os.path.basename(standard_png)))
-                print(f"Auto-synchronized compiled PDF and PNG to mirror: {abs_mc}")
-            break
+    # Auto-synchronize generated artifacts to workspace mirror (only when explicitly requested and not writing to a tempdir)
+    if sync_to_mirror:
+        # Safeguard: do not synchronize if building into a temporary directory or isolated sandbox
+        normalized_pdf_dir = os.path.abspath(pdf_dir or ".").lower()
+        if "tmp" in normalized_pdf_dir or "var/folders" in normalized_pdf_dir:
+            sync_to_mirror = False
+
+    if sync_to_mirror:
+        mirror_candidates = [
+            "/Users/pavelcherkashin/workspace/goals/goal-4/files/hillclimb",
+            "workspace/goals/goal-4/files/hillclimb",
+            "../workspace/goals/goal-4/files/hillclimb",
+            "../../workspace/goals/goal-4/files/hillclimb"
+        ]
+        for mc in mirror_candidates:
+            if os.path.exists(mc) and os.path.isdir(mc):
+                abs_mc = os.path.abspath(mc)
+                if abs_mc != os.path.abspath(pdf_dir or "."):
+                    shutil.copy2(output_pdf, os.path.join(abs_mc, os.path.basename(output_pdf)))
+                    if output_png and os.path.exists(output_png):
+                        shutil.copy2(output_png, os.path.join(abs_mc, os.path.basename(output_png)))
+                        standard_png = output_png.replace("-hd.png", ".png")
+                        if standard_png != output_png and os.path.exists(standard_png):
+                            shutil.copy2(standard_png, os.path.join(abs_mc, os.path.basename(standard_png)))
+                    print(f"Auto-synchronized compiled PDF and PNG to mirror: {abs_mc}")
+                break
 
     return report
 

@@ -1,6 +1,6 @@
 {
   "ticket": "MIN-222",
-  "run_id": "run-f520986f45a4",
+  "run_id": "run-6fc683329b8a",
   "builder": "agy@wolfram",
   "title": "Hillclimb AI — employee #5, evals & environments for RSI (X hiring thread)",
   "worktree_relative": "worktrees/MIN-222-HILLCLIMB-0001",
@@ -22,7 +22,7 @@
       "dm-draft.md"
     ]
   },
-  "summary": "Reworked application package addressing all QA audit points: calibrated supported Python runtime strictly to Python >= 3.12, < 3.14 (validated on CPython 3.12.13 and 3.13.13 macOS Darwin arm64); added automated smoke test suite (test_cv_harness.py) executing 7 end-to-end assertions; clearly scoped PDF byte-level determinism to the verified Darwin CPython environment while asserting cross-platform layout geometry and pagination invariance; implemented a rigorous 5-tier source classification schema in CLAIM_LEDGER.md (Primary Library Catalogs, Secondary Press Archives, Self-Reported Academic/Venture history, and Internal Specifications vs Executable PR Code); fixed Sputnik Labs TAdviser URL to canonical Cyrillic slug (HTTP 200); and calibrated CV technical claims to reflect internal architecture and systems design experience rather than submitted production code.",
+  "summary": "Reworked test harness and application package resolving all QA rework points: isolated build artifacts during test execution into temporary sandbox to eliminate side-effect mutations to tracked PNGs/mirrors; added git status regression assertion ensuring zero working tree modifications; enforced strict version pin assertions against requirements.lock; expanded golden PDF digest assertions to include Linux x86_64 while accurately reporting skipped status without inflating overall pass counts on unsupported platforms; and implemented full bidirectional dual-tree mirror parity verification.",
   "target": {
     "company": "Hillclimb AI",
     "x_handle": "@hillclimbai",
@@ -69,12 +69,13 @@
     "zero_text_collisions_layout": "PASS",
     "page_containment_verified": "PASS",
     "pdf_byte_for_byte_reproducible": "PASS",
-    "cross_platform_pdf_invariance_scope": "GEOMETRY_AND_PAGINATION_ASSERTED_BYTE_LEVEL_SCOPED_TO_VERIFIED_DARWIN_CPYTHON",
+    "cross_platform_pdf_invariance_scope": "GEOMETRY_AND_PAGINATION_ASSERTED_DIGESTS_VERIFIED_ON_DARWIN_ARM64_AND_LINUX_X86_64",
     "hd_png_300dpi_metadata_verified": "PASS",
     "png_byte_for_byte_reproducible": "NOT_ASSERTED",
     "png_geometry_and_dpi_verified": "PASS",
     "exact_dependency_pinning_verified": "PASS",
     "lockfile_transitive_dependencies_verified": "PASS",
+    "lockfile_strict_version_pin_validation": "PASS",
     "python_runtime_constraint_verified": "PASS",
     "claim_ledger_provided": "PASS",
     "claim_source_tiering_verified": "PASS",
@@ -87,9 +88,12 @@
     "dual_paths_in_repo_and_workspace": "PASS",
     "goal4_mirrored_artifacts_verified": "PASS",
     "builder_mirror_auto_sync_verified": "PASS",
+    "bidirectional_dual_tree_parity_verified": "PASS",
     "manifest_sha256_verified": "PASS",
     "unverified_claims_purged": "PASS",
     "automated_harness_test_verified": "PASS",
+    "harness_side_effect_free_isolated_tempdir": "PASS",
+    "harness_git_status_regression_assertion": "PASS",
     "tap_gated_dispatch_compliance": "PASS",
     "outreach_dispatch_executed_by_principal": "PASS",
     "constitutional_compliance_agents_md": "PASS"

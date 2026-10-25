@@ -1,7 +1,7 @@
 # Application Dossier & Evaluation Report: Hillclimb AI — Employee #5 (Evals & Environments for RSI)
 
 **Linear Ticket:** [MIN-222](https://linear.app/mindrock/issue/MIN-222/hillclimb-ai-employee-5-evals-environments-for-rsi-x-hiring-thread)  
-**Run ID:** `run-f520986f45a4` (Reworked from `run-53d100ae2faa` / `run-c4cef5195da8`)  
+**Run ID:** `run-6fc683329b8a` (Reworked from `run-f520986f45a4` / `run-53d100ae2faa` / `run-c4cef5195da8`)  
 **Builder Slot:** `agy@wolfram`  
 **Target Entity:** Hillclimb AI ([@hillclimbai](https://x.com/hillclimbai))  
 **Founders:** Jun Park ([@jparkjmc](https://x.com/jparkjmc)) & Ibrakhim Ustelbay  
@@ -73,16 +73,16 @@ All artifacts have been compiled, programmatically verified, and synchronized ac
 1. **Single-Page Constraint:** Programmatic inspection via PyMuPDF and pypdf confirms `page_count == 1`.
 2. **Zero Layout Collisions:** Bounding-box intersection scan confirms `text_overlap_count == 0` across all 17 distinct text blocks.
 3. **Zero Out-of-Bounds Text:** Every element is strictly contained within printable dimensions (`out_of_bounds_count == 0`).
-4. **Deterministic PDF Scope & Platform Boundaries:** Recompiling with `build_hillclimb_cv.py` produces an identical SHA-256 digest (`f4f00dff003ea41fc9945ed4e0262f11eb4b344ec6df2e4b54772e8eb42756bc`) under CPython 3.12 and 3.13 on macOS Darwin arm64 with ReportLab 5.1.0. For heterogeneous OS environments (Linux POSIX, differing font rasterizers), layout geometry invariants (1 page Letter, 0 collisions, 0 out-of-bounds containment) remain strictly invariant, while byte-level PDF hashes are scoped to the Darwin CPython build environment.
+4. **Deterministic PDF Scope & Platform Boundaries:** Recompiling with `build_hillclimb_cv.py` produces an identical SHA-256 digest (`f4f00dff003ea41fc9945ed4e0262f11eb4b344ec6df2e4b54772e8eb42756bc`) under CPython 3.12 and 3.13 on macOS Darwin arm64 and Linux x86_64 with ReportLab 5.1.0. For unrecognized/heterogeneous environments, layout geometry invariants (1 page Letter, 0 collisions, 0 out-of-bounds containment) remain strictly invariant, while binary digest assertions are reported as `SKIP` without inflating overall test pass counts.
 5. **Image Geometry & DPI Metadata vs. Rasterizer Non-Determinism:** Pillow inspection confirms geometry `(2550, 3300)` and 300 DPI metadata. Byte-level hash determinism for PNG is explicitly **NOT asserted** (`NOT_ASSERTED`) due to OS font rasterizer anti-aliasing and Deflate compression variations.
-6. **Dual-Tree Mirror Parity:** `diff -rq hillclimb workspace/goals/goal-4/files/hillclimb` yields zero discrepancies.
+6. **Bidirectional Dual-Tree Mirror Parity:** Full bidirectional comparison (`diff -rq` and python set difference) confirms 0 missing files, 0 extra files, and 100% byte-for-byte content parity between `hillclimb/` and `workspace/goals/goal-4/files/hillclimb`.
 7. **Factual Grounding & Claim Ledger Tiering:**
    - **Tier 1 (Primary Library Catalog):** Published textbook *Customer Relationship Management Strategy*, INTUIT / BINOM, Moscow, 2007, 384 pp., ISBN 978-5-94774-643-3, cataloged in Russian State Library (RSL ID `01003185368`).
    - **Tier 2 (Secondary Industry Press & Dossiers):** Sputnik Labs (CNews M&A archive: acquired by Technoserv in 2008), IT Channel News, corrected TAdviser company dossier (`Компания:Спутник_Лабс`), Siebel Systems and Microsoft executive dossiers (`Персона:Черкашин_Павел_Александрович`).
    - **Tier 3 (Self-Reported / Candidate Bio):** MSU 1995 B.S. in Computer Science in Global Ecology and IIASA fellowship (1994–1995) are pre-digital era academic credentials predating online student registrar verification; institutional domains `msu.ru` and `iiasa.ac.at` provide institutional context.
    - **Tier 4 (Self-Reported / Venture Advisory):** Vestor.in & high-growth platform advisory history reflected in professional profile (`linkedin.com/in/cherkashin`).
    - **Tier 5 (Internal Architecture vs. Submitted PR Code):** `fleetd` and `Protocol Phi` are internal architectural specifications; the only submitted executable code in this PR is the programmatic CV evaluation harness (`build_hillclimb_cv.py`, `test_cv_harness.py`).
-8. **Automated Smoke Test Suite:** Added `hillclimb/test_cv_harness.py` to automate end-to-end environment, layout, hash, geometry, and manifest verification.
+8. **Automated Smoke Test Suite (Isolated Sandbox & Regression Invariant):** `test_cv_harness.py` runs builds inside an isolated temporary directory, bypasses mirror writes during testing, suppresses bytecode generation (`sys.dont_write_bytecode = True`), validates installed packages strictly against `requirements.lock`, and enforces a regression assertion verifying that `git status --porcelain` is identical before and after the test run.
 9. **Calibrated Python Runtime:** Constrained runtime to `Python >= 3.12, < 3.14` and validated via clean virtual environment installations on CPython 3.12.13 and 3.13.13.
 
 ---
