@@ -1,6 +1,6 @@
 {
   "ticket": "MIN-235",
-  "run_id": "run-f2d5284e8462",
+  "run_id": "run-7378dd1efc00",
   "builder": "agy@wolfram",
   "target_company": "Taste Labs",
   "target_url": "https://tastelabs.com/careers",
@@ -25,7 +25,7 @@
   "status": "DELIVERED",
   "tap_gated": true,
   "git_branch": "minutta/min-235-taste-labs-ai-engineer-rl-evals-ashby-sf-on-site",
-  "golden_pdf_sha256": "1908e0e5a8a8cc0adba89baa31db39758f83a1a994e1b13793e9bdc2b9a64aea",
+  "golden_pdf_sha256": "3284a3da879d8b472c8387c282395cc7b5f8359f74a1e31e84807e45a44396d2",
   "png_dimensions": [2550, 3300],
   "png_dpi": 300,
   "declared_growth_edges": [

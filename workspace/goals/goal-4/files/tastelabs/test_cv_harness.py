@@ -52,12 +52,12 @@ def normalize_platform_key(plat=None, mach=None):
     return f"{os_name}_{canonical_mach}"
 
 VERIFIED_GOLDEN_PDF_DIGESTS = {
-    "darwin_aarch64": "1908e0e5a8a8cc0adba89baa31db39758f83a1a994e1b13793e9bdc2b9a64aea",
-    "darwin_arm64": "1908e0e5a8a8cc0adba89baa31db39758f83a1a994e1b13793e9bdc2b9a64aea",
-    "linux_x86_64": "1908e0e5a8a8cc0adba89baa31db39758f83a1a994e1b13793e9bdc2b9a64aea",
-    "linux_amd64": "1908e0e5a8a8cc0adba89baa31db39758f83a1a994e1b13793e9bdc2b9a64aea",
-    "linux_aarch64": "1908e0e5a8a8cc0adba89baa31db39758f83a1a994e1b13793e9bdc2b9a64aea",
-    "linux_arm64": "1908e0e5a8a8cc0adba89baa31db39758f83a1a994e1b13793e9bdc2b9a64aea",
+    "darwin_aarch64": "3284a3da879d8b472c8387c282395cc7b5f8359f74a1e31e84807e45a44396d2",
+    "darwin_arm64": "3284a3da879d8b472c8387c282395cc7b5f8359f74a1e31e84807e45a44396d2",
+    "linux_x86_64": "3284a3da879d8b472c8387c282395cc7b5f8359f74a1e31e84807e45a44396d2",
+    "linux_amd64": "3284a3da879d8b472c8387c282395cc7b5f8359f74a1e31e84807e45a44396d2",
+    "linux_aarch64": "3284a3da879d8b472c8387c282395cc7b5f8359f74a1e31e84807e45a44396d2",
+    "linux_arm64": "3284a3da879d8b472c8387c282395cc7b5f8359f74a1e31e84807e45a44396d2",
 }
 
 CORE_PINNED_VERSIONS = {
@@ -68,7 +68,7 @@ CORE_PINNED_VERSIONS = {
 }
 
 def check_python_environment():
-    print(f"[TEST 1/7] Python Runtime Environment:")
+    print(f"[TEST 1/8] Python Runtime Environment:")
     print(f"  Version: {sys.version.split()[0]} ({sys.version})")
     print(f"  Platform: {platform.platform()} ({platform.machine()})")
     print(f"  Executable: {sys.executable}")
@@ -81,7 +81,7 @@ def check_python_environment():
     return "PASS"
 
 def check_dependencies():
-    print(f"\n[TEST 2/7] Core Dependency Imports & Pinned Version Verification:")
+    print(f"\n[TEST 2/8] Core Dependency Imports & Pinned Version Verification:")
     import reportlab
     import pymupdf
     import pypdf
@@ -126,7 +126,7 @@ def check_dependencies():
     return "PASS"
 
 def check_pdf_layout_and_collisions():
-    print(f"\n[TEST 3/7] Programmatic PDF Layout Assertions & Collision Engine:")
+    print(f"\n[TEST 3/8] Programmatic PDF Layout Assertions & Collision Engine:")
     sys.path.insert(0, SCRIPT_DIR)
     import build_tastelabs_cv as builder
     
@@ -141,12 +141,65 @@ def check_pdf_layout_and_collisions():
         assert metrics["page_count"] == 1, f"Expected 1 page, got {metrics['page_count']}"
         assert metrics["text_overlap_count"] == 0, f"Detected text collisions: {metrics['overlaps']}"
         assert metrics["out_of_bounds_count"] == 0, f"Detected out of bounds blocks: {metrics['out_of_bounds']}"
+        assert metrics.get("glyph_issue_count", 0) == 0, f"Detected glyph issues: {metrics.get('glyph_issues')}"
         assert metrics["total_text_blocks"] >= 10, f"Expected >= 10 text blocks, got {metrics['total_text_blocks']}"
-        print(f"  -> PASS: 1 page, 0 collisions, 0 out-of-bounds ({metrics['total_text_blocks']} text blocks).")
+        print(f"  -> PASS: 1 page, 0 collisions, 0 out-of-bounds, 0 glyph errors ({metrics['total_text_blocks']} text blocks).")
+    return "PASS"
+
+def check_glyph_integrity_and_anti_tofu():
+    print(f"\n[TEST 4/8] Unicode Glyph Integrity & Anti-Tofu Verification:")
+    pdf_path = os.path.join(SCRIPT_DIR, "cv-pavel-cherkashin-tastelabs.pdf")
+    assert os.path.exists(pdf_path), f"PDF not found at {pdf_path}"
+    
+    import pymupdf
+    import json
+    
+    doc = pymupdf.open(pdf_path)
+    page = doc[0]
+    
+    # 1. Verify embedded fonts support Unicode CID / TrueType
+    fonts = page.get_fonts()
+    font_names = [f[3] for f in fonts]
+    print(f"  Embedded page fonts: {font_names}")
+    has_noto_or_unicode = any("NotoSans" in name or "TrueType" in f[2] or "Type0" in f[2] for name, f in zip(font_names, fonts))
+    assert has_noto_or_unicode, f"Expected embedded Unicode/TrueType font (NotoSans), found: {font_names}"
+    
+    # 2. Extract full text and verify exact Cyrillic title
+    full_text = page.get_text()
+    expected_cyrillic = "Стратегия управления взаимоотношениями с клиентами"
+    assert expected_cyrillic in full_text, (
+        f"Critical Failure: Expected Cyrillic textbook title '{expected_cyrillic}' "
+        f"was not found or rendered as tofu/squares!"
+    )
+    
+    # 3. Assert zero replacement characters, tofu blocks, or control code corruption
+    assert "\ufffd" not in full_text, "Found Unicode Replacement Character (\\ufffd) in PDF text!"
+    assert "IIIIIIIII" not in full_text, "Found tofu/fallback sequence 'IIIIIIIII' in PDF text!"
+    
+    raw = json.loads(page.get_text("rawjson"))
+    cyr_chars = []
+    tofu_chars = []
+    for block in raw.get("blocks", []):
+        for line in block.get("lines", []):
+            for span in line.get("spans", []):
+                for ch in span.get("chars", []):
+                    c = ch.get("c", "")
+                    if '\u0400' <= c <= '\u04FF':
+                        cyr_chars.append(c)
+                    if c in ("\ufffd", "\x00") or (ord(c) < 32 and c not in ("\n", "\r", "\t")):
+                        tofu_chars.append(ch)
+                        
+    assert not tofu_chars, f"Found tofu characters in PDF char stream: {tofu_chars}"
+    assert len(cyr_chars) >= 40, f"Expected >= 40 Cyrillic characters, found {len(cyr_chars)}"
+    
+    print(f"  Verified Cyrillic glyph count: {len(cyr_chars)} chars ('{''.join(cyr_chars)[:30]}...')")
+    print(f"  Verified anti-tofu assertion: 0 replacement glyphs, 0 missing tofu boxes.")
+    print("  -> PASS: Unicode glyph integrity and Cyrillic rendering verified.")
+    doc.close()
     return "PASS"
 
 def check_pdf_digest():
-    print(f"\n[TEST 4/7] PDF Cryptographic Digest Verification:")
+    print(f"\n[TEST 5/8] PDF Cryptographic Digest Verification:")
     pdf_path = os.path.join(SCRIPT_DIR, "cv-pavel-cherkashin-tastelabs.pdf")
     assert os.path.exists(pdf_path), f"PDF not found at {pdf_path}"
     
@@ -167,7 +220,7 @@ def check_pdf_digest():
     return "PASS"
 
 def check_png_specs():
-    print(f"\n[TEST 5/7] High-Resolution PNG Geometry & DPI Verification:")
+    print(f"\n[TEST 6/8] High-Resolution PNG Geometry & DPI Verification:")
     hd_png = os.path.join(SCRIPT_DIR, "cv-pavel-cherkashin-tastelabs-hd.png")
     assert os.path.exists(hd_png), f"HD PNG not found at {hd_png}"
     
@@ -184,7 +237,7 @@ def check_png_specs():
     return "PASS"
 
 def check_manifest_integrity():
-    print(f"\n[TEST 6/7] Tamper-Evident MANIFEST.sha256 Integrity Verification:")
+    print(f"\n[TEST 7/8] Tamper-Evident MANIFEST.sha256 Integrity Verification:")
     manifest_path = os.path.join(SCRIPT_DIR, "evidence", "MANIFEST.sha256")
     if not os.path.exists(manifest_path):
         print("  -> SKIPPED: MANIFEST.sha256 not generated yet.")
@@ -214,7 +267,7 @@ def check_manifest_integrity():
     return "PASS"
 
 def check_dual_tree_parity():
-    print(f"\n[TEST 7/7] Bidirectional Dual-Tree Mirror Parity:")
+    print(f"\n[TEST 8/8] Bidirectional Dual-Tree Mirror Parity:")
     targets = [MIRROR_DIR, SYSTEM_MIRROR_DIR]
     for mirror in targets:
         if not os.path.exists(mirror):
@@ -232,6 +285,20 @@ def check_dual_tree_parity():
                 if fname.endswith((".pdf", ".py", ".md", ".txt", ".lock")):
                     with open(src_f, "rb") as f1, open(dst_f, "rb") as f2:
                         assert f1.read() == f2.read(), f"File content discrepancy in {fname} vs {mirror}"
+
+        # Verify fonts directory parity
+        fonts_dir = os.path.join(SCRIPT_DIR, "fonts")
+        if os.path.exists(fonts_dir):
+            mirror_fonts = os.path.join(mirror, "fonts")
+            assert os.path.exists(mirror_fonts), f"Fonts directory missing from mirror {mirror}"
+            for f in os.listdir(fonts_dir):
+                if f.endswith(".ttf"):
+                    src_font = os.path.join(fonts_dir, f)
+                    dst_font = os.path.join(mirror_fonts, f)
+                    assert os.path.exists(dst_font), f"Font {f} missing from mirror {mirror_fonts}"
+                    with open(src_font, "rb") as f1, open(dst_font, "rb") as f2:
+                        assert f1.read() == f2.read(), f"Font content discrepancy in {f} vs {mirror}"
+
         print(f"  -> PASS: Parity verified with {mirror}.")
     return "PASS"
 
@@ -242,12 +309,13 @@ def run_all_checks():
     check_python_environment()
     check_dependencies()
     check_pdf_layout_and_collisions()
+    check_glyph_integrity_and_anti_tofu()
     check_pdf_digest()
     check_png_specs()
     check_manifest_integrity()
     check_dual_tree_parity()
     print("\n" + "=" * 70)
-    print("ALL VERIFICATION CHECKS PASSED SUCCESSFULLY (7/7)")
+    print("ALL VERIFICATION CHECKS PASSED SUCCESSFULLY (8/8)")
     print("=" * 70)
 
 if __name__ == "__main__":

@@ -9,6 +9,7 @@ Linear Ticket: MIN-235
 
 import os
 import sys
+import json
 import shutil
 import pypdf
 import pymupdf  # PyMuPDF / fitz
@@ -21,9 +22,46 @@ from reportlab.platypus import (
 )
 from reportlab.pdfgen import canvas
 from reportlab import rl_config
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfbase.pdfmetrics import registerFontFamily
 
 # Enforce deterministic byte-for-byte ReportLab PDF rendering
 rl_config.invariant = 1
+
+def register_unicode_fonts(base_dir=None):
+    """Register and bundle Unicode NotoSans fonts with full Cyrillic support."""
+    if "NotoSans" in pdfmetrics.getRegisteredFontNames():
+        return
+    candidates = []
+    if base_dir:
+        candidates.append(os.path.join(base_dir, "fonts"))
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    candidates.append(os.path.join(script_dir, "fonts"))
+    candidates.append(os.path.join(os.path.dirname(script_dir), "workspace", "goals", "goal-4", "files", "tastelabs", "fonts"))
+    candidates.append(os.path.expanduser("~/workspace/goals/goal-4/files/tastelabs/fonts"))
+    candidates.append("/Users/pavelcherkashin/ChitAkasha-Wolfram/labs/pentagi-recovery/frontend/public/fonts")
+    
+    fonts_dir = None
+    for c in candidates:
+        if os.path.exists(os.path.join(c, "NotoSans-Regular.ttf")):
+            fonts_dir = c
+            break
+            
+    if not fonts_dir:
+        raise FileNotFoundError(f"Could not locate NotoSans TTF fonts in candidate paths: {candidates}")
+        
+    pdfmetrics.registerFont(TTFont('NotoSans', os.path.join(fonts_dir, 'NotoSans-Regular.ttf')))
+    pdfmetrics.registerFont(TTFont('NotoSans-Bold', os.path.join(fonts_dir, 'NotoSans-Bold.ttf')))
+    pdfmetrics.registerFont(TTFont('NotoSans-Italic', os.path.join(fonts_dir, 'NotoSans-Italic.ttf')))
+    pdfmetrics.registerFont(TTFont('NotoSans-BoldItalic', os.path.join(fonts_dir, 'NotoSans-BoldItalic.ttf')))
+    registerFontFamily(
+        'NotoSans',
+        normal='NotoSans',
+        bold='NotoSans-Bold',
+        italic='NotoSans-Italic',
+        boldItalic='NotoSans-BoldItalic'
+    )
 
 class InvariantCanvas(canvas.Canvas):
     """Custom ReportLab Canvas enforcing byte-level reproducible output."""
@@ -38,6 +76,7 @@ def verify_layout_and_collisions(pdf_path):
     1. Single-page constraint (len == 1)
     2. Page boundary containment (all text blocks inside printable page rectangle)
     3. Pairwise text collisions between distinct text blocks
+    4. Glyph and Unicode character integrity (zero tofu, zero replacement characters, verified Cyrillic coverage)
     """
     reader = pypdf.PdfReader(pdf_path)
     page_count = len(reader.pages)
@@ -70,6 +109,29 @@ def verify_layout_and_collisions(pdf_path):
                     "h_overlap": round(h_overlap, 1),
                     "v_overlap": round(v_overlap, 1)
                 })
+
+    # Glyph integrity and anti-tofu inspection
+    full_text = page.get_text()
+    raw_data = json.loads(page.get_text("rawjson"))
+    glyph_issues = []
+
+    # 1. Scan char-level JSON for replacement characters or unprintable controls
+    for b in raw_data.get("blocks", []):
+        for line in b.get("lines", []):
+            for span in line.get("spans", []):
+                for ch in span.get("chars", []):
+                    c = ch.get("c", "")
+                    if c in ("\ufffd", "\x00") or (ord(c) < 32 and c not in ("\n", "\r", "\t")):
+                        glyph_issues.append({"char": c, "code": ord(c), "bbox": ch.get("bbox")})
+
+    # 2. Check for required Cyrillic textbook title
+    expected_cyrillic = "Стратегия управления взаимоотношениями с клиентами"
+    if expected_cyrillic not in full_text:
+        glyph_issues.append({"error": f"Missing expected Cyrillic string: '{expected_cyrillic}'"})
+
+    # 3. Check for tofu/fallback placeholders like 'IIIIIIIII'
+    if "IIIIIIIII" in full_text:
+        glyph_issues.append({"error": "Detected tofu/fallback placeholder sequence 'IIIIIIIII'"})
                 
     doc_fitz.close()
     return {
@@ -77,6 +139,8 @@ def verify_layout_and_collisions(pdf_path):
         "total_text_blocks": len(text_blocks),
         "text_overlap_count": len(overlaps),
         "out_of_bounds_count": len(out_of_bounds),
+        "glyph_issue_count": len(glyph_issues),
+        "glyph_issues": glyph_issues,
         "overlaps": overlaps,
         "out_of_bounds": out_of_bounds
     }
@@ -87,6 +151,8 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-tastelabs.pdf", output_png="cv-pav
         output_pdf = os.path.join(script_dir, output_pdf)
     if not os.path.isabs(output_png) and not os.path.dirname(output_png):
         output_png = os.path.join(script_dir, output_png)
+
+    register_unicode_fonts(script_dir)
 
     pdf_dir = os.path.dirname(os.path.abspath(output_pdf))
     if pdf_dir:
@@ -119,7 +185,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-tastelabs.pdf", output_png="cv-pav
     title_style = ParagraphStyle(
         'DocTitle',
         parent=base_styles['Normal'],
-        fontName='Helvetica-Bold',
+        fontName='NotoSans-Bold',
         fontSize=20,
         leading=22,
         textColor=c_title,
@@ -128,7 +194,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-tastelabs.pdf", output_png="cv-pav
     subtitle_style = ParagraphStyle(
         'DocSubtitle',
         parent=base_styles['Normal'],
-        fontName='Helvetica-Bold',
+        fontName='NotoSans-Bold',
         fontSize=9.2,
         leading=11.2,
         textColor=c_brand,
@@ -137,7 +203,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-tastelabs.pdf", output_png="cv-pav
     contact_style = ParagraphStyle(
         'ContactLine',
         parent=base_styles['Normal'],
-        fontName='Helvetica',
+        fontName='NotoSans',
         fontSize=8,
         leading=10,
         textColor=c_muted,
@@ -147,7 +213,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-tastelabs.pdf", output_png="cv-pav
     section_title_style = ParagraphStyle(
         'SectionTitle',
         parent=base_styles['Normal'],
-        fontName='Helvetica-Bold',
+        fontName='NotoSans-Bold',
         fontSize=8.3,
         leading=10.3,
         textColor=c_primary,
@@ -159,7 +225,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-tastelabs.pdf", output_png="cv-pav
     body_style = ParagraphStyle(
         'Body',
         parent=base_styles['Normal'],
-        fontName='Helvetica',
+        fontName='NotoSans',
         fontSize=7.4,
         leading=9.3,
         textColor=c_body,
@@ -168,7 +234,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-tastelabs.pdf", output_png="cv-pav
     bullet_style = ParagraphStyle(
         'Bullet',
         parent=base_styles['Normal'],
-        fontName='Helvetica',
+        fontName='NotoSans',
         fontSize=7.1,
         leading=8.9,
         textColor=c_body,
@@ -177,7 +243,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-tastelabs.pdf", output_png="cv-pav
     callout_style = ParagraphStyle(
         'Callout',
         parent=base_styles['Normal'],
-        fontName='Helvetica',
+        fontName='NotoSans',
         fontSize=7.1,
         leading=8.7,
         textColor=c_primary,
@@ -237,26 +303,26 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-tastelabs.pdf", output_png="cv-pav
     # 3. Core Competencies Grid
     story.append(Paragraph("CORE COMPETENCIES &amp; TASTE EVALS ARCHITECTURE", section_title_style))
     col1 = [
-        Paragraph("<b>Subjective Domain Evals &amp; Taste Rubrics</b>", ParagraphStyle('C1', parent=body_style, fontName='Helvetica-Bold', textColor=c_primary)),
+        Paragraph("<b>Subjective Domain Evals &amp; Taste Rubrics</b>", ParagraphStyle('C1', parent=body_style, fontName='NotoSans-Bold', textColor=c_primary)),
         Paragraph("&bull; Decomposing design, tone &amp; aesthetics into granular, testable rubrics<br/>"
                   "&bull; Multi-model LLM-as-judge scoring &amp; pairwise Bradley-Terry Elo ranking<br/>"
                   "&bull; Held-out private verifiers to prevent reward hacking &amp; benchmark memorization<br/>"
                   "&bull; Empirical failure-mode taxonomies &amp; programmatic anti-slop boundary assertions", bullet_style),
         Spacer(1, 2),
-        Paragraph("<b>Backend Infrastructure &amp; Data Pipelines</b>", ParagraphStyle('C2', parent=body_style, fontName='Helvetica-Bold', textColor=c_primary)),
+        Paragraph("<b>Backend Infrastructure &amp; Data Pipelines</b>", ParagraphStyle('C2', parent=body_style, fontName='NotoSans-Bold', textColor=c_primary)),
         Paragraph("&bull; High-throughput distributed backends &amp; event-driven architecture<br/>"
                   "&bull; Deterministic test harnesses, isolated worktrees &amp; CI/CD verification gates<br/>"
                   "&bull; Tamper-evident cryptographic manifests (SHA-256) &amp; zero-trust verification<br/>"
                   "&bull; Large-scale dataset ingestion, feature extraction &amp; telemetry streaming", bullet_style),
     ]
     col2 = [
-        Paragraph("<b>Agent Harnesses &amp; Context Layers</b>", ParagraphStyle('C3', parent=body_style, fontName='Helvetica-Bold', textColor=c_primary)),
+        Paragraph("<b>Agent Harnesses &amp; Context Layers</b>", ParagraphStyle('C3', parent=body_style, fontName='NotoSans-Bold', textColor=c_primary)),
         Paragraph("&bull; Autonomous agent runtime orchestration &amp; daemon architecture (<i>fleetd</i>)<br/>"
                   "&bull; Dynamic context layering, memory injection &amp; prompt state management<br/>"
                   "&bull; Model Context Protocol (MCP) tool integration &amp; sandbox isolation<br/>"
                   "&bull; Strict concurrency gating (WIP=1), state auditability &amp; crash recovery", bullet_style),
         Spacer(1, 2),
-        Paragraph("<b>Technical Pedagogy &amp; Creative Systems</b>", ParagraphStyle('C4', parent=body_style, fontName='Helvetica-Bold', textColor=c_primary)),
+        Paragraph("<b>Technical Pedagogy &amp; Creative Systems</b>", ParagraphStyle('C4', parent=body_style, fontName='NotoSans-Bold', textColor=c_primary)),
         Paragraph("&bull; Published textbook author: <i>CRM Strategy</i> (INTUIT/BINOM, Moscow, 384 pp.)<br/>"
                   "&bull; Turning fuzzy human taste and design guidelines into structured engineering specs<br/>"
                   "&bull; Clear public benchmark documentation, research notes &amp; anti-gaming disclosures<br/>"
@@ -281,7 +347,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-tastelabs.pdf", output_png="cv-pav
     story.append(Paragraph("SYSTEMS &amp; LEADERSHIP EXPERIENCE", section_title_style))
     
     # Experience Entry 1: Mindrock Autonomous Agent Fleet
-    exp1_title = Paragraph("<b>Mindrock Autonomous Agent Fleet</b> &mdash; <i>Principal Systems Architect &amp; Harness Builder</i>", ParagraphStyle('E1T', parent=body_style, fontName='Helvetica-Bold', fontSize=7.6, textColor=c_title))
+    exp1_title = Paragraph("<b>Mindrock Autonomous Agent Fleet</b> &mdash; <i>Principal Systems Architect &amp; Harness Builder</i>", ParagraphStyle('E1T', parent=body_style, fontName='NotoSans-Bold', fontSize=7.6, textColor=c_title))
     exp1_date = Paragraph("2024 &ndash; Present | San Francisco, CA", contact_style)
     story.append(Table([[exp1_title, exp1_date]], colWidths=[380, 164], style=[('VALIGN', (0,0), (-1,-1), 'TOP'), ('TOPPADDING', (0,0), (-1,-1), 0), ('BOTTOMPADDING', (0,0), (-1,-1), 0), ('LEFTPADDING', (0,0), (-1,-1), 0), ('RIGHTPADDING', (0,0), (-1,-1), 0)]))
     story.append(Paragraph(
@@ -294,7 +360,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-tastelabs.pdf", output_png="cv-pav
     story.append(Spacer(1, 2))
     
     # Experience Entry 2: Vestor.in & Venture Advisory
-    exp2_title = Paragraph("<b>Vestor.in &amp; Technology Advisory</b> &mdash; <i>Founding Partner &amp; Systems Architect</i>", ParagraphStyle('E2T', parent=body_style, fontName='Helvetica-Bold', fontSize=7.6, textColor=c_title))
+    exp2_title = Paragraph("<b>Vestor.in &amp; Technology Advisory</b> &mdash; <i>Founding Partner &amp; Systems Architect</i>", ParagraphStyle('E2T', parent=body_style, fontName='NotoSans-Bold', fontSize=7.6, textColor=c_title))
     exp2_date = Paragraph("2018 &ndash; 2024 | San Francisco, CA", contact_style)
     story.append(Table([[exp2_title, exp2_date]], colWidths=[380, 164], style=[('VALIGN', (0,0), (-1,-1), 'TOP'), ('TOPPADDING', (0,0), (-1,-1), 0), ('BOTTOMPADDING', (0,0), (-1,-1), 0), ('LEFTPADDING', (0,0), (-1,-1), 0), ('RIGHTPADDING', (0,0), (-1,-1), 0)]))
     story.append(Paragraph(
@@ -305,7 +371,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-tastelabs.pdf", output_png="cv-pav
     story.append(Spacer(1, 2))
     
     # Experience Entry 3: Sputnik Labs
-    exp3_title = Paragraph("<b>Sputnik Labs</b> &mdash; <i>Founder &amp; Chief Executive Officer</i> (Acquired by Technoserv, 2008)", ParagraphStyle('E3T', parent=body_style, fontName='Helvetica-Bold', fontSize=7.6, textColor=c_title))
+    exp3_title = Paragraph("<b>Sputnik Labs</b> &mdash; <i>Founder &amp; Chief Executive Officer</i> (Acquired by Technoserv, 2008)", ParagraphStyle('E3T', parent=body_style, fontName='NotoSans-Bold', fontSize=7.6, textColor=c_title))
     exp3_date = Paragraph("2001 &ndash; 2008 | Moscow &amp; European Hubs", contact_style)
     story.append(Table([[exp3_title, exp3_date]], colWidths=[380, 164], style=[('VALIGN', (0,0), (-1,-1), 'TOP'), ('TOPPADDING', (0,0), (-1,-1), 0), ('BOTTOMPADDING', (0,0), (-1,-1), 0), ('LEFTPADDING', (0,0), (-1,-1), 0), ('RIGHTPADDING', (0,0), (-1,-1), 0)]))
     story.append(Paragraph(
@@ -316,7 +382,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-tastelabs.pdf", output_png="cv-pav
     story.append(Spacer(1, 2))
     
     # Experience Entry 4: Siebel Systems & Microsoft
-    exp4_title = Paragraph("<b>Siebel Systems &amp; Microsoft</b> &mdash; <i>Country Manager, Russia &amp; CIS / Platform Strategy Director</i>", ParagraphStyle('E4T', parent=body_style, fontName='Helvetica-Bold', fontSize=7.6, textColor=c_title))
+    exp4_title = Paragraph("<b>Siebel Systems &amp; Microsoft</b> &mdash; <i>Country Manager, Russia &amp; CIS / Platform Strategy Director</i>", ParagraphStyle('E4T', parent=body_style, fontName='NotoSans-Bold', fontSize=7.6, textColor=c_title))
     exp4_date = Paragraph("1999 &ndash; 2006 | Regional Executive Roles", contact_style)
     story.append(Table([[exp4_title, exp4_date]], colWidths=[380, 164], style=[('VALIGN', (0,0), (-1,-1), 'TOP'), ('TOPPADDING', (0,0), (-1,-1), 0), ('BOTTOMPADDING', (0,0), (-1,-1), 0), ('LEFTPADDING', (0,0), (-1,-1), 0), ('RIGHTPADDING', (0,0), (-1,-1), 0)]))
     story.append(Paragraph(
@@ -327,7 +393,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-tastelabs.pdf", output_png="cv-pav
     
     # 5. Education & Published Author
     story.append(Paragraph("EDUCATION &amp; PUBLISHED AUTHOR", section_title_style))
-    edu1_title = Paragraph("<b>Lomonosov Moscow State University (MSU)</b> &mdash; <i>B.S. in Computer Science in Global Ecology</i>", ParagraphStyle('ED1', parent=body_style, fontName='Helvetica-Bold', fontSize=7.6, textColor=c_title))
+    edu1_title = Paragraph("<b>Lomonosov Moscow State University (MSU)</b> &mdash; <i>B.S. in Computer Science in Global Ecology</i>", ParagraphStyle('ED1', parent=body_style, fontName='NotoSans-Bold', fontSize=7.6, textColor=c_title))
     edu1_date = Paragraph("1995 | Moscow, RU", contact_style)
     story.append(Table([[edu1_title, edu1_date]], colWidths=[380, 164], style=[('VALIGN', (0,0), (-1,-1), 'TOP'), ('TOPPADDING', (0,0), (-1,-1), 0), ('BOTTOMPADDING', (0,0), (-1,-1), 0), ('LEFTPADDING', (0,0), (-1,-1), 0), ('RIGHTPADDING', (0,0), (-1,-1), 0)]))
     story.append(Paragraph(
@@ -336,7 +402,7 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-tastelabs.pdf", output_png="cv-pav
     ))
     story.append(Spacer(1, 2))
     
-    pub_title = Paragraph("<b>Published University Textbook:</b> <i>Customer Relationship Management Strategy</i> (*Стратегия управления взаимоотношениями с клиентами (CRM)*)", ParagraphStyle('PUB', parent=body_style, fontName='Helvetica-Bold', fontSize=7.5, textColor=c_brand))
+    pub_title = Paragraph("<b>Published University Textbook:</b> <i>Customer Relationship Management Strategy</i> (<i>Стратегия управления взаимоотношениями с клиентами (CRM)</i>)", ParagraphStyle('PUB', parent=body_style, fontName='NotoSans-Bold', fontSize=7.5, textColor=c_brand))
     story.append(pub_title)
     story.append(Paragraph(
         "&bull; INTUIT / BINOM, Moscow, 2007, 384 pp., <b>ISBN 978-5-94774-643-3</b>. Cataloged in the Russian State Library (RSL Official Record: <code>01003185368</code>). Definitive academic text on automated customer data modeling, enterprise rubrics, and systematic interaction design.",
@@ -374,9 +440,16 @@ def build_pdf(output_pdf="cv-pavel-cherkashin-tastelabs.pdf", output_png="cv-pav
             os.path.join(script_dir, "..", "workspace", "goals", "goal-4", "files", "tastelabs"),
             os.path.expanduser("~/workspace/goals/goal-4/files/tastelabs"),
         ]
+        fonts_src = os.path.join(script_dir, "fonts")
         for m in mirrors:
             m_abs = os.path.abspath(m)
             if os.path.exists(m_abs) and m_abs != script_dir:
+                # Sync fonts
+                if os.path.exists(fonts_src):
+                    fonts_dst = os.path.join(m_abs, "fonts")
+                    os.makedirs(fonts_dst, exist_ok=True)
+                    for f in os.listdir(fonts_src):
+                        shutil.copy2(os.path.join(fonts_src, f), os.path.join(fonts_dst, f))
                 for fname in [os.path.basename(output_pdf), os.path.basename(output_png), os.path.basename(base_png)]:
                     src = os.path.join(script_dir, fname)
                     dst = os.path.join(m_abs, fname)
