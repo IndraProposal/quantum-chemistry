@@ -1,0 +1,7 @@
+# Direct dependencies for Taste Labs CV build & verification harness
+# For full transitive lockfile, see: requirements.lock
+# Verified Python runtime: Python >= 3.12, < 3.14 (tested on CPython 3.12.0 macOS Darwin x86_64/arm64)
+reportlab==5.1.0
+pymupdf==2.0
+pypdf==6.21.2
+pillow==12.3.0

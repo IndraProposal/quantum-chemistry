@@ -1,0 +1,43 @@
+{
+  "ticket": "MIN-235",
+  "run_id": "run-f2d5284e8462",
+  "builder": "agy@wolfram",
+  "target_company": "Taste Labs",
+  "target_url": "https://tastelabs.com/careers",
+  "founder": "Thais Castello Branco (@thaiscbranco_)",
+  "role": "AI Engineer, RL & Evals",
+  "technical_staff": true,
+  "location": "San Francisco, CA (SF On-Site, Full-Time)",
+  "compensation": {
+    "base_min": 175000,
+    "base_max": 275000,
+    "exceptional_cap": 300000,
+    "equity": "Competitive equity package",
+    "verified_live_date": "2026-10-26"
+  },
+  "candidate": {
+    "name": "Pavel Cherkashin",
+    "email": "pavel@mindrock.capital",
+    "linkedin": "https://www.linkedin.com/in/cherkashin",
+    "github": "https://github.com/pashamango",
+    "us_work_authorization": true
+  },
+  "status": "DELIVERED",
+  "tap_gated": true,
+  "git_branch": "minutta/min-235-taste-labs-ai-engineer-rl-evals-ashby-sf-on-site",
+  "golden_pdf_sha256": "1908e0e5a8a8cc0adba89baa31db39758f83a1a994e1b13793e9bdc2b9a64aea",
+  "png_dimensions": [2550, 3300],
+  "png_dpi": 300,
+  "declared_growth_edges": [
+    "Scalable RL cluster infrastructure (multi-node GPU topologies, Megatron-LM/DeepSpeed distributed training loops)",
+    "Custom low-level CUDA/Triton kernel optimization"
+  ],
+  "core_strengths": [
+    "Task design for taste and subjective domain evaluation",
+    "Granular grading methods, rubrics decomposition, and anti-slop boundary assertions",
+    "Agent harnesses and context layers (fleetd in Rust, dynamic memory injection, MCP integration)",
+    "Deterministic verification gates and programmatic layout assertion engines",
+    "High-throughput backend architectures, data indexing pipelines, and telemetry streaming",
+    "Startup founding DNA (Sputnik Labs scaled to 500+ employees) and technical pedagogy (384-page textbook)"
+  ]
+}

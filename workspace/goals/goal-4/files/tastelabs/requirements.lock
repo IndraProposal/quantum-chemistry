@@ -1,0 +1,22 @@
+# Pinned lockfile for Taste Labs CV build & verification harness
+# Generated for reproducible environment validation (MIN-235)
+# Supported Python environments: Python >= 3.12, < 3.14 (tested on CPython 3.12.0 macOS Darwin x86_64/arm64)
+# Note: Transitive dependencies networkx==3.7 and onnxruntime==1.31.0 require Python >= 3.12.
+# Supported Platforms: macOS (Darwin x86_64, arm64)
+
+charset-normalizer==3.5.2
+flatbuffers==25.12.19
+networkx==3.7
+numpy==2.5.4
+onnxruntime==1.31.0
+packaging==26.3
+pillow==12.3.0
+protobuf==7.36.2
+psutil==7.2.2
+pymupdf==2.0
+pymupdf4llm==2.0
+pymupdf_layout==2.0
+pypdf==6.21.2
+PyYAML==6.0.3
+reportlab==5.1.0
+tabulate==0.10.0
